@@ -1,0 +1,8 @@
+com/example/androidquicktrackmeet/BuildConfig.java
+ com.example.androidquicktrackmeet.BuildConfig
+com/example/androidquicktrackmeet/SchoolsActivity.java
+ com.example.androidquicktrackmeet.SchoolsActivity
+com/example/androidquicktrackmeet/MainActivity.java
+ com.example.androidquicktrackmeet.MainActivity
+com/example/androidquicktrackmeet/MeetsActivity.java
+ com.example.androidquicktrackmeet.MeetsActivity
