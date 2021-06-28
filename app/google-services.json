@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "277683121299",
+    "firebase_url": "https://trackmeet2-d0c6a.firebaseio.com",
+    "project_id": "trackmeet2-d0c6a",
+    "storage_bucket": "trackmeet2-d0c6a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277683121299:android:24b9878ba5a962dd0bf166",
+        "android_client_info": {
+          "package_name": "com.example.androidquicktrackmeet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277683121299-d4900681l8r9hrhnt3a1pscb11dkv5gl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu1EPx-gAKrY0gYx5lDVu6O_tC1WqOsBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "277683121299-7g9dml1dij10jiebruoqfjuj2gj09l3m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "277683121299-ppqm8tlvngt5ddn2g3ka402bvpnaodoe.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "clc.TrackMeet"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
