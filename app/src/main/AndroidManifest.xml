@@ -9,6 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidQuickTrackMeet">
+        <activity android:name=".EventsActivity"></activity>
+        <activity
+            android:name=".HomeActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName=".MeetsActivity" />
+        <activity
+            android:name=".AddMeetActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName=".MeetsActivity" />
         <activity
             android:name=".SchoolsActivity"
             android:label="Schools"
@@ -19,7 +28,8 @@
             android:label="Meets"
             android:launchMode="singleTask"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

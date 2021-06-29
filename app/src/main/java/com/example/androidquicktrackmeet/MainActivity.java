@@ -15,6 +15,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
@@ -25,18 +29,71 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        readAthletesFromFirebase();
+        //readAthletesFromFirebase();
         //readSchoolsFromFirebase();
+        readMeetsFromFirebase();
+
+    }
+
+    public void readMeetsFromFirebase() {
+        //        Read from the database
+        DatabaseReference meetDatabase = FirebaseDatabase.getInstance().getReference();
+        meetDatabase.child("meets").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String previous) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+
+            }
+
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String previous) {
+                //  System.out.println(dataSnapshot);
+
+                String key = dataSnapshot.getKey();
+                //  System.out.println("key is "+ key);
+
+                Meet m = dataSnapshot.getValue((Meet.class));
+                String sDate1 = (String)dataSnapshot.child("date").getValue();
+
+                // Adding the Date to the Meet
+                try {
+                    assert sDate1 != null;
+                    m.addDate(new SimpleDateFormat("MM/dd/yy", Locale.US).parse(sDate1));
+                } catch (Exception e) {
+                    System.out.println("not a valid date!");
+                    m.addDate(new Date());
+                }
 
 
 
+                AppData.meets.add(m);
+                System.out.println(m.getDate2());
+                System.out.println("total meets added "+ AppData.meets.size());
 
 
 
+                //adapter.notifyDataSetChanged();
+                //Log.d(TAG, "Value is: " + value);
+            }
+
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
+
+            }
 
 
-
-
+            @Override
+            public void onCancelled(DatabaseError error) {
+                System.out.println("failed to read from database");
+                // Failed to read value
+                //Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
     }
 
     public void readAthletesFromFirebase(){
@@ -57,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
                 //  System.out.println("key is "+ key);
 
                 Athlete a = dataSnapshot.getValue((Athlete.class));
+
+
                 AppData.allAthletes.add(a);
                 //System.out.println("printing athletes" + AppData.allAthletes);
                 System.out.println("allAthletes count "+ AppData.allAthletes.size());

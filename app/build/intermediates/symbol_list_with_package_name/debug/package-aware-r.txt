@@ -1811,6 +1811,7 @@ id animateToEnd
 id animateToStart
 id asConfigured
 id async
+id athletesButton
 id athleticButton
 id auto
 id autoComplete
@@ -1899,6 +1900,7 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
+id eventsButton
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -2120,6 +2122,7 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
+id teamScoresButton
 id test_checkbox_android_button_tint
 id test_checkbox_app_button_tint
 id test_radiobutton_android_button_tint
@@ -2234,6 +2237,9 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_add_meet
+layout activity_events
+layout activity_home
 layout activity_main
 layout activity_meets
 layout activity_schools2
@@ -2242,6 +2248,7 @@ layout browser_actions_context_menu_row
 layout custom_athleteslist
 layout custom_dialog
 layout custom_editeventlist
+layout custom_eventslist
 layout custom_meetslist
 layout custom_schoolslist
 layout design_bottom_navigation_item

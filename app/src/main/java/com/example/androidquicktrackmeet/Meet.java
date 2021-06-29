@@ -1,5 +1,6 @@
 package com.example.androidquicktrackmeet;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -10,13 +11,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class Meet {
+public class Meet implements Serializable {
 
     public static boolean canManage = false;
     public static boolean canCoach = false;
     private String name, gender,uid, coachCode = "", managerCode = "", userId = "";
     private Date date;
-    private Map<String,String> schools;
+    private HashMap<String,String> schools;
     private ArrayList<String> levels, events;
     private ArrayList<Integer> indPoints, relPoints;
     private ArrayList<Boolean> beenScored;
@@ -39,9 +40,9 @@ public Meet(String key, HashMap<String, Object> dict) {
 
     gender = (String) dict.get("gender");
 
-    schools = (Map<String, String>) dict.get("schools");
+    schools = (HashMap<String, String>) dict.get("schools");
 
-    List levels2 = (List<String>)dict.get("levels");
+    levels = (ArrayList<String>)dict.get("levels");
 
     events = (ArrayList<String>) dict.get("events");
 
@@ -75,6 +76,22 @@ public Meet(String name, Date date, HashMap<String,String> schools, String gende
     this.userId = AppData.userID;
 }
 
+    public String getName(){return name;}
+    public Date getDate2(){return date;}
+    public HashMap<String,String> getSchools(){return schools;}
+    public String getGender(){return gender;}
+
+    public ArrayList<String> getLevels(){return levels;}
+    public ArrayList<String> getEvents(){return events;}
+    public ArrayList<Integer> getIndPoints(){return indPoints;}
+    public ArrayList<Integer> getRelPoints(){return relPoints;}
+    public ArrayList<Boolean> getBeenScored(){return beenScored;}
+    public String getCoachCode(){return coachCode;}
+    public String getManagerCode(){return managerCode;}
+
+    public void addDate(Date d){
+    date = d;
+    }
 
 
 
