@@ -23,7 +23,14 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.AndroidQuickTrackMeet" >
-        <activity android:name="com.example.androidquicktrackmeet.EventsActivity" />
+        <activity
+            android:name="com.example.androidquicktrackmeet.EventEditActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.example.androidquicktrackmeet.EventsActivity" />
+        <activity
+            android:name="com.example.androidquicktrackmeet.EventsActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.example.androidquicktrackmeet.HomeActivity" />
         <activity
             android:name="com.example.androidquicktrackmeet.HomeActivity"
             android:launchMode="singleTask"

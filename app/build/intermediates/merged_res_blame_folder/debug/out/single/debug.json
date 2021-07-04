@@ -32,6 +32,10 @@
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/layout/custom_meetslist.xml"
     },
     {
+        "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/layout_activity_event_edit.xml.flat",
+        "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/layout/activity_event_edit.xml"
+    },
+    {
         "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/mipmap-mdpi/ic_launcher.png"
     },

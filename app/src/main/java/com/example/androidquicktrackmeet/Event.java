@@ -27,35 +27,35 @@ public class Event {
     }
 
     // Build Event from firebase
-    public Event(String key, HashMap<String, Object> dict){
-        uid = key;
-        name = (String)dict.get("name");
-        level = (String)dict.get("level");
-        mark = (Double)dict.get("mark");
-        markString = (String)dict.get("markString");
-        if(dict.get("place") != null){
-            place = (Integer)dict.get("place");
-        }
-        else{
-            place = null;
-        }
-        points = (Double)dict.get("points");
-        if(dict.get("heat") != null){
-            heat = (Integer)dict.get("heat");
-        }
-        else{
-            heat = null;
-        }
-//        if(dict.get("relayMembers") != null){
-//            relayMembers = (ArrayList<String>)dict.get("relayMembers");
+//    public Event(String key, HashMap<String, Object> dict){
+//        uid = key;
+//        name = (String)dict.get("name");
+//        level = (String)dict.get("level");
+//        mark = (Double)dict.get("mark");
+//        markString = (String)dict.get("markString");
+//        if(dict.get("place") != null){
+//            place = (Integer)dict.get("place");
 //        }
 //        else{
-//            relayMembers = null;
+//            place = null;
 //        }
-        meetName = (String)dict.get("meetName");
-
-
-    }
+//        points = (Double)dict.get("points");
+//        if(dict.get("heat") != null){
+//            heat = (Integer)dict.get("heat");
+//        }
+//        else{
+//            heat = null;
+//        }
+////        if(dict.get("relayMembers") != null){
+////            relayMembers = (ArrayList<String>)dict.get("relayMembers");
+////        }
+////        else{
+////            relayMembers = null;
+////        }
+//        meetName = (String)dict.get("meetName");
+//
+//
+//    }
 
 
     public String getName(){return name;}
@@ -63,7 +63,9 @@ public class Event {
     public String getMeetName(){return meetName;}
     public String getMarkString(){return markString;}
     public String getUid(){return uid;}
+    public Integer getPlace(){return place;}
     public ArrayList<String> getRelayMembers(){return relayMembers;}
+    public Double getPoints(){return points;}
 
 
 

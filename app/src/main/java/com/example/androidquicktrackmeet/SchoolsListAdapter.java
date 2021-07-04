@@ -48,7 +48,7 @@ public class SchoolsListAdapter extends ArrayAdapter<School> {
         //ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 
 
-        titleText.setText(schools.get(position).getCoaches().get(0));
+        titleText.setText(schools.get(position).getFull());
         subTitleText.setText(schools.get(position).getInits());
 
         //imageView.setImageResource(imgid[position]);

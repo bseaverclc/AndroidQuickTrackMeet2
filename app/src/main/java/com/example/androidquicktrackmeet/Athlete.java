@@ -111,7 +111,7 @@ public class Athlete {
     public void setFirst(String first){this.first = first;
         System.out.println("Calling setFirst");}
     public void setLast(String last){this.last = last;}
-    public void setSchool(String last){this.last = last;}
+    public void setSchool(String last){this.school = last;}
     public void setSchoolFull(String schoolFull){this.schoolFull = schoolFull;}
     public void setGrade(int grade){this.grade = grade;}
     public void setUid(String uid){this.uid = uid;}

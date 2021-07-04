@@ -25,9 +25,9 @@ private Meet selectedMeet;
 
     }
 
-    public void addMeetAction(View view){
-        startActivity(new Intent(MeetsActivity.this, AddMeetActivity.class));
-    }
+//    public void addMeetAction(View view){
+//        startActivity(new Intent(MeetsActivity.this, AddMeetActivity.class));
+//    }
 
     public void attachListener(){
     listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){

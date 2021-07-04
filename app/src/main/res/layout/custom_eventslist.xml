@@ -17,6 +17,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginTop="5dp"
         android:textColor="#4d4d4d"
+        android:layout_weight="1"
 
 
 

@@ -5,10 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
     private Meet meet;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,15 +22,35 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         meet = (Meet)intent.getSerializableExtra("Selected");
         System.out.println(meet.getSchools());
+
+
+//        EventsListAdapter adapter=new EventsListAdapter(this, meet.getEvents());
+//        listView=(ListView)findViewById(R.id.listView);
+//        listView.setAdapter(adapter);
+        //attachListener();
     }
 
-//    public void eventsAction(View view){
-//        System.out.println("meets pushed");
+//    public void attachListener(){
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 //
-//        Intent intent = new Intent(this, .class);
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //
+//                selectedEvent = (String)parent.getItemAtPosition(position);
+//                System.out.println("Clicked on" + selectedEvent);
+//                selectEventAction(listView);
+//            }
+//        });
+//    }
+
+    public void selectEventAction(View view){
+        Intent intent = new Intent(this, EventsActivity.class);
+        intent.putExtra("meet", meet);
+
 //        message = editText.getText().toString();
 //        intent.putExtra(EXTRA_MESSAGE, message);
-//        startActivity(intent);
-//    }
+        startActivity(intent);
+    }
+
+
 }

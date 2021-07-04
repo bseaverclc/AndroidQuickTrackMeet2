@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
 
 
@@ -27,7 +28,7 @@
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
@@ -37,18 +38,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text = "initials and year"
+                android:layout_marginLeft="16dp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
 
 
                 />
+<TextView
+    android:id="@+id/points"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+android:gravity="right"
 
-            <TextView
-                android:id="@+id/points"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="points"
+    android:text="points"
 
-                />
+    />
+
+
 
         </LinearLayout>
     </LinearLayout>
@@ -59,7 +64,7 @@
 
     <EditText
         android:id="@+id/editMark"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:hint="Mark"
         android:inputType="time"
@@ -68,7 +73,7 @@
 
     <EditText
         android:id="@+id/editPlace"
-        android:layout_width="50dp"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:hint="PL"
         android:inputType="number"

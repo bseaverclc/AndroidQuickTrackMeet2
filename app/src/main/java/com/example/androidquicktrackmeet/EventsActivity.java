@@ -17,9 +17,14 @@ private ListView listView;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
+        Intent intent = getIntent();
+        selectedEvent = (String)intent.getSerializableExtra("Selected");
+        meet = (Meet)intent.getSerializableExtra("meet");
+
         EventsListAdapter adapter=new EventsListAdapter(this, meet.getEvents());
         listView=(ListView)findViewById(R.id.listView);
         listView.setAdapter(adapter);
+
         attachListener();
 
     }
@@ -36,14 +41,15 @@ private ListView listView;
 
                 selectedEvent = (String)parent.getItemAtPosition(position);
                 System.out.println("Clicked on" + selectedEvent);
-                //selectEventAction(listView);
+                selectEventAction(listView);
             }
         });
     }
 
     public void selectEventAction(View view){
-        Intent intent = new Intent(this, EventsActivity.class);
-        intent.putExtra("Selected", selectedMeet);
+        Intent intent = new Intent(this, EventEditActivity.class);
+        intent.putExtra("Selected", selectedEvent);
+        intent.putExtra("meet", meet);
 
 //        message = editText.getText().toString();
 //        intent.putExtra(EXTRA_MESSAGE, message);

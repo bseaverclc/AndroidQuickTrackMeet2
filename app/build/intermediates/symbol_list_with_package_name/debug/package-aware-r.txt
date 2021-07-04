@@ -2238,6 +2238,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_add_meet
+layout activity_event_edit
 layout activity_events
 layout activity_home
 layout activity_main

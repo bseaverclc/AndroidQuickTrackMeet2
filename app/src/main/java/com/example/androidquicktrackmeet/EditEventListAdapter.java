@@ -20,34 +20,55 @@ public class EditEventListAdapter extends ArrayAdapter<Athlete> {
     private final Activity context;
     // private final String[] names;
     //private final Integer[] grades;
-    private final ArrayList<Athlete> athletes;
+
     private EditEventListAdapter adapter = this;
+    private ArrayList<Athlete> athletes;
+    private String event;
+    private Meet meet;
+
 
     // private final Integer[] imgid;
 
-    public EditEventListAdapter(Activity context, ArrayList<Athlete> athletes) {
-        super(context, R.layout.custom_schoolslist, athletes);
+    public EditEventListAdapter(Activity context, ArrayList<Athlete> athletes, String event, Meet meet) {
+        super(context, R.layout.custom_editeventlist, athletes);
         // TODO Auto-generated constructor stub
 
         this.context=context;
         // this.names=names;
         // this.grades=grades;
         //this.imgid=imgid;
-        this.athletes = AppData.allAthletes;
+
+        this.athletes = athletes;
+        this.event = event;
+        this.meet = meet;
+        System.out.println(athletes);
+        }
 
 
-    }
+
+
 
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.custom_schoolslist, null,true);
+        View rowView=inflater.inflate(R.layout.custom_editeventlist, null,true);
 
         TextView titleText = (TextView) rowView.findViewById(R.id.title);
+        TextView points = (TextView) rowView.findViewById(R.id.points);
         EditText mark = (EditText)rowView.findViewById((R.id.editMark));
-        System.out.println(athletes.get(position).showEvents().size());
+        EditText place = (EditText)rowView.findViewById(R.id.editPlace);
+        //System.out.println(athletes.get(position).showEvents().size());
         for (Event e : athletes.get(position).showEvents()){
-            System.out.println("attemptng to set mark");
-            mark.setText(e.getMarkString());
+            //System.out.println("attemptng to set mark");
+            if(e.getName().equals(event) && e.getMeetName().equals(meet.getName())) {
+                mark.setText(e.getMarkString());
+                //System.out.println("printing place" + e.getPlace());
+                if (e.getPlace() != null) {
+                    place.setText(("" + e.getPlace()));
+                }
+                if (e.getPoints() != null){
+                    points.setText("" + e.getPoints());
+                }
+            }
         }
         mark.addTextChangedListener(new TextWatcher() {
 
@@ -75,10 +96,10 @@ public class EditEventListAdapter extends ArrayAdapter<Athlete> {
         //ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
         TextView subtitleText = (TextView) rowView.findViewById(R.id.subtitle);
 
-        titleText.setText(athletes.get(position).getFirst());
+        titleText.setText(athletes.get(position).getLast() + ", "+athletes.get(position).getFirst());
 
         //imageView.setImageResource(imgid[position]);
-        subtitleText.setText(""+athletes.get(position).getGrade());
+        subtitleText.setText(athletes.get(position).getSchool() + "  "+athletes.get(position).getGrade());
 
         return rowView;
 
