@@ -22,6 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         meet = (Meet)intent.getSerializableExtra("Selected");
         System.out.println(meet.getSchools());
+        setTitle(meet.getName());
 
 
 //        EventsListAdapter adapter=new EventsListAdapter(this, meet.getEvents());

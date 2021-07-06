@@ -10,10 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidQuickTrackMeet">
         <activity
+            android:name=".AddAthleteToEventActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName=".EventEditActivity">
+        </activity>
+        <activity
             android:name=".EventEditActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".EventsActivity" />
-
+            android:parentActivityName=".EventsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".EventsActivity"
             android:launchMode="singleTask"

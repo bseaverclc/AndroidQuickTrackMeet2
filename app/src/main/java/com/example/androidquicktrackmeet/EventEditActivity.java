@@ -1,6 +1,8 @@
 package com.example.androidquicktrackmeet;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,8 +46,25 @@ public class EventEditActivity extends AppCompatActivity {
         listView=(ListView)findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
+        Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(topToolBar);
+        ActionBar actionBar = getSupportActionBar();;
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(topToolBar);
 
 
+    }
+
+    public void addAction(View view){
+        System.out.println("addAction being called");
+        Intent intent = new Intent(this, AddAthleteToEventActivity.class);
+        intent.putExtra("meet", meet);
+        intent.putExtra("event", selectedEvent);
+        intent.putExtra("athletes", eventAthletes);
+
+//        message = editText.getText().toString();
+//        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
     }
 
     public void placeAction(View view){

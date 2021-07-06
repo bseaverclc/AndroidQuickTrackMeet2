@@ -24,9 +24,15 @@
         android:testOnly="true"
         android:theme="@style/Theme.AndroidQuickTrackMeet" >
         <activity
+            android:name="com.example.androidquicktrackmeet.AddAthleteToEventActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.example.androidquicktrackmeet.EventEditActivity" >
+        </activity>
+        <activity
             android:name="com.example.androidquicktrackmeet.EventEditActivity"
             android:launchMode="singleTask"
-            android:parentActivityName="com.example.androidquicktrackmeet.EventsActivity" />
+            android:parentActivityName="com.example.androidquicktrackmeet.EventsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="com.example.androidquicktrackmeet.EventsActivity"
             android:launchMode="singleTask"

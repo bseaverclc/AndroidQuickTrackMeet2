@@ -24,7 +24,7 @@ private ListView listView;
         EventsListAdapter adapter=new EventsListAdapter(this, meet.getEvents());
         listView=(ListView)findViewById(R.id.listView);
         listView.setAdapter(adapter);
-
+        setTitle("Events");
         attachListener();
 
     }

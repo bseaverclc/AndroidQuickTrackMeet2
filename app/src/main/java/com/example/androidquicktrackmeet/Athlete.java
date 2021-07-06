@@ -4,11 +4,12 @@ package com.example.androidquicktrackmeet;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Athlete {
+public class Athlete implements Serializable {
 
     private String first, last, school, schoolFull, uid;
     private int grade;

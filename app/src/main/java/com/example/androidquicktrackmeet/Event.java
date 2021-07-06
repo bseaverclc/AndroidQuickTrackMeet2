@@ -1,9 +1,10 @@
 package com.example.androidquicktrackmeet;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Event {
+public class Event implements Serializable {
     private String name, level, markString, meetName, uid;
     private Double mark, points;
     private Integer heat, place;

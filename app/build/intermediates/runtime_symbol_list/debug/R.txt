@@ -1918,6 +1918,7 @@ int id fragment_container_view_tag 0x7f0800b5
 int id ghost_view 0x7f0800b6
 int id ghost_view_holder 0x7f0800b7
 int id gone 0x7f0800b8
+int id grade 0x7f0801bd
 int id graph 0x7f0800b9
 int id graph_wrap 0x7f0800ba
 int id group_divider 0x7f0800bb
@@ -2054,6 +2055,10 @@ int id save_non_transition_alpha 0x7f08013d
 int id save_overlay_view 0x7f08013e
 int id sawtooth 0x7f08013f
 int id scale 0x7f080140
+int id school1 0x7f0801be
+int id school2 0x7f0801bf
+int id school3 0x7f0801c0
+int id school4 0x7f0801c1
 int id schoolsButton 0x7f080141
 int id screen 0x7f080142
 int id scroll 0x7f080143
@@ -2148,6 +2153,7 @@ int id title 0x7f08019b
 int id titleDividerNoCustom 0x7f08019c
 int id title_template 0x7f08019d
 int id toggle 0x7f08019e
+int id toolbar 0x7f0801bc
 int id top 0x7f08019f
 int id topPanel 0x7f0801a0
 int id touch_outside 0x7f0801a1
@@ -2237,6 +2243,7 @@ int layout abc_search_dropdown_item_icons_2line 0x7f0b0018
 int layout abc_search_view 0x7f0b0019
 int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
+int layout activity_add_athlete_to_event 0x7f0b007c
 int layout activity_add_meet 0x7f0b001c
 int layout activity_event_edit 0x7f0b001d
 int layout activity_events 0x7f0b001e
