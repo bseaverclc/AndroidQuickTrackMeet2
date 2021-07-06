@@ -106,6 +106,14 @@ public class Athlete {
     public ArrayList<Event> showEvents(){
         return events;
     }
+    public Event findEvent(String meetName, String eventName){
+        for(Event e : events){
+            if (e.getMeetName().equalsIgnoreCase(meetName) && e.getName().equalsIgnoreCase(eventName)){
+                return e;
+            }
+        }
+        return null;
+    }
 
 
     public void setFirst(String first){this.first = first;

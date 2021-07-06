@@ -142,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                             System.out.println("event snapshot" + dataSnapshot);
                             Event ev = dataSnapshot.getValue(Event.class);
                             a.addEvent(ev);
+
                             ev.setUid(dataSnapshot.getKey());
 
                             //System.out.println("getting an event from firebase ");

@@ -41,7 +41,7 @@ public class EditEventListAdapter extends ArrayAdapter<Athlete> {
         this.athletes = athletes;
         this.event = event;
         this.meet = meet;
-        System.out.println(athletes);
+        System.out.println(this.athletes);
         }
 
 
@@ -51,23 +51,24 @@ public class EditEventListAdapter extends ArrayAdapter<Athlete> {
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.custom_editeventlist, null,true);
-
+        Athlete a = athletes.get(position);
         TextView titleText = (TextView) rowView.findViewById(R.id.title);
         TextView points = (TextView) rowView.findViewById(R.id.points);
         EditText mark = (EditText)rowView.findViewById((R.id.editMark));
         EditText place = (EditText)rowView.findViewById(R.id.editPlace);
         //System.out.println(athletes.get(position).showEvents().size());
-        for (Event e : athletes.get(position).showEvents()){
+        for (Event e : a.showEvents()){
             //System.out.println("attemptng to set mark");
-            if(e.getName().equals(event) && e.getMeetName().equals(meet.getName())) {
+            if(e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(meet.getName())) {
                 mark.setText(e.getMarkString());
-                //System.out.println("printing place" + e.getPlace());
+                System.out.println("printing mark for " + a.getLast() + e.getMarkString());
                 if (e.getPlace() != null) {
                     place.setText(("" + e.getPlace()));
                 }
                 if (e.getPoints() != null){
                     points.setText("" + e.getPoints());
                 }
+                break;
             }
         }
         mark.addTextChangedListener(new TextWatcher() {
@@ -75,9 +76,13 @@ public class EditEventListAdapter extends ArrayAdapter<Athlete> {
             public void afterTextChanged(Editable s) {
                 //athletes.get(position).setFirst(mark.getText().toString());
                 // System.out.println(athletes.get(position));
-                for (Event e : athletes.get(position).showEvents()){
-                    e.setMarkString(mark.getText().toString());
-                    //athletes.get(position).updateFirebase();
+                for (Event e : a.showEvents()){
+                    if(e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(meet.getName())) {
+                        e.setMarkString(mark.getText().toString());
+                        System.out.println("after text changed fired");
+                        //athletes.get(position).updateFirebase();
+                        break;
+                    }
                 }
 
                 //adapter.notifyDataSetChanged();

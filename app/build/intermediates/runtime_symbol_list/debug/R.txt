@@ -1829,6 +1829,7 @@ int id browser_actions_menu_item_text 0x7f08005d
 int id browser_actions_menu_items 0x7f08005e
 int id browser_actions_menu_view 0x7f08005f
 int id buttonPanel 0x7f080060
+int id buttonView 0x7f0801bb
 int id cache_measures 0x7f080061
 int id cancel_button 0x7f080062
 int id center 0x7f080063
