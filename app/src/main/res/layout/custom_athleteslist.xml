@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:id="@+id/row"
 
 
     >
@@ -22,7 +23,7 @@
         android:layout_height="wrap_content"
 
         android:text="Athlete Name"
-        android:textStyle="bold"
+
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginTop="5dp"
         android:textColor="#4d4d4d"
@@ -34,8 +35,8 @@
             android:layout_height="wrap_content"
 
             android:text="Grade"
-            android:textStyle="bold"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginLeft="16dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
 
             android:textColor="#4d4d4d"
             />
@@ -51,7 +52,7 @@
 
         android:layout_gravity="right"
         android:text = "School"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textAppearance="?android:attr/textAppearanceMedium"
 
 
         />

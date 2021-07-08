@@ -13,7 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MeetsListAdapter extends ArrayAdapter<Meet> {
 
@@ -47,8 +49,9 @@ public class MeetsListAdapter extends ArrayAdapter<Meet> {
 
         //ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 
-
-        titleText.setText(meets.get(position).getDate2().toString());
+        Date date = meets.get(position).getDate2();
+         String datey = DateFormat.getDateInstance().format(date);
+        titleText.setText(datey);
         subTitleText.setText(meets.get(position).getName());
 
         //imageView.setImageResource(imgid[position]);

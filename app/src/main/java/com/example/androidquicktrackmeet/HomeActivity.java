@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
@@ -23,6 +25,8 @@ public class HomeActivity extends AppCompatActivity {
         meet = (Meet)intent.getSerializableExtra("Selected");
         System.out.println(meet.getSchools());
         setTitle(meet.getName());
+
+
 
 
 //        EventsListAdapter adapter=new EventsListAdapter(this, meet.getEvents());

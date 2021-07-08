@@ -51,8 +51,8 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-    <ListView
-        android:id="@+id/listView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
@@ -60,8 +60,22 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="16dp"
 
-        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/addSelectedButton"
         app:layout_constraintBottom_toTopOf="@id/buttonView"
+        android:choiceMode="multipleChoice"
+        android:listSelector="#333333"
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Selected"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/addSelectedButton"
+        android:onClick="selectAthletesAction"
+
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

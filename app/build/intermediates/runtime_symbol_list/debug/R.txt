@@ -1800,6 +1800,7 @@ int id action_text 0x7f080040
 int id actions 0x7f080041
 int id activity_chooser_view_content 0x7f080042
 int id add 0x7f080043
+int id addSelectedButton 0x7f0801c4
 int id adjust_height 0x7f080044
 int id adjust_width 0x7f080045
 int id alertTitle 0x7f080046
@@ -2044,12 +2045,14 @@ int id progress_horizontal 0x7f080132
 int id radio 0x7f080133
 int id ratio 0x7f080134
 int id rectangles 0x7f080135
+int id recyclerView 0x7f0801c2
 int id reverseSawtooth 0x7f080136
 int id right 0x7f080137
 int id rightToLeft 0x7f080138
 int id right_icon 0x7f080139
 int id right_side 0x7f08013a
 int id rounded 0x7f08013b
+int id row 0x7f0801c3
 int id row_index_key 0x7f08013c
 int id save_non_transition_alpha 0x7f08013d
 int id save_overlay_view 0x7f08013e

@@ -98,6 +98,37 @@ public class EditEventListAdapter extends ArrayAdapter<Athlete> {
 
             }
         });
+
+       place.addTextChangedListener(new TextWatcher() {
+
+            public void afterTextChanged(Editable s) {
+                //athletes.get(position).setFirst(mark.getText().toString());
+                // System.out.println(athletes.get(position));
+                for (Event e : a.showEvents()){
+                    if(e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(meet.getName())) {
+                        try {
+                            e.setPlace(Integer.parseInt(place.getText().toString()));
+                            break;
+                        }
+                        catch(Exception excep){
+
+                        }
+                    }
+                }
+
+                //adapter.notifyDataSetChanged();
+            }
+
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+
+
+            }
+        });
         //ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
         TextView subtitleText = (TextView) rowView.findViewById(R.id.subtitle);
 

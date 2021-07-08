@@ -1,5 +1,6 @@
 package com.example.androidquicktrackmeet;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -21,12 +22,15 @@ public class EventEditActivity extends AppCompatActivity {
     private ListView listView;
     private ArrayList<Athlete> eventAthletes = new ArrayList<Athlete>();
     private EditEventListAdapter adapter;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_edit);
 
-
+        System.out.println("onCreate for eventEditActivity");
         Intent intent = getIntent();
         selectedEvent = (String)intent.getSerializableExtra("Selected");
         setTitle(selectedEvent);
@@ -35,7 +39,7 @@ public class EventEditActivity extends AppCompatActivity {
             for(Event e: a.showEvents()){
                 if (e.getMeetName().equalsIgnoreCase(meet.getName()) && e.getName().equalsIgnoreCase(selectedEvent)) {
                     eventAthletes.add(a);
-                    break;
+                    //break;
                 }
 
             }
@@ -61,10 +65,33 @@ public class EventEditActivity extends AppCompatActivity {
         intent.putExtra("meet", meet);
         intent.putExtra("event", selectedEvent);
         intent.putExtra("athletes", eventAthletes);
+        startActivityForResult(intent, 0);
 
-//        message = editText.getText().toString();
-//        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
+        //startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == 0){
+            eventAthletes = (ArrayList<Athlete>)data.getSerializableExtra("eventAthletes");
+            // add athletes?
+        }
+        adapter.clear();
+        eventAthletes.clear();
+        for(Athlete a: AppData.allAthletes) {
+            for(Event e: a.showEvents()){
+                if (e.getMeetName().equalsIgnoreCase(meet.getName()) && e.getName().equalsIgnoreCase(selectedEvent)) {
+                    eventAthletes.add(a);
+                    //break;
+                }
+
+            }
+
+        }
+        adapter.addAll(eventAthletes);
+        //adapter.notifyDataSetChanged();
+
     }
 
     public void placeAction(View view){

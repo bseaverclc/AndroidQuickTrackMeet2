@@ -1,10 +1,17 @@
 package com.example.androidquicktrackmeet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.SparseBooleanArray;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -14,14 +21,20 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class AddAthleteToEventActivity extends AppCompatActivity {
+public class AddAthleteToEventActivity extends AppCompatActivity implements AthleteListAdapter.ItemClickListener {
 
     private Meet meet;
     private String event;
     private ArrayList<Athlete> eventAthletes;
-    private ListView listView;
+    private String level;
+    //private ListView listView;
+
     private ArrayList<Athlete> displayedAthletes = new ArrayList<Athlete>();
-    AthleteListAdapter adapter;
+    private AthleteListAdapter adapter;
+    SparseBooleanArray sp;
+    RecyclerView recyclerView;
+   // ArrayList<Athlete> selectedAthletes = new ArrayList<Athlete>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +42,7 @@ public class AddAthleteToEventActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         meet = (Meet)intent.getSerializableExtra("meet");
+        level = meet.getName().substring(meet.getName().length()-3);
         event = (String)intent.getSerializableExtra("event");
         eventAthletes = (ArrayList<Athlete>)intent.getSerializableExtra("athletes");
         setTitle(event);
@@ -58,13 +72,66 @@ public class AddAthleteToEventActivity extends AppCompatActivity {
 
         }
 
-        adapter=new AthleteListAdapter(this, displayedAthletes);
-        listView=(ListView)findViewById(R.id.listView);
-        listView.setAdapter(adapter);
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new AthleteListAdapter(this, displayedAthletes);
+        AthleteListAdapter.selectedAthletes.clear();
+        adapter.setClickListener(this);
+        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
+        recyclerView.setAdapter(adapter);
+
+//        adapter=new AthleteListAdapter(this, displayedAthletes);
+//        listView=(ListView)findViewById(R.id.listView);
+//
+//        listView.setAdapter(adapter);
+//
+//        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+//
+//        sp = listView.getCheckedItemPositions();
+
+
+        //attachListener();
+
+    }
+
+    public void addAthletes(){
+        for(int i = 0; i < AthleteListAdapter.selectedAthletes.size(); i++){
+            Athlete a = AthleteListAdapter.selectedAthletes.get(i);
+
+            //System.out.println("athlete checking to add " + a);
+            int stop = eventAthletes.size();
+            boolean add = true;
+            for(int j = 0; j< stop; j++) {
+                if (eventAthletes.get(j).equals(a)) {
+                    add = false;
+                    break;
+                }
+            }
+            if(add){
+                a.addEvent(new Event(event, level, meet.getName()));
+                eventAthletes.add(a);
+            }
+            else{
+                System.out.println("duplicate athlete");
+            }
+        }
+        AthleteListAdapter.selectedAthletes.clear();
+        AthleteListAdapter.selectedPositions.clear();
+    }
+
+    public void selectAthletesAction(View view){
+        //System.out.println("event athletes "+ eventAthletes);
+        addAthletes();
+
+        Intent intent = new Intent();
+        intent.putExtra("eventAthletes", eventAthletes);
+        setResult(RESULT_OK, intent);
+        finish();
+
     }
 
     public void selectSchool(View view){
-
+        addAthletes();
         Button button = (Button)view;
         String buttonText = button.getText().toString();
         System.out.println("select school" + buttonText);
@@ -75,7 +142,62 @@ public class AddAthleteToEventActivity extends AppCompatActivity {
                 System.out.println("added an athlete");
             }
         }
+
+        Comparator<Athlete> sortByName = (Athlete o1, Athlete o2) -> {
+
+            return o1.getLast().compareTo(o2.getLast());
+        };
+        Collections.sort(displayedAthletes, sortByName);
         adapter.notifyDataSetChanged();
 
     }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        System.out.println("clicked on name");
+        //view.setSelected(true);
+        //view.setBackgroundColor(Color.GREEN);
+
+////
+////
+////
+////                for(int i=0;i<sp.size();i++)
+////                {
+////                    listView.setItemChecked(i, true);
+////                   System.out.println(sp.keyAt(i));
+////                }
+
+    }
+
+
+
+
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                System.out.println("clicked an athlete");
+//                //SparseBooleanArray sp = listView.getCheckedItemPositions();
+////
+////
+////
+////                for(int i=0;i<sp.size();i++)
+////                {
+////                    listView.setItemChecked(i, true);
+////                   System.out.println(sp.keyAt(i));
+////                }
+//
+//                //String item = ((TextView) view).getText().toString();
+//                view.setSelected(true);
+//                listView.setItemChecked(position, true);
+//               for (int i = 0; i < sp.size(); i++){
+//                   if (sp.valueAt(i)){
+//                       view.setBackgroundColor(Color.GREEN);
+//                   }
+//               }
+//
+//
+//
+//
+//            }
+//        });
+
 }

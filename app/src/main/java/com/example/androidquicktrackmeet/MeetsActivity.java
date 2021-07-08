@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.Collections;
+import java.util.Comparator;
+
 public class MeetsActivity extends AppCompatActivity {
 private ListView listView;
 private Meet selectedMeet;
@@ -16,6 +19,11 @@ private Meet selectedMeet;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meets);
 
+        Comparator<Meet> sortByDate = (Meet o1, Meet o2) -> {
+            return o1.getDate2().compareTo(o2.getDate2());
+        };
+        Collections.sort(AppData.meets, sortByDate);
+        Collections.reverse(AppData.meets);
 
 
         MeetsListAdapter adapter=new MeetsListAdapter(this, AppData.meets);

@@ -167,4 +167,12 @@ public class Athlete implements Serializable {
     public String toString(){
         return first;
     }
+
+//    public boolean equals(Athlete other){
+//        if(this.first.equalsIgnoreCase(other.first) && this.last.equalsIgnoreCase(other.last)&&this.schoolFull.equalsIgnoreCase(other.schoolFull)&& this.grade == other.grade){
+//            return true;
+//        }
+//        else{return false;}
+//    }
+
 }

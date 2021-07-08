@@ -78,6 +78,7 @@ public class Event implements Serializable {
     public void setMarkString(String markString){
         this.markString = markString;
     }
+    public void setPlace(Integer place){this.place = place;}
 
 
 
