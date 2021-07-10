@@ -1833,6 +1833,7 @@ int id buttonPanel 0x7f080060
 int id buttonView 0x7f0801bb
 int id cache_measures 0x7f080061
 int id cancel_button 0x7f080062
+int id cell 0x7f0801c5
 int id center 0x7f080063
 int id center_horizontal 0x7f080064
 int id center_vertical 0x7f080065
@@ -1955,6 +1956,7 @@ int id light 0x7f0800d8
 int id line1 0x7f0800d9
 int id line3 0x7f0800da
 int id linear 0x7f0800db
+int id linearLayoutScores 0x7f0801c7
 int id listMode 0x7f0800dc
 int id listView 0x7f0800dd
 int id list_item 0x7f0800de
@@ -1978,6 +1980,7 @@ int id material_timepicker_mode_button 0x7f0800ef
 int id material_timepicker_ok_button 0x7f0800f0
 int id material_timepicker_view 0x7f0800f1
 int id material_value_index 0x7f0800f2
+int id meetName 0x7f0801c6
 int id meetsButton 0x7f0800f3
 int id message 0x7f0800f4
 int id middle 0x7f0800f5
@@ -2254,6 +2257,7 @@ int layout activity_home 0x7f0b001f
 int layout activity_main 0x7f0b0020
 int layout activity_meets 0x7f0b0021
 int layout activity_schools2 0x7f0b0022
+int layout activity_scores 0x7f0b007d
 int layout browser_actions_context_menu_page 0x7f0b0023
 int layout browser_actions_context_menu_row 0x7f0b0024
 int layout custom_athleteslist 0x7f0b0025

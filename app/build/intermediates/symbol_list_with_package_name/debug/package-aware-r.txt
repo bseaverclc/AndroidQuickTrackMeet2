@@ -1834,6 +1834,7 @@ id buttonPanel
 id buttonView
 id cache_measures
 id cancel_button
+id cell
 id center
 id center_horizontal
 id center_vertical
@@ -1956,6 +1957,7 @@ id light
 id line1
 id line3
 id linear
+id linearLayoutScores
 id listMode
 id listView
 id list_item
@@ -1979,6 +1981,7 @@ id material_timepicker_mode_button
 id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
+id meetName
 id meetsButton
 id message
 id middle
@@ -2255,6 +2258,7 @@ layout activity_home
 layout activity_main
 layout activity_meets
 layout activity_schools2
+layout activity_scores
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_athleteslist

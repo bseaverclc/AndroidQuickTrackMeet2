@@ -4,10 +4,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -19,7 +26,8 @@ public class EventEditActivity extends AppCompatActivity {
 
     private Meet meet;
     private String selectedEvent;
-    private ListView listView;
+    //private ListView listView;
+    private RecyclerView recyclerView;
     private ArrayList<Athlete> eventAthletes = new ArrayList<Athlete>();
     private EditEventListAdapter adapter;
 
@@ -46,9 +54,34 @@ public class EventEditActivity extends AppCompatActivity {
 
         }
 
-        adapter = new EditEventListAdapter(this, eventAthletes, selectedEvent, meet);
-        listView=(ListView)findViewById(R.id.listView);
-        listView.setAdapter(adapter);
+//        adapter = new EditEventListAdapter(this, eventAthletes, selectedEvent, meet);
+//        listView=(ListView)findViewById(R.id.listView);
+//        listView.setAdapter(adapter);
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new EditEventListAdapter(this, eventAthletes,selectedEvent,meet);
+        //AthleteListAdapter.selectedAthletes.clear();
+        //adapter.setClickListener(this);
+        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
+        recyclerView.setAdapter(adapter);
+
+        // attach delete option to recyclerview
+        ItemTouchHelper itemTouchHelper = new
+                ItemTouchHelper(new SwipeToDeleteCallback(adapter));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+
+        // Makes keyboard disappear when you click off editText
+        recyclerView.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
+                return false;
+            }
+        });
 
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
@@ -77,7 +110,7 @@ public class EventEditActivity extends AppCompatActivity {
             eventAthletes = (ArrayList<Athlete>)data.getSerializableExtra("eventAthletes");
             // add athletes?
         }
-        adapter.clear();
+        //adapter.clear();
         eventAthletes.clear();
         for(Athlete a: AppData.allAthletes) {
             for(Event e: a.showEvents()){
@@ -89,7 +122,9 @@ public class EventEditActivity extends AppCompatActivity {
             }
 
         }
-        adapter.addAll(eventAthletes);
+        adapter = new EditEventListAdapter(this, eventAthletes,selectedEvent,meet);
+        recyclerView.setAdapter(adapter);
+        //adapter.addAll(eventAthletes);
         //adapter.notifyDataSetChanged();
 
     }
@@ -115,13 +150,13 @@ public class EventEditActivity extends AppCompatActivity {
     }
 
     public void markAction(View view){
-        System.out.println("Place button pushed");
+        System.out.println("Mark button pushed");
 
         Comparator<Athlete> sortByMark = (Athlete o1, Athlete o2) -> {
-            if (o1.findEvent(meet.getName(), selectedEvent).getPlace() == null) {
-                return (o2.findEvent(meet.getName(), selectedEvent).getMarkString() == null) ? 0 : 1;
+            if (o1.findEvent(meet.getName(), selectedEvent).getMarkString().equalsIgnoreCase("")) {
+                return (o2.findEvent(meet.getName(), selectedEvent).getMarkString().equalsIgnoreCase("")) ? 0 : 1;
             }
-            if (o2.findEvent(meet.getName(), selectedEvent).getMarkString() == null) {
+            if (o2.findEvent(meet.getName(), selectedEvent).getMarkString().equalsIgnoreCase("")) {
                 return -1;
             }
             return o1.findEvent(meet.getName(), selectedEvent).getMarkString().compareTo(o2.findEvent(meet.getName(), selectedEvent).getMarkString());

@@ -57,5 +57,11 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void teamScoresAction(View view){
+        Intent intent = new Intent(this, ScoresActivity.class);
+        intent.putExtra("meet", meet);
+        startActivity(intent);
+    }
+
 
 }

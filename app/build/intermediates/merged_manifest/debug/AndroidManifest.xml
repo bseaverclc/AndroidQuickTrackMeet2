@@ -24,10 +24,13 @@
         android:testOnly="true"
         android:theme="@style/Theme.AndroidQuickTrackMeet" >
         <activity
+            android:name="com.example.androidquicktrackmeet.ScoresActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.example.androidquicktrackmeet.HomeActivity" />
+        <activity
             android:name="com.example.androidquicktrackmeet.AddAthleteToEventActivity"
             android:launchMode="singleTask"
-            android:parentActivityName="com.example.androidquicktrackmeet.EventEditActivity" >
-        </activity>
+            android:parentActivityName="com.example.androidquicktrackmeet.EventEditActivity" />
         <activity
             android:name="com.example.androidquicktrackmeet.EventEditActivity"
             android:launchMode="singleTask"

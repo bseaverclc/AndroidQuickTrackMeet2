@@ -92,6 +92,10 @@
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
+        "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/layout_activity_scores.xml.flat",
+        "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/layout/activity_scores.xml"
+    },
+    {
         "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     },
