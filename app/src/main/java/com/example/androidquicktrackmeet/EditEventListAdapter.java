@@ -59,7 +59,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
 
     @Override
     public void onBindViewHolder(EditEventListAdapter.ViewHolderEditEvent holder, int position) {
-        System.out.println("Onbindbeing called");
+       // System.out.println("Onbindbeing called");
         Athlete a = athletes.get(position);
         holder.markListener.updateAthlete(a);
         holder.placeListener.updateAthlete(a);
@@ -107,7 +107,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                 break;
             }
         }
-        
+
         athletes.remove(position);
         notifyItemRemoved(position);
     }
@@ -166,12 +166,12 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
 
         @Override
         public void afterTextChanged(Editable s) {
-            System.out.println("after mark text changed fired");
+            //System.out.println("after mark text changed fired");
             for (Event e : a.showEvents()){
                 if(e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(meet.getName())) {
                     e.setMarkString(s.toString());
 
-                    //athletes.get(position).updateFirebase();
+                    athletes.get(position).updateFirebase();
                     break;
                 }
             }
@@ -193,7 +193,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
         }
 
         public void afterTextChanged(Editable s) {
-            System.out.println("after place text changed fired");
+            //System.out.println("after place text changed fired");
                 for (Event e : a.showEvents()){
                     if(e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(meet.getName())) {
                         try {

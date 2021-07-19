@@ -15,6 +15,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,8 +45,9 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
 
         Intent intent = getIntent();
         meet = (Meet)intent.getSerializableExtra("meet");
-        level = meet.getName().substring(meet.getName().length()-3);
+
         event = (String)intent.getSerializableExtra("event");
+        level = event.substring(event.length()-3);
         eventAthletes = (ArrayList<Athlete>)intent.getSerializableExtra("athletes");
         setTitle(event);
 
@@ -76,6 +80,7 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AthleteListAdapter(this, displayedAthletes);
         AthleteListAdapter.selectedAthletes.clear();
+        AthleteListAdapter.selectedPositions.clear();
         adapter.setClickListener(this);
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);
@@ -108,13 +113,16 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
                 }
             }
             if(add){
-                a.addEvent(new Event(event, level, meet.getName()));
-                eventAthletes.add(a);
+                a.addEvent(event, level, meet.getName());
+                //eventAthletes.add(a);
+
+                //a.updateFirebase();
             }
             else{
                 System.out.println("duplicate athlete");
             }
         }
+        System.out.println("addAthletes function ending");
         AthleteListAdapter.selectedAthletes.clear();
         AthleteListAdapter.selectedPositions.clear();
     }

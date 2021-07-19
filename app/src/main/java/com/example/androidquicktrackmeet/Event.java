@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class Event implements Serializable {
     private String name, level, markString, meetName, uid;
-    private Double mark, points;
+    private Double mark, points = 0.0;
     private Integer heat, place;
     private ArrayList<String> relayMembers;
 
@@ -67,6 +67,7 @@ public class Event implements Serializable {
     public Integer getPlace(){return place;}
     public ArrayList<String> getRelayMembers(){return relayMembers;}
     public Double getPoints(){return points;}
+    public Double getMark(){return mark;}
 
 
 

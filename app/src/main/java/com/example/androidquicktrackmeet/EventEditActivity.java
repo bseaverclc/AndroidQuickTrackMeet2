@@ -30,8 +30,32 @@ public class EventEditActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<Athlete> eventAthletes = new ArrayList<Athlete>();
     private EditEventListAdapter adapter;
+    private int start = 0;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        System.out.println("onstart");
+        if(start!=0) {
+            System.out.println("onstart updating athletes showed");
+            eventAthletes.clear();
+            for (Athlete a : AppData.allAthletes) {
+                for (Event e : a.showEvents()) {
+                    if (e.getMeetName().equalsIgnoreCase(meet.getName()) && e.getName().equalsIgnoreCase(selectedEvent)) {
+                        eventAthletes.add(a);
+                        //break;
+                    }
 
+                }
+
+            }
+            sortByName();
+            sortByPlace();
+            adapter.notifyDataSetChanged();
+
+        }
+        start++;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +65,9 @@ public class EventEditActivity extends AppCompatActivity {
         System.out.println("onCreate for eventEditActivity");
         Intent intent = getIntent();
         selectedEvent = (String)intent.getSerializableExtra("Selected");
+
         setTitle(selectedEvent);
+
         meet = (Meet)intent.getSerializableExtra("meet");
         for(Athlete a: AppData.allAthletes) {
             for(Event e: a.showEvents()){
@@ -53,6 +79,10 @@ public class EventEditActivity extends AppCompatActivity {
             }
 
         }
+        sortByName();
+        sortByPlace();
+        sortByMark();
+
 
 //        adapter = new EditEventListAdapter(this, eventAthletes, selectedEvent, meet);
 //        listView=(ListView)findViewById(R.id.listView);
@@ -98,19 +128,13 @@ public class EventEditActivity extends AppCompatActivity {
         intent.putExtra("meet", meet);
         intent.putExtra("event", selectedEvent);
         intent.putExtra("athletes", eventAthletes);
-        startActivityForResult(intent, 0);
+        startActivity(intent);
+        //startActivityForResult(intent, 0);
 
         //startActivity(intent);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == 0){
-            eventAthletes = (ArrayList<Athlete>)data.getSerializableExtra("eventAthletes");
-            // add athletes?
-        }
-        //adapter.clear();
+    public void refresh(View view){
         eventAthletes.clear();
         for(Athlete a: AppData.allAthletes) {
             for(Event e: a.showEvents()){
@@ -122,8 +146,28 @@ public class EventEditActivity extends AppCompatActivity {
             }
 
         }
-        adapter = new EditEventListAdapter(this, eventAthletes,selectedEvent,meet);
-        recyclerView.setAdapter(adapter);
+        sortByName();
+        sortByMark();
+        sortByPlace();
+
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == RESULT_OK && requestCode == 0){
+//            eventAthletes = (ArrayList<Athlete>)data.getSerializableExtra("eventAthletes");
+//            // add athletes?
+//        }
+        //adapter.clear();
+
+
+
+//        System.out.println("onActivityResult finishing");
+//        adapter.notifyDataSetChanged();
+        //adapter = new EditEventListAdapter(this, eventAthletes,selectedEvent,meet);
+        //recyclerView.setAdapter(adapter);
         //adapter.addAll(eventAthletes);
         //adapter.notifyDataSetChanged();
 
@@ -131,7 +175,11 @@ public class EventEditActivity extends AppCompatActivity {
 
     public void placeAction(View view){
         System.out.println("Place button pushed");
+        sortByPlace();
+        adapter.notifyDataSetChanged();
+    }
 
+    public void sortByPlace(){
         Comparator<Athlete> sortByPlace = (Athlete o1, Athlete o2) -> {
             if (o1.findEvent(meet.getName(), selectedEvent).getPlace() == null) {
                 return (o2.findEvent(meet.getName(), selectedEvent).getPlace() == null) ? 0 : 1;
@@ -139,19 +187,20 @@ public class EventEditActivity extends AppCompatActivity {
             if (o2.findEvent(meet.getName(), selectedEvent).getPlace() == null) {
                 return -1;
             }
-           return o1.findEvent(meet.getName(), selectedEvent).getPlace().compareTo(o2.findEvent(meet.getName(), selectedEvent).getPlace());
+            return o1.findEvent(meet.getName(), selectedEvent).getPlace().compareTo(o2.findEvent(meet.getName(), selectedEvent).getPlace());
         };
         Collections.sort(eventAthletes, sortByPlace);
-        System.out.println(eventAthletes);
-        adapter.notifyDataSetChanged();
-
-
+        //System.out.println(eventAthletes);
 
     }
 
     public void markAction(View view){
         System.out.println("Mark button pushed");
+        sortByMark();
+        adapter.notifyDataSetChanged();
+    }
 
+    public void sortByMark(){
         Comparator<Athlete> sortByMark = (Athlete o1, Athlete o2) -> {
             if (o1.findEvent(meet.getName(), selectedEvent).getMarkString().equalsIgnoreCase("")) {
                 return (o2.findEvent(meet.getName(), selectedEvent).getMarkString().equalsIgnoreCase("")) ? 0 : 1;
@@ -162,16 +211,17 @@ public class EventEditActivity extends AppCompatActivity {
             return o1.findEvent(meet.getName(), selectedEvent).getMarkString().compareTo(o2.findEvent(meet.getName(), selectedEvent).getMarkString());
         };
         Collections.sort(eventAthletes, sortByMark);
-        System.out.println(eventAthletes);
-        adapter.notifyDataSetChanged();
-
-
+        //System.out.println(eventAthletes);
 
     }
 
     public void nameAction(View view){
         System.out.println("Place button pushed");
+        sortByName();
+        adapter.notifyDataSetChanged();
+    }
 
+    public void sortByName(){
         Comparator<Athlete> sortByName = (Athlete o1, Athlete o2) -> {
             if (o1.getLast() == null) {
                 return (o2.getLast() == null) ? 0 : 1;
@@ -182,16 +232,18 @@ public class EventEditActivity extends AppCompatActivity {
             return o1.getLast().compareTo(o2.getLast());
         };
         Collections.sort(eventAthletes, sortByName);
-        System.out.println(eventAthletes);
-        adapter.notifyDataSetChanged();
-
-
+       // System.out.println(eventAthletes);
 
     }
 
     public void schoolAction(View view){
         System.out.println("Place button pushed");
+        sortBySchool();
+        adapter.notifyDataSetChanged();
 
+    }
+
+    public void sortBySchool(){
         Comparator<Athlete> sortBySchool = (Athlete o1, Athlete o2) -> {
             if (o1.getSchool() == null) {
                 return (o2.getSchool() == null) ? 0 : 1;
@@ -202,11 +254,7 @@ public class EventEditActivity extends AppCompatActivity {
             return o1.getSchool().compareTo(o2.getSchool());
         };
         Collections.sort(eventAthletes, sortBySchool);
-        System.out.println(eventAthletes);
-        adapter.notifyDataSetChanged();
-
-
-
+       // System.out.println(eventAthletes);
     }
 
 

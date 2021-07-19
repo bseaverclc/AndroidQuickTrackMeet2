@@ -14,17 +14,20 @@ public class Athlete implements Serializable {
     private String first, last, school, schoolFull, uid;
     private int grade;
     private ArrayList<Event> events = new ArrayList<Event>();
+    private DatabaseReference mDatabase;
+// ...
+
 
     public Athlete(){
         // default constructor must exist to be written to firebase
     }
-    public Athlete(String first, String last, String school, int grade, String schoolFull){
+    public Athlete(String first, String last, String school, int grade, String schoolFull, String uid){
         this.first = first;
         this.last = last;
         this.school = school;
         this.grade = grade;
         this.schoolFull = schoolFull;
-        this.uid = "";
+        this.uid = uid;
     }
     // Map<String,String> toppings = new HashMap<>();
     /*
@@ -39,14 +42,14 @@ public class Athlete implements Serializable {
    */
 
 
-    public Athlete(String id, String first, String last, String school, int grade, String schoolFull){
+    public Athlete(String id, String first, String last, String school, int grade, String schoolFull, String uid){
         this.first = first;
         this.last = last;
         this.uid = id;
         this.school = school;
         this.schoolFull = schoolFull;
         this.grade = grade;
-        this.uid = "";
+        this.uid = uid;
     }
 
     public boolean equals(Athlete other){
@@ -58,11 +61,12 @@ public class Athlete implements Serializable {
 
     public void addEvent(String name, String level, String meetName){
         Event e = new Event(name, level, meetName);
-        events.add(e);
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("events").push();
-        uid = mDatabase.getKey();
-        e.setUid(uid);
+
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("athletes").child(uid).child("events").push();
+
+        e.setUid(mDatabase.getKey());
         mDatabase.setValue(e);
+        //events.add(e);  // already added when listener hears this pushed to firebase
     }
 
     public void addEvent(Event e){
@@ -126,7 +130,15 @@ public class Athlete implements Serializable {
     public void setUid(String uid){this.uid = uid;}
 
     public void updateFirebase(){
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(this.uid);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("athletes").child(this.uid);
+        Map<String, Object> dictAth = new HashMap<String, Object>();
+        dictAth.put("first", this.first);
+        dictAth.put("last", this.last);
+        dictAth.put("school", this.school);
+        dictAth.put("schoolFull", this.schoolFull);
+        dictAth.put("grade", this.grade);
+        ref.updateChildren(dictAth);
+
         for(Event e : this.events){
             Map<String, Object> dict = new HashMap<String, Object>();
             dict.put("meetName", e.getMeetName());
@@ -135,11 +147,11 @@ public class Athlete implements Serializable {
             dict.put("markString", e.getMarkString());
 
             ref.child("events").child(e.getUid()).updateChildren(dict);
+            //ref.child("events").child(e.getUid());
             System.out.println("updated an event in firebase");
         }
-
-
     }
+
 //    func updateFirebase(){
 //        var ref = Database.database().reference().child("athletes").child(uid!)
 //        let dict = ["first": self.first, "last":self.last, "school": self.school, "schoolFull":self.schoolFull, "grade":self.grade] as [String : Any]
@@ -168,11 +180,6 @@ public class Athlete implements Serializable {
         return first;
     }
 
-//    public boolean equals(Athlete other){
-//        if(this.first.equalsIgnoreCase(other.first) && this.last.equalsIgnoreCase(other.last)&&this.schoolFull.equalsIgnoreCase(other.schoolFull)&& this.grade == other.grade){
-//            return true;
-//        }
-//        else{return false;}
-//    }
+
 
 }

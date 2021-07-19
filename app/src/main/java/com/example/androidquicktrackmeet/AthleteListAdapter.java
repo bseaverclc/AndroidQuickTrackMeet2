@@ -40,6 +40,7 @@ public class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.
         this.athletes = athletes;
 
 
+
         this.context = context;
 
 
@@ -49,6 +50,7 @@ public class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.custom_athleteslist, parent, false);
+
         return new ViewHolder(view);
     }
 

@@ -1860,6 +1860,7 @@ id content
 id contentPanel
 id contiguous
 id coordinator
+id copyPaste
 id cos
 id counterclockwise
 id custom
@@ -2162,6 +2163,7 @@ id title_template
 id toggle
 id toolbar
 id top
+id topButtonsRow
 id topPanel
 id touch_outside
 id transitionToEnd

@@ -16,7 +16,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -103,6 +105,35 @@ public class MainActivity extends AppCompatActivity {
             public void onChildChanged(DataSnapshot dataSnapshot, String previous) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
+                System.out.println("athlete child changed");
+                String key = dataSnapshot.getKey();
+                Athlete a = dataSnapshot.getValue((Athlete.class));
+                dataSnapshot = dataSnapshot.child("events");
+
+                for(DataSnapshot snapShot : dataSnapshot.getChildren()) {
+                    Event user = snapShot.getValue(Event.class);
+                    a.addEvent(user);
+                }
+
+
+                a.setUid(key);
+                for(int i =0; i< AppData.allAthletes.size(); i++){
+                    if(AppData.allAthletes.get(i).getUid().equalsIgnoreCase(key)){
+                        AppData.allAthletes.set(i, a);
+                        System.out.println("changed in firebase " + AppData.allAthletes.get(i).getLast());
+                        break;
+                    }
+                }
+
+//                for i in 0..<AppData.allAthletes.count{
+//                    if(AppData.allAthletes[i].uid == uid){
+//                        AppData.allAthletes[i] = a
+//                        print("Athlete \(i)Changed \(AppData.allAthletes[i].last)")
+//                    }
+//
+//
+//                }
+
 
             }
 
@@ -114,11 +145,13 @@ public class MainActivity extends AppCompatActivity {
                 //  System.out.println("key is "+ key);
 
                 Athlete a = dataSnapshot.getValue((Athlete.class));
+                a.setUid(key);
+                System.out.println("Athletes uid " + a.getUid());
 
 
                 AppData.allAthletes.add(a);
                 //System.out.println("printing athletes" + AppData.allAthletes);
-                System.out.println("allAthletes count "+ AppData.allAthletes.size());
+                //System.out.println("allAthletes count "+ AppData.allAthletes.size());
 
                 mDatabase.child("athletes").child(key).child("events").addChildEventListener(new ChildEventListener() {
                     @Override
@@ -139,17 +172,20 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                         else {
-                            System.out.println("event snapshot" + dataSnapshot);
+                            //System.out.println("event snapshot" + dataSnapshot);
                             Event ev = dataSnapshot.getValue(Event.class);
-                            a.addEvent(ev);
+
 
                             ev.setUid(dataSnapshot.getKey());
+                            System.out.println("Added event to firebase Event Uid " + ev.getUid());
+
+                            a.addEvent(ev);
 
                             //System.out.println("getting an event from firebase ");
-                            for (Event e : a.showEvents()) {
-                                System.out.println(e.getRelayMembers());
-
-                            }
+//                            for (Event e : a.showEvents()) {
+//                                System.out.println(e.getRelayMembers());
+//
+//                            }
                             //adapter.notifyDataSetChanged();
                         }
                     }

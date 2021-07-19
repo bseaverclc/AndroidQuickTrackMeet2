@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/copyPaste"
         android:id="@+id/linearLayoutScores"
         >
 
@@ -23,8 +24,22 @@
             android:id="@+id/meetName"
 
 
+
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:id="@+id/copyPaste">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="copyPasteAction"
+        android:text="copy/paste to athletic.net"
 
+     />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

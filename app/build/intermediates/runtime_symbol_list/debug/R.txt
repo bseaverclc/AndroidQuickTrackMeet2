@@ -1859,6 +1859,7 @@ int id content 0x7f080078
 int id contentPanel 0x7f080079
 int id contiguous 0x7f08007a
 int id coordinator 0x7f08007b
+int id copyPaste 0x7f0801c9
 int id cos 0x7f08007c
 int id counterclockwise 0x7f08007d
 int id custom 0x7f08007e
@@ -2161,6 +2162,7 @@ int id title_template 0x7f08019d
 int id toggle 0x7f08019e
 int id toolbar 0x7f0801bc
 int id top 0x7f08019f
+int id topButtonsRow 0x7f0801c8
 int id topPanel 0x7f0801a0
 int id touch_outside 0x7f0801a1
 int id transitionToEnd 0x7f0801a2
