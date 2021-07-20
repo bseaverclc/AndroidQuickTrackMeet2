@@ -26,7 +26,7 @@ import java.util.Map;
 public class ScoresActivity extends AppCompatActivity {
  private Meet meet;
  private TextView meetName;
- private LinearLayoutCompat linearLayout;
+ private LinearLayout linearLayout;
  private HashMap<String, HashMap<String, Double>> teamPoints = new HashMap<>();
  private String relayString = "";
  String output = "";
@@ -35,7 +35,7 @@ public class ScoresActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scores);
-        linearLayout = (LinearLayoutCompat) this.findViewById(R.id.linearLayoutScores);
+        linearLayout = (LinearLayout)this.findViewById(R.id.linearLayoutScores);
         Intent intent = getIntent();
         meet = (Meet)intent.getSerializableExtra("meet");
 

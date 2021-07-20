@@ -62,7 +62,9 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
        // System.out.println("Onbindbeing called");
         Athlete a = athletes.get(position);
         holder.markListener.updateAthlete(a);
+        holder.markListener.updatePosition(position);
         holder.placeListener.updateAthlete(a);
+        holder.placeListener.updatePosition(position);
         holder.titleText.setText(athletes.get(position).getLast() + ", "+athletes.get(position).getFirst());
 
         //imageView.setImageResource(imgid[position]);
@@ -103,7 +105,8 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
         for(int i =0; i<a.showEvents().size(); i++){
             if (a.showEvents().get(i).getName().equals(event) && a.showEvents().get(i).getMeetName().equalsIgnoreCase(meet.getName())) {
 
-                a.showEvents().remove(i);
+               // a.showEvents().remove(i);
+                a.deleteEventFirebase(a.showEvents().get(i).getUid());
                 break;
             }
         }
@@ -138,6 +141,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
             this.placeListener = placeListener;
             this.mark.addTextChangedListener(markListener);
             this.place.addTextChangedListener(placeListener);
+
             //itemView.setOnClickListener(this);
         }
 
@@ -167,6 +171,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
         @Override
         public void afterTextChanged(Editable s) {
             //System.out.println("after mark text changed fired");
+
             for (Event e : a.showEvents()){
                 if(e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(meet.getName())) {
                     e.setMarkString(s.toString());
@@ -198,6 +203,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                     if(e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(meet.getName())) {
                         try {
                             e.setPlace(Integer.parseInt(s.toString()));
+                            a.updateFirebase();
                             break;
                         }
                         catch(Exception excep){

@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
+android:gravity="right"
 
 
 
@@ -20,7 +21,7 @@
 
 
 <LinearLayout
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
 
     android:gravity="right">
@@ -33,7 +34,15 @@
                 android:layout_width="wrap_content"
 
                 android:layout_height="wrap_content"
-                android:textSize="8dp" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:text="switch"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
 
 
 
@@ -51,20 +60,24 @@
            android:layout_width="0dp"
            android:layout_height="wrap_content"
            android:layout_weight="1"
-           android:text="process event"/>
+           android:text="process event"
+
+           android:textAppearance="?android:attr/textAppearanceSmall"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="refresh"
-            android:text="Refresh"/>
+            android:text="Refresh"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Clear Places"/>
+            android:text="Clear Places"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
 

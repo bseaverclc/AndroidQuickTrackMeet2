@@ -145,12 +145,45 @@ public class Athlete implements Serializable {
             dict.put("name", e.getName());
             dict.put("level", e.getLevel());
             dict.put("markString", e.getMarkString());
+            dict.put("place", e.getPlace());
+            dict.put("points", e.getPoints());
+            dict.put("uid", e.getUid());
 
-            ref.child("events").child(e.getUid()).updateChildren(dict);
-            //ref.child("events").child(e.getUid());
-            System.out.println("updated an event in firebase");
+            try {
+                ref.child("events").child(e.getUid()).updateChildren(dict);
+                //ref.child("events").child(e.getUid());
+                System.out.println("updated event " + e.getName() + " for " + this.getLast() + " in firebase");
+            }
+            catch(NullPointerException npe){
+                System.out.println(npe);
+            }
         }
     }
+
+    public void deleteEventFirebase(String euid){
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("athletes").child(this.uid);
+        try {
+            ref.child("events").child(euid).removeValue();
+        }
+        catch(NullPointerException npe){
+            System.out.println(npe);
+        }
+    }
+
+//    func deleteEventFromFirebase(euid: String){
+//        if let uia = uid{
+//
+//            Database.database().reference().child("athletes").child(uia).child("events").child(euid).removeValue()
+//            //print(ref)
+//            print("Event \(last) \(euid) has been removed from Firebase")
+//        }
+//        else{
+//            print("Error Deleting Event! Event not in Firebase")
+//        }
+//    }
+//
+//
+//}
 
 //    func updateFirebase(){
 //        var ref = Database.database().reference().child("athletes").child(uid!)
