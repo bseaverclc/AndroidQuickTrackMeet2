@@ -26,7 +26,7 @@ import java.util.List;
 
 public class AddAthleteToEventActivity extends AppCompatActivity implements AthleteListAdapter.ItemClickListener {
 
-    private Meet meet;
+    //private Meet meet;
     private String event;
     private ArrayList<Athlete> eventAthletes;
     private String level;
@@ -44,7 +44,7 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
         setContentView(R.layout.activity_add_athlete_to_event);
 
         Intent intent = getIntent();
-        meet = (Meet)intent.getSerializableExtra("meet");
+        //meet = (Meet)intent.getSerializableExtra("meet");
 
         event = (String)intent.getSerializableExtra("event");
         level = event.substring(event.length()-3);
@@ -52,7 +52,7 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
         setTitle(event);
 
         for(Athlete a: AppData.allAthletes){
-            if(meet.getSchools().keySet().contains(a.getSchoolFull())){
+            if(AppData.selectedMeet.getSchools().keySet().contains(a.getSchoolFull())){
                 displayedAthletes.add(a);
             }
         }
@@ -68,7 +68,7 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
         buttons.add(findViewById(R.id.school2));
         buttons.add(findViewById(R.id.school3));
         buttons.add(findViewById(R.id.school4));
-        ArrayList<String> initials = new ArrayList<String>(meet.getSchools().values());
+        ArrayList<String> initials = new ArrayList<String>(AppData.selectedMeet.getSchools().values());
         int buttonNumber = 0;
         for (String i: initials){
             buttons.get(buttonNumber).setText(i);
@@ -113,7 +113,7 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
                 }
             }
             if(add){
-                a.addEvent(event, level, meet.getName());
+                a.addEvent(event, level, AppData.selectedMeet.getName());
                 //eventAthletes.add(a);
 
                 //a.updateFirebase();
@@ -145,7 +145,7 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
         System.out.println("select school" + buttonText);
         displayedAthletes.clear();
         for(Athlete a : AppData.allAthletes){
-            if(a.getSchool().equalsIgnoreCase(buttonText) && meet.getSchools().containsKey(a.getSchoolFull())){
+            if(a.getSchool().equalsIgnoreCase(buttonText) && AppData.selectedMeet.getSchools().containsKey(a.getSchoolFull())){
                 displayedAthletes.add(a);
                 System.out.println("added an athlete");
             }

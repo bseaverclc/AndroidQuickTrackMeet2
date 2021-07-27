@@ -13,6 +13,7 @@ public static String coach = "";
 public static String manager = "";
 public static String mySchool = "";
 public static boolean fullAccess = false;
+public static Meet selectedMeet = null;
 
 
 }

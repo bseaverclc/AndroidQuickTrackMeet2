@@ -2,6 +2,7 @@ package com.example.androidquicktrackmeet;
 
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class EventsListAdapter extends ArrayAdapter<String> {
 
@@ -22,6 +24,7 @@ public class EventsListAdapter extends ArrayAdapter<String> {
     //private final Integer[] grades;
     private final ArrayList<String> events;
     private EventsListAdapter adapter = this;
+    //private Meet meet;
 
     // private final Integer[] imgid;
 
@@ -34,6 +37,7 @@ public class EventsListAdapter extends ArrayAdapter<String> {
         // this.grades=grades;
         //this.imgid=imgid;
         this.events = events;
+        //this.meet = meet;
 
 
     }
@@ -42,6 +46,7 @@ public class EventsListAdapter extends ArrayAdapter<String> {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.custom_meetslist, null,true);
 
+
         TextView titleText = (TextView) rowView.findViewById(R.id.title);
         //TextView subTitleText = (TextView) rowView.findViewById(R.id.subtitle);
 
@@ -49,6 +54,12 @@ public class EventsListAdapter extends ArrayAdapter<String> {
 
 
         titleText.setText(events.get(position));
+        System.out.println("position " + position + " of events with value of " + AppData.selectedMeet.getBeenScored().get(position));
+
+        if(AppData.selectedMeet.getBeenScored().get(position)== true){
+            titleText.setBackgroundColor(Color.GREEN);
+        }
+        else{titleText.setBackgroundColor(Color.LTGRAY);}
         //subTitleText.setText(meets.get(position).getName());
 
         //imageView.setImageResource(imgid[position]);

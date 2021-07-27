@@ -13,7 +13,9 @@ import java.util.Comparator;
 
 public class MeetsActivity extends AppCompatActivity {
 private ListView listView;
-private Meet selectedMeet;
+//private Meet selectedMeet;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,7 @@ private Meet selectedMeet;
         listView.setAdapter(adapter);
         attachListener();
 
+
     }
 
 //    public void addMeetAction(View view){
@@ -43,16 +46,21 @@ private Meet selectedMeet;
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            selectedMeet = (Meet)parent.getItemAtPosition(position);
-            System.out.println("Clicked on" + selectedMeet.getName());
+            AppData.selectedMeet = (Meet)parent.getItemAtPosition(position);
+
+
+            //System.out.println("Clicked on" + AppData.selectedMeet.getName());
             selectMeetAction(listView);
         }
     });
     }
 
     public void selectMeetAction(View view){
+        Meet.canCoach = true;
+        Meet.canManage = true;
         Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("Selected", selectedMeet);
+        //intent.putExtra("Selected", selectedMeet);
+
 
 //        message = editText.getText().toString();
 //        intent.putExtra(EXTRA_MESSAGE, message);

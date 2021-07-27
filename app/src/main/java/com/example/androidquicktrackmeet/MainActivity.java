@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -45,6 +46,16 @@ public class MainActivity extends AppCompatActivity {
             public void onChildChanged(DataSnapshot dataSnapshot, String previous) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
+                String key = dataSnapshot.getKey();
+                Meet m = dataSnapshot.getValue((Meet.class));
+                m.setUid(key);
+                for(int i =0; i < AppData.meets.size(); i++){
+                    if (AppData.meets.get(i).getName().equalsIgnoreCase(m.getName())){
+                        AppData.meets.set(i, m);
+                        Log.i("MainActivity", "meet has been changed");
+                        break;
+                    }
+                }
 
             }
 
@@ -56,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 //  System.out.println("key is "+ key);
 
                 Meet m = dataSnapshot.getValue((Meet.class));
+                m.setUid(key);
                 String sDate1 = (String)dataSnapshot.child("date").getValue();
 
                 // Adding the Date to the Meet
@@ -70,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                 AppData.meets.add(m);
-                System.out.println(m.getDate2());
-                System.out.println("total meets added "+ AppData.meets.size());
+               // System.out.println(m.getDate2());
+              //  System.out.println("total meets added "+ AppData.meets.size());
 
 
 
@@ -105,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             public void onChildChanged(DataSnapshot dataSnapshot, String previous) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                System.out.println("athlete child changed");
+               // System.out.println("athlete child changed");
                 String key = dataSnapshot.getKey();
                 Athlete a = dataSnapshot.getValue((Athlete.class));
                 dataSnapshot = dataSnapshot.child("events");
@@ -120,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                 for(int i =0; i< AppData.allAthletes.size(); i++){
                     if(AppData.allAthletes.get(i).getUid().equalsIgnoreCase(key)){
                         AppData.allAthletes.set(i, a);
-                        System.out.println("changed in firebase " + AppData.allAthletes.get(i).getLast());
+                       // System.out.println("changed in firebase " + AppData.allAthletes.get(i).getLast());
                         break;
                     }
                 }
@@ -146,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Athlete a = dataSnapshot.getValue((Athlete.class));
                 a.setUid(key);
-                System.out.println("Athletes uid " + a.getUid());
+               // System.out.println("Athletes uid " + a.getUid());
 
 
                 AppData.allAthletes.add(a);
@@ -177,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                             ev.setUid(dataSnapshot.getKey());
-                            System.out.println("Added event to firebase Event Uid " + ev.getUid());
+                          //  System.out.println("Added event to firebase Event Uid " + ev.getUid());
 
                             a.addEvent(ev);
 
@@ -272,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void meetsAction(View view){
-        System.out.println("meets pushed");
+        //System.out.println("meets pushed");
         startActivity(new Intent(MainActivity.this, MeetsActivity.class));
 //        Intent intent = new Intent(this, DisplayMessageActivity.class);
 //
@@ -282,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void schoolsAction(View view){
-        System.out.println("schools pushed");
+      //  System.out.println("schools pushed");
         startActivity(new Intent(MainActivity.this, SchoolsActivity.class));
 //        Intent intent = new Intent(this, DisplayMessageActivity.class);
 //

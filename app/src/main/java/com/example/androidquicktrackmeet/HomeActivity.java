@@ -14,7 +14,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Meet meet;
+   // private Meet meet;
     private ListView listView;
 
     @Override
@@ -22,9 +22,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Intent intent = getIntent();
-        meet = (Meet)intent.getSerializableExtra("Selected");
-        System.out.println(meet.getSchools());
-        setTitle(meet.getName());
+        //meet = (Meet)intent.getSerializableExtra("Selected");
+        System.out.println(AppData.selectedMeet.getSchools());
+        setTitle(AppData.selectedMeet.getName());
 
 
 
@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void selectEventAction(View view){
         Intent intent = new Intent(this, EventsActivity.class);
-        intent.putExtra("meet", meet);
+        //intent.putExtra("meet", meet);
 
 //        message = editText.getText().toString();
 //        intent.putExtra(EXTRA_MESSAGE, message);
@@ -59,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void teamScoresAction(View view){
         Intent intent = new Intent(this, ScoresActivity.class);
-        intent.putExtra("meet", meet);
+        //intent.putExtra("meet", meet);
         startActivity(intent);
     }
 

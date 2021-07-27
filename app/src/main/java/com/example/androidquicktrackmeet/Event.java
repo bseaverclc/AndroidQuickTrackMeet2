@@ -80,6 +80,7 @@ public class Event implements Serializable {
         this.markString = markString;
     }
     public void setPlace(Integer place){this.place = place;}
+    public void setPoints(Double points){this.points = points;}
 
 
 

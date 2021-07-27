@@ -1,5 +1,8 @@
 package com.example.androidquicktrackmeet;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.text.DateFormat;
@@ -92,6 +95,27 @@ public Meet(String name, Date date, HashMap<String,String> schools, String gende
     public void addDate(Date d){
     date = d;
     }
+
+    public void setUid(String uid){this.uid = uid;}
+
+    public void setBeenScored(int position, boolean value){
+     beenScored.set(position, value);
+     System.out.println(beenScored);
+    }
+
+
+    public void updatebeenScoredFirebase(){
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("meets").child(this.uid);
+        HashMap<String, Object> bs = new HashMap<String, Object>();
+        bs.put("beenScored", beenScored);
+        ref.updateChildren(bs);
+    }
+//    func updatebeenScoredFirebase(){
+//        let ref = Database.database().reference().child("meets").child(uid!)
+//
+//        ref.updateChildValues(["beenScored": beenScored])
+//
+//    }
 
 
 

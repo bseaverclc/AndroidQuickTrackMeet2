@@ -2,13 +2,17 @@ package com.example.androidquicktrackmeet;
 
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 //import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,13 +32,14 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
     private EditEventListAdapter adapter = this;
     private ArrayList<Athlete> athletes;
     private String event;
-    private Meet meet;
+   // private Meet meet;
     private LayoutInflater mInflater;
+    private Button processButton;
 
 
     // private final Integer[] imgid;
 
-    public EditEventListAdapter(Activity context, ArrayList<Athlete> athletes, String event, Meet meet) {
+    public EditEventListAdapter(Activity context, ArrayList<Athlete> athletes, String event, Button processButton) {
         //super(context, R.layout.custom_editeventlist, athletes);
         // TODO Auto-generated constructor stub
         this.mInflater = LayoutInflater.from(context);
@@ -45,7 +50,9 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
 
         this.athletes = athletes;
         this.event = event;
-        this.meet = meet;
+       // this.meet = meet;
+        this.processButton = processButton;
+
 
         System.out.println(this.athletes);
         }
@@ -54,27 +61,27 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
     @Override
     public EditEventListAdapter.ViewHolderEditEvent onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.custom_editeventlist, parent, false);
-        return new EditEventListAdapter.ViewHolderEditEvent(view, new MyMarkTextListener(), new MyPlaceTextListener());
+        return new EditEventListAdapter.ViewHolderEditEvent(view);
     }
 
     @Override
     public void onBindViewHolder(EditEventListAdapter.ViewHolderEditEvent holder, int position) {
        // System.out.println("Onbindbeing called");
         Athlete a = athletes.get(position);
+
+        //imageView.setImageResource(imgid[position]);
+        holder.subTitleText.setText(athletes.get(position).getSchool() + "  "+athletes.get(position).getGrade());
+
         holder.markListener.updateAthlete(a);
         holder.markListener.updatePosition(position);
         holder.placeListener.updateAthlete(a);
         holder.placeListener.updatePosition(position);
         holder.titleText.setText(athletes.get(position).getLast() + ", "+athletes.get(position).getFirst());
 
-        //imageView.setImageResource(imgid[position]);
-        holder.subTitleText.setText(athletes.get(position).getSchool() + "  "+athletes.get(position).getGrade());
-
-
         //System.out.println(athletes.get(position).showEvents().size());
         for (Event e : a.showEvents()){
             //System.out.println("attemptng to set mark");
-            if(e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(meet.getName())) {
+            if(e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName())) {
                 holder.mark.setText(e.getMarkString());
                 System.out.println("printing mark for " + a.getLast() + e.getMarkString());
                 if (e.getPlace() != null) {
@@ -93,6 +100,9 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
             }
         }
 
+
+
+
     }
 
     @Override
@@ -103,7 +113,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
     public void deleteItem(int position){
         Athlete a = athletes.get(position);
         for(int i =0; i<a.showEvents().size(); i++){
-            if (a.showEvents().get(i).getName().equals(event) && a.showEvents().get(i).getMeetName().equalsIgnoreCase(meet.getName())) {
+            if (a.showEvents().get(i).getName().equals(event) && a.showEvents().get(i).getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName())) {
 
                // a.showEvents().remove(i);
                 a.deleteEventFirebase(a.showEvents().get(i).getUid());
@@ -124,7 +134,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
         public MyPlaceTextListener placeListener;
 
 
-        public ViewHolderEditEvent(View itemView, MyMarkTextListener markListener, MyPlaceTextListener placeListener) {
+        public ViewHolderEditEvent(View itemView) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
@@ -137,10 +147,43 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
             cell = itemView.findViewById(R.id.cell);
             subTitleText = itemView.findViewById(R.id.subtitle);
 
-            this.markListener = markListener;
-            this.placeListener = placeListener;
+            this.markListener = new MyMarkTextListener();
+            this.placeListener = new MyPlaceTextListener();
             this.mark.addTextChangedListener(markListener);
             this.place.addTextChangedListener(placeListener);
+
+            mark.setOnKeyListener(new View.OnKeyListener() {
+
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    //key listening stuff
+                    processButton.setBackgroundColor(Color.LTGRAY);
+                  processButton.setText("Process Event");
+
+                    AppData.selectedMeet.setBeenScored(EventsActivity.eventPosition, false);
+                    AppData.selectedMeet.updatebeenScoredFirebase();
+
+                    return false;
+                }
+            });
+
+            place.setOnKeyListener(new View.OnKeyListener() {
+
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    //key listening stuff
+                    processButton.setBackgroundColor(Color.GRAY);
+                    processButton.setText("Process Event");
+
+                    AppData.selectedMeet.setBeenScored(EventsActivity.eventPosition, false);
+                    AppData.selectedMeet.updatebeenScoredFirebase();
+                    return false;
+                }
+            });
+
+
+
+
 
             //itemView.setOnClickListener(this);
         }
@@ -170,14 +213,15 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
 
         @Override
         public void afterTextChanged(Editable s) {
-            //System.out.println("after mark text changed fired");
+            System.out.println("after mark text changed fired");
+            if(a!= null) {
+                for (Event e : a.showEvents()) {
+                    if (e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName())) {
+                        e.setMarkString(s.toString());
 
-            for (Event e : a.showEvents()){
-                if(e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(meet.getName())) {
-                    e.setMarkString(s.toString());
-
-                    athletes.get(position).updateFirebase();
-                    break;
+                        athletes.get(position).updateFirebase();
+                        break;
+                    }
                 }
             }
 
@@ -199,18 +243,19 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
 
         public void afterTextChanged(Editable s) {
             //System.out.println("after place text changed fired");
-                for (Event e : a.showEvents()){
-                    if(e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(meet.getName())) {
-                        try {
-                            e.setPlace(Integer.parseInt(s.toString()));
-                            a.updateFirebase();
-                            break;
-                        }
-                        catch(Exception excep){
-                            e.setPlace(null);
-                        }
-                    }
-                }
+               if(a != null) {
+                   for (Event e : a.showEvents()) {
+                       if (e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName())) {
+                           try {
+                               e.setPlace(Integer.parseInt(s.toString()));
+                               a.updateFirebase();
+                               break;
+                           } catch (Exception excep) {
+                               e.setPlace(null);
+                           }
+                       }
+                   }
+               }
 
                 //adapter.notifyDataSetChanged();
             }

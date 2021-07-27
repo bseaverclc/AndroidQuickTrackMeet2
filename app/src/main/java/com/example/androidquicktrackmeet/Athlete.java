@@ -111,6 +111,7 @@ public class Athlete implements Serializable {
     public ArrayList<Event> showEvents(){
         return events;
     }
+
     public Event findEvent(String meetName, String eventName){
         for(Event e : events){
             if (e.getMeetName().equalsIgnoreCase(meetName) && e.getName().equalsIgnoreCase(eventName)){
@@ -119,6 +120,10 @@ public class Athlete implements Serializable {
         }
         return null;
     }
+
+
+
+
 
 
     public void setFirst(String first){this.first = first;
@@ -152,7 +157,7 @@ public class Athlete implements Serializable {
             try {
                 ref.child("events").child(e.getUid()).updateChildren(dict);
                 //ref.child("events").child(e.getUid());
-                System.out.println("updated event " + e.getName() + " for " + this.getLast() + " in firebase");
+                //System.out.println("updated event " + e.getName() + " for " + this.getLast() + " in firebase");
             }
             catch(NullPointerException npe){
                 System.out.println(npe);

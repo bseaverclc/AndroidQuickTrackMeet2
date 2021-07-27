@@ -61,6 +61,8 @@ android:gravity="right"
            android:layout_height="wrap_content"
            android:layout_weight="1"
            android:text="process event"
+           android:id="@+id/procesEventButton"
+           android:onClick="processEvent"
 
            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
@@ -77,6 +79,7 @@ android:gravity="right"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Clear Places"
+            android:onClick="clearPlaces"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
