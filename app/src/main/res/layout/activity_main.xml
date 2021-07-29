@@ -61,5 +61,45 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="120dp" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/signInRow">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:id="@+id/signInText"
+        android:text="Not Signed in"
+        />
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:gravity="center_horizontal"
+    android:id="@+id/signInRow">
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login with email"
+        android:layout_gravity="center"
+        android:onClick="signInEmail"
+        android:id="@+id/emailButton"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="log out"
+        android:layout_gravity="center"
+        android:id="@+id/logOutButton"
+        android:onClick="logOut"/>
 
+
+</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

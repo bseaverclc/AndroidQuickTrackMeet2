@@ -4,12 +4,30 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,17 +43,212 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
-
+   private GoogleSignInClient mGoogleSignInClient;
+    private FirebaseAuth mAuth;
+    private TextView signInText;
+    private SignInButton googleSignInButton;
+    private Button emailSignInButton;
+    private Button logOutButton;
+    private GoogleSignInAccount account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        signInText = findViewById(R.id.signInText);
+        googleSignInButton = findViewById((R.id.sign_in_button));
+        emailSignInButton = findViewById(R.id.emailButton);
+        logOutButton = findViewById(R.id.logOutButton);
+        logOutButton.setVisibility(View.GONE);
+
+        account = GoogleSignIn.getLastSignedInAccount(this);
+        if(account != null){
+            signInText.setText(account.getEmail() + " from google");
+            googleSignInButton.setVisibility(View.GONE);
+            emailSignInButton.setVisibility(View.GONE);
+            logOutButton.setVisibility(View.VISIBLE);
+
+        }
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            signInText.setText(currentUser.getEmail() + " from email");
+            googleSignInButton.setVisibility(View.GONE);
+            emailSignInButton.setVisibility(View.GONE);
+            logOutButton.setVisibility(View.VISIBLE);
+        }
+
+
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        googleSignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                startActivityForResult(signInIntent,1);
+            }
+
+
+        });
+
         readAthletesFromFirebase();
         readSchoolsFromFirebase();
         readMeetsFromFirebase();
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+
+        //updateUI(account);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == 1) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }
+    }
+
+    public void checkSignInEmail(String emailIn, String passwordIn){
+        mAuth.signInWithEmailAndPassword(emailIn, passwordIn)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("checkSignInEmail", "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            AppData.userID = user.getUid();
+                            signInText.setText(user.getEmail());
+                            for (School school : AppData.schools){
+                                for(String coach: school.getCoaches()){
+                                    if (coach.equalsIgnoreCase(user.getEmail())){
+                                        AppData.mySchool = school.getFull();
+                                        AppData.coach = coach;
+                                    }
+                                }
+                            }
+                            googleSignInButton.setVisibility(View.GONE);
+                            emailSignInButton.setVisibility(View.GONE);
+                            logOutButton.setVisibility(View.VISIBLE);
+                            //updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("checkSignInEmail", "signInWithEmail:failure " + task.getException());
+
+                            //updateUI(null);
+                        }
+                    }
+                });
+    }
+
+    public void logOut(View view){
+        FirebaseAuth.getInstance().signOut();
+        mGoogleSignInClient.signOut();
+        signInText.setText("Not Logged in");
+        AppData.userID = "";
+        AppData.coach = "";
+        AppData.mySchool = "";
+        googleSignInButton.setVisibility(View.VISIBLE);
+        emailSignInButton.setVisibility(View.VISIBLE);
+        logOutButton.setVisibility(View.GONE);
+    }
+
+    public void signInEmail(View view){
+        // get alert_dialog.xml view
+        LayoutInflater li = LayoutInflater.from(getApplicationContext());
+        View promptsView = li.inflate(R.layout.email_login, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                MainActivity.this);
+
+        // set alert_dialog.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+
+         EditText emailEditText = (EditText) promptsView.findViewById(R.id.email);
+        EditText passwordEditText = (EditText) promptsView.findViewById(R.id.password);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // get user input and set it to result
+                        // edit text
+                        Log.i("email", emailEditText.getText().toString());
+                        Log.i("password",passwordEditText.getText().toString());
+                        checkSignInEmail(emailEditText.getText().toString(),passwordEditText.getText().toString());
+
+                    }
+                })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
+
+//    public void didSignIn(){
+//
+//
+
+//            nameOutlet.text = "\(user.email!)"
+//            logInOutlet.isHidden = true
+//            logOutOutlet.isHidden = false
+//            removeAccountOutlet.isHidden = false
+//            authorizationButton.isHidden = true
+//            emailButtonOutlet.isHidden = true
+//        }
+//       else{
+//            nameOutlet.text = "Not Logged in"
+//            logInOutlet.isHidden = false
+//            logOutOutlet.isHidden = true
+//            removeAccountOutlet.isHidden = true
+//            authorizationButton.isHidden = false
+//            emailButtonOutlet.isHidden = false
+//        }
+//    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            signInText.setText(account.getEmail());
+            googleSignInButton.setVisibility(View.GONE);
+            emailSignInButton.setVisibility(View.GONE);
+            logOutButton.setVisibility(View.VISIBLE);
+
+
+            // Signed in successfully, show authenticated UI.
+            //updateUI(account);
+            Log.i("MainActivity", "Logged in as " + account.getEmail());
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.w("MainActivity", "signInResult:failed code=" + e.getStatusCode());
+            //updateUI(null);
+        }
     }
 
     public void readMeetsFromFirebase() {

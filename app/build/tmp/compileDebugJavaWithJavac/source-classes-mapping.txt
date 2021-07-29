@@ -29,15 +29,13 @@ com/example/androidquicktrackmeet/Event.java
  com.example.androidquicktrackmeet.Event
 com/example/androidquicktrackmeet/SchoolsActivity.java
  com.example.androidquicktrackmeet.SchoolsActivity
-com/example/androidquicktrackmeet/EventEditActivity.java
- com.example.androidquicktrackmeet.EventEditActivity
- com.example.androidquicktrackmeet.EventEditActivity$1
- com.example.androidquicktrackmeet.EventEditActivity$2
 com/example/androidquicktrackmeet/BuildConfig.java
  com.example.androidquicktrackmeet.BuildConfig
 com/example/androidquicktrackmeet/EventsActivity.java
  com.example.androidquicktrackmeet.EventsActivity
  com.example.androidquicktrackmeet.EventsActivity$1
+com/example/androidquicktrackmeet/AddAthleteToEventActivity.java
+ com.example.androidquicktrackmeet.AddAthleteToEventActivity
 com/example/androidquicktrackmeet/School.java
  com.example.androidquicktrackmeet.School
 com/example/androidquicktrackmeet/Athlete.java
@@ -46,13 +44,19 @@ com/example/androidquicktrackmeet/MeetsListAdapter.java
  com.example.androidquicktrackmeet.MeetsListAdapter
 com/example/androidquicktrackmeet/AddMeetActivity.java
  com.example.androidquicktrackmeet.AddMeetActivity
+com/example/androidquicktrackmeet/EventEditActivity.java
+ com.example.androidquicktrackmeet.EventEditActivity
+ com.example.androidquicktrackmeet.EventEditActivity$1
+ com.example.androidquicktrackmeet.EventEditActivity$2
 com/example/androidquicktrackmeet/EventsListAdapter.java
  com.example.androidquicktrackmeet.EventsListAdapter
-com/example/androidquicktrackmeet/AddAthleteToEventActivity.java
- com.example.androidquicktrackmeet.AddAthleteToEventActivity
 com/example/androidquicktrackmeet/MainActivity.java
  com.example.androidquicktrackmeet.MainActivity
  com.example.androidquicktrackmeet.MainActivity$1
  com.example.androidquicktrackmeet.MainActivity$2
- com.example.androidquicktrackmeet.MainActivity$2$1
  com.example.androidquicktrackmeet.MainActivity$3
+ com.example.androidquicktrackmeet.MainActivity$4
+ com.example.androidquicktrackmeet.MainActivity$5
+ com.example.androidquicktrackmeet.MainActivity$6
+ com.example.androidquicktrackmeet.MainActivity$6$1
+ com.example.androidquicktrackmeet.MainActivity$7

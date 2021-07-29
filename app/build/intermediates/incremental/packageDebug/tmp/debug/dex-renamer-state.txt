@@ -1,4 +1,4 @@
-#Tue Jul 27 08:46:05 CDT 2021
+#Thu Jul 29 09:46:09 EDT 2021
 base.0=/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

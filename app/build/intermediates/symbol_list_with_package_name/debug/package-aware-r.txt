@@ -1900,6 +1900,8 @@ id editMark
 id editPlace
 id edit_query
 id elastic
+id email
+id emailButton
 id end
 id endToStart
 id enterAlways
@@ -1962,6 +1964,7 @@ id linearLayoutScores
 id listMode
 id listView
 id list_item
+id logOutButton
 id masked
 id material_clock_display
 id material_clock_face
@@ -2036,6 +2039,7 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
+id password
 id password_toggle
 id path
 id pathRelative
@@ -2092,6 +2096,9 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id signInRow
+id signInText
+id sign_in_button
 id sin
 id skipCollapsed
 id slide
@@ -2285,6 +2292,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout email_login
 layout material_chip_input_combo
 layout material_clock_display
 layout material_clock_display_divider
