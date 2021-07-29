@@ -4,9 +4,8 @@ com/example/androidquicktrackmeet/ScoresActivity.java
  com.example.androidquicktrackmeet.ScoresActivity
 com/example/androidquicktrackmeet/AppData.java
  com.example.androidquicktrackmeet.AppData
-com/example/androidquicktrackmeet/MeetsActivity.java
- com.example.androidquicktrackmeet.MeetsActivity
- com.example.androidquicktrackmeet.MeetsActivity$1
+com/example/androidquicktrackmeet/EventsListAdapter.java
+ com.example.androidquicktrackmeet.EventsListAdapter
 com/example/androidquicktrackmeet/Meet.java
  com.example.androidquicktrackmeet.Meet
 com/example/androidquicktrackmeet/AthleteListAdapter.java
@@ -48,8 +47,6 @@ com/example/androidquicktrackmeet/EventEditActivity.java
  com.example.androidquicktrackmeet.EventEditActivity
  com.example.androidquicktrackmeet.EventEditActivity$1
  com.example.androidquicktrackmeet.EventEditActivity$2
-com/example/androidquicktrackmeet/EventsListAdapter.java
- com.example.androidquicktrackmeet.EventsListAdapter
 com/example/androidquicktrackmeet/MainActivity.java
  com.example.androidquicktrackmeet.MainActivity
  com.example.androidquicktrackmeet.MainActivity$1
@@ -60,3 +57,9 @@ com/example/androidquicktrackmeet/MainActivity.java
  com.example.androidquicktrackmeet.MainActivity$6
  com.example.androidquicktrackmeet.MainActivity$6$1
  com.example.androidquicktrackmeet.MainActivity$7
+com/example/androidquicktrackmeet/MeetsActivity.java
+ com.example.androidquicktrackmeet.MeetsActivity
+ com.example.androidquicktrackmeet.MeetsActivity$1
+ com.example.androidquicktrackmeet.MeetsActivity$2
+ com.example.androidquicktrackmeet.MeetsActivity$3
+ com.example.androidquicktrackmeet.MeetsActivity$3$1

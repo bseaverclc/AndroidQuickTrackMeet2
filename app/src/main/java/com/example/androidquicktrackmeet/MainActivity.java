@@ -69,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
             googleSignInButton.setVisibility(View.GONE);
             emailSignInButton.setVisibility(View.GONE);
             logOutButton.setVisibility(View.VISIBLE);
+            AppData.coach = account.getEmail();
+            AppData.userID = account.getId();
+
 
         }
 
@@ -123,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
             handleSignInResult(task);
         }
     }
+
+
 
     public void checkSignInEmail(String emailIn, String passwordIn){
         mAuth.signInWithEmailAndPassword(emailIn, passwordIn)
