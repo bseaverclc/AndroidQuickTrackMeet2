@@ -91,6 +91,7 @@ public Meet(String name, Date date, HashMap<String,String> schools, String gende
     public ArrayList<Boolean> getBeenScored(){return beenScored;}
     public String getCoachCode(){return coachCode;}
     public String getManagerCode(){return managerCode;}
+    public String getUserId(){return userId;}
 
     public void addDate(Date d){
     date = d;

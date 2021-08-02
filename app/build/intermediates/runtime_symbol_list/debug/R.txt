@@ -1852,6 +1852,7 @@ int id clear_text 0x7f080074
 int id clip_horizontal 0x7f080075
 int id clip_vertical 0x7f080076
 int id clockwise 0x7f080077
+int id coachButton 0x7f0801d2
 int id collapseActionView 0x7f080078
 int id confirm_button 0x7f080079
 int id container 0x7f08007a
@@ -1910,6 +1911,7 @@ int id exitUntilCollapsed 0x7f0800ac
 int id expand_activities_button 0x7f0800ad
 int id expanded_menu 0x7f0800ae
 int id fade 0x7f0800af
+int id fanButton 0x7f0801d3
 int id fill 0x7f0800b0
 int id fill_horizontal 0x7f0800b1
 int id fill_vertical 0x7f0800b2
@@ -1964,6 +1966,7 @@ int id listMode 0x7f0800e2
 int id listView 0x7f0800e3
 int id list_item 0x7f0800e4
 int id logOutButton 0x7f0801cd
+int id managerButton 0x7f0801d4
 int id masked 0x7f0800e5
 int id material_clock_display 0x7f0800e6
 int id material_clock_face 0x7f0800e7
@@ -1984,6 +1987,7 @@ int id material_timepicker_mode_button 0x7f0800f5
 int id material_timepicker_ok_button 0x7f0800f6
 int id material_timepicker_view 0x7f0800f7
 int id material_value_index 0x7f0800f8
+int id meetCodeEditText 0x7f0801d5
 int id meetName 0x7f0800f9
 int id meetsButton 0x7f0800fa
 int id message 0x7f0800fb
@@ -2270,6 +2274,7 @@ int layout activity_schools2 0x7f0b0023
 int layout activity_scores 0x7f0b0024
 int layout browser_actions_context_menu_page 0x7f0b0025
 int layout browser_actions_context_menu_row 0x7f0b0026
+int layout check_access_alert 0x7f0b007f
 int layout custom_athleteslist 0x7f0b0027
 int layout custom_dialog 0x7f0b0028
 int layout custom_editeventlist 0x7f0b0029
@@ -2306,6 +2311,7 @@ int layout material_time_input 0x7f0b0046
 int layout material_timepicker 0x7f0b0047
 int layout material_timepicker_dialog 0x7f0b0048
 int layout material_timepicker_textinput_display 0x7f0b0049
+int layout meet_manager_alert 0x7f0b0080
 int layout mtrl_alert_dialog 0x7f0b004a
 int layout mtrl_alert_dialog_actions 0x7f0b004b
 int layout mtrl_alert_dialog_title 0x7f0b004c

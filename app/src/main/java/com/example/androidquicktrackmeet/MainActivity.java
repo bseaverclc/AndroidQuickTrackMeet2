@@ -25,9 +25,11 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -62,30 +64,14 @@ public class MainActivity extends AppCompatActivity {
         emailSignInButton = findViewById(R.id.emailButton);
         logOutButton = findViewById(R.id.logOutButton);
         logOutButton.setVisibility(View.GONE);
-
-        account = GoogleSignIn.getLastSignedInAccount(this);
-        if(account != null){
-            signInText.setText(account.getEmail() + " from google");
-            googleSignInButton.setVisibility(View.GONE);
-            emailSignInButton.setVisibility(View.GONE);
-            logOutButton.setVisibility(View.VISIBLE);
-            AppData.coach = account.getEmail();
-            AppData.userID = account.getId();
-
-
-        }
-
+        // checking if user is signed in from previous run
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            signInText.setText(currentUser.getEmail() + " from email");
-            googleSignInButton.setVisibility(View.GONE);
-            emailSignInButton.setVisibility(View.GONE);
-            logOutButton.setVisibility(View.VISIBLE);
+        if (currentUser != null) {
+            signedInSuccessfully(currentUser);
         }
-
-
-
+// Setting up Google Signin button
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -105,15 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
 
-
-
-        //updateUI(account);
-    }
-
+// called when it comes back from google sign in attempt
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -127,53 +106,64 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            firebaseAuthWithGoogle(account.getIdToken());
 
+        } catch (ApiException e) {
+            Log.w("MainActivity", "signInResult:failed code=" + e.getStatusCode());
+            //updateUI(null);
+        }
+    }
 
-    public void checkSignInEmail(String emailIn, String passwordIn){
-        mAuth.signInWithEmailAndPassword(emailIn, passwordIn)
+    // called if signin to google was successfull
+    // converts google sign in to firebase signin
+    private void firebaseAuthWithGoogle(String idToken) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken,null);
+        mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d("checkSignInEmail", "signInWithEmail:success");
+                            //Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            AppData.userID = user.getUid();
-                            signInText.setText(user.getEmail());
-                            for (School school : AppData.schools){
-                                for(String coach: school.getCoaches()){
-                                    if (coach.equalsIgnoreCase(user.getEmail())){
-                                        AppData.mySchool = school.getFull();
-                                        AppData.coach = coach;
-                                    }
-                                }
-                            }
-                            googleSignInButton.setVisibility(View.GONE);
-                            emailSignInButton.setVisibility(View.GONE);
-                            logOutButton.setVisibility(View.VISIBLE);
+                            signedInSuccessfully(user);
+                            System.out.println("firebaseAuthWithGoogle Success");
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w("checkSignInEmail", "signInWithEmail:failure " + task.getException());
-
+                            // Log.w(TAG, "signInWithCredential:failure", task.getException());
                             //updateUI(null);
+                            System.out.println("firebaseAuthWithGoogle Failure " + task.getException());
                         }
                     }
                 });
     }
 
-    public void logOut(View view){
-        FirebaseAuth.getInstance().signOut();
-        mGoogleSignInClient.signOut();
-        signInText.setText("Not Logged in");
-        AppData.userID = "";
-        AppData.coach = "";
-        AppData.mySchool = "";
-        googleSignInButton.setVisibility(View.VISIBLE);
-        emailSignInButton.setVisibility(View.VISIBLE);
-        logOutButton.setVisibility(View.GONE);
-    }
+    // sets up UI and updates AppData variables when signed in
+  public void signedInSuccessfully(FirebaseUser user){
+      if (user != null) {
+          AppData.userID = user.getUid();
+          AppData.coach = user.getEmail();
+          // search for mySchool
+          for (School school : AppData.schools){
+              for(String coach: school.getCoaches()){
+                  if (coach.equalsIgnoreCase(user.getEmail())){
+                      AppData.mySchool = school.getFull();
+                  }
+              }
+          }
+          // set up UI
+          signInText.setText(user.getEmail());
+          googleSignInButton.setVisibility(View.GONE);
+          emailSignInButton.setVisibility(View.GONE);
+          logOutButton.setVisibility(View.VISIBLE);
+      }
+  }
 
+  // called when user presses sign in with email option
     public void signInEmail(View view){
         // get alert_dialog.xml view
         LayoutInflater li = LayoutInflater.from(getApplicationContext());
@@ -185,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         // set alert_dialog.xml to alertdialog builder
         alertDialogBuilder.setView(promptsView);
 
-         EditText emailEditText = (EditText) promptsView.findViewById(R.id.email);
+        EditText emailEditText = (EditText) promptsView.findViewById(R.id.email);
         EditText passwordEditText = (EditText) promptsView.findViewById(R.id.password);
 
         // set dialog message
@@ -215,45 +205,38 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-//    public void didSignIn(){
-//
-//
+ // called after user enters email and password
+    public void checkSignInEmail(String emailIn, String passwordIn){
+        mAuth.signInWithEmailAndPassword(emailIn, passwordIn)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("checkSignInEmail", "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            signedInSuccessfully(user);
+                            //updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("checkSignInEmail", "signInWithEmail:failure " + task.getException());
 
-//            nameOutlet.text = "\(user.email!)"
-//            logInOutlet.isHidden = true
-//            logOutOutlet.isHidden = false
-//            removeAccountOutlet.isHidden = false
-//            authorizationButton.isHidden = true
-//            emailButtonOutlet.isHidden = true
-//        }
-//       else{
-//            nameOutlet.text = "Not Logged in"
-//            logInOutlet.isHidden = false
-//            logOutOutlet.isHidden = true
-//            removeAccountOutlet.isHidden = true
-//            authorizationButton.isHidden = false
-//            emailButtonOutlet.isHidden = false
-//        }
-//    }
+                            //updateUI(null);
+                        }
+                    }
+                });
+    }
 
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
-        try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            signInText.setText(account.getEmail());
-            googleSignInButton.setVisibility(View.GONE);
-            emailSignInButton.setVisibility(View.GONE);
-            logOutButton.setVisibility(View.VISIBLE);
-
-
-            // Signed in successfully, show authenticated UI.
-            //updateUI(account);
-            Log.i("MainActivity", "Logged in as " + account.getEmail());
-        } catch (ApiException e) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w("MainActivity", "signInResult:failed code=" + e.getStatusCode());
-            //updateUI(null);
-        }
+    public void logOut(View view){
+        FirebaseAuth.getInstance().signOut();
+        mGoogleSignInClient.signOut();
+        signInText.setText("Not Logged in");
+        AppData.userID = "";
+        AppData.coach = "";
+        AppData.mySchool = "";
+        googleSignInButton.setVisibility(View.VISIBLE);
+        emailSignInButton.setVisibility(View.VISIBLE);
+        logOutButton.setVisibility(View.GONE);
     }
 
     public void readMeetsFromFirebase() {
@@ -491,16 +474,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void testAddAthleteToFirebase(){
-        // Add an athlete to firebase
-
-//        Athlete a = new Athlete("Event Athlete", "Seaver", "CLC", 12, "Crystal Lake Central");
-//        athletes.add(a);
-//        a.saveToFirebase();
-//        a.addEvent("Test Event", "VAR", "TestMeet");
-        //athletes.add(new Athlete("Jeff", "Owen", "CLC",10, "Crystal Lake Central"));
-    }
-
+    // called when you press meets button
     public void meetsAction(View view){
         //System.out.println("meets pushed");
         startActivity(new Intent(MainActivity.this, MeetsActivity.class));
@@ -511,6 +485,7 @@ public class MainActivity extends AppCompatActivity {
 //        startActivity(intent);
     }
 
+    // called when you press schools button
     public void schoolsAction(View view){
       //  System.out.println("schools pushed");
         startActivity(new Intent(MainActivity.this, SchoolsActivity.class));

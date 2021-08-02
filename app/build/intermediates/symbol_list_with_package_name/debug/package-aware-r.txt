@@ -1853,6 +1853,7 @@ id clear_text
 id clip_horizontal
 id clip_vertical
 id clockwise
+id coachButton
 id collapseActionView
 id confirm_button
 id container
@@ -1911,6 +1912,7 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fade
+id fanButton
 id fill
 id fill_horizontal
 id fill_vertical
@@ -1965,6 +1967,7 @@ id listMode
 id listView
 id list_item
 id logOutButton
+id managerButton
 id masked
 id material_clock_display
 id material_clock_face
@@ -1985,6 +1988,7 @@ id material_timepicker_mode_button
 id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
+id meetCodeEditText
 id meetName
 id meetsButton
 id message
@@ -2271,6 +2275,7 @@ layout activity_schools2
 layout activity_scores
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
+layout check_access_alert
 layout custom_athleteslist
 layout custom_dialog
 layout custom_editeventlist
@@ -2307,6 +2312,7 @@ layout material_time_input
 layout material_timepicker
 layout material_timepicker_dialog
 layout material_timepicker_textinput_display
+layout meet_manager_alert
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title

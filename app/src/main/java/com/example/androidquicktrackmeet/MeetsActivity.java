@@ -6,8 +6,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -61,81 +64,158 @@ private ListView listView;
 
             AppData.selectedMeet = (Meet)parent.getItemAtPosition(position);
 
-            checkAccess();
+            checkAccessNew();
             //System.out.println("Clicked on" + AppData.selectedMeet.getName());
 
         }
     });
     }
 
-    public void checkAccess(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Choose Access");
-        //builder.setMessage("Are you sure you want to clear all places?");
-        // add the buttons
-        builder.setPositiveButton("Fan", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // do something like...
-                System.out.println("clicked fan");
-                Meet.canManage = false;
-                Meet.canCoach = false;
-                selectMeetAction(listView);
-            }
-        });
-        builder.setNegativeButton("Coach", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // do something like...
-                System.out.println("clicked coach");
-                //ArrayList<String> keys = (ArrayList<String>)AppData.selectedMeet.getSchools().ke;
-                for (Map.Entry<String, String> entry : AppData.selectedMeet.getSchools().entrySet()){
-                    for(School school: AppData.schools){
-                        System.out.println("checking school" + school.getFull() + " with " + entry.getKey());
-                        if(school.getFull().equalsIgnoreCase(entry.getKey())){
-                            for(String coach: school.getCoaches()){
-                                System.out.println("checking coach " + coach + " with "+ AppData.coach);
-                                if(coach.equalsIgnoreCase(AppData.coach)){
-                                    System.out.println("found coach");
-                                    Meet.canCoach = true;
-                                    AppData.mySchool = school.getFull();
-                                    AlertDialog.Builder coachSuccess = new AlertDialog.Builder(MeetsActivity.this);
-                                    coachSuccess.setTitle("Success");
-                                    coachSuccess.setMessage("You are logged in to edit entries for " + AppData.mySchool );
-                                    coachSuccess.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            // do something like...
-                                            selectMeetAction(listView);
-                                        }
-                                    });
-                                    AlertDialog coachSuccessAlert = coachSuccess.create();
-                                    coachSuccessAlert.show();
-                                    break;
-                                }
-                            }
-
-                        }
-                        if(Meet.canCoach){break;}
-                    }
-                    if(Meet.canCoach){break;}
-                }
-                if(!Meet.canCoach) {
-                    AlertDialog.Builder coachFailure = new AlertDialog.Builder(MeetsActivity.this);
-                    coachFailure.setTitle("Failure");
-                    coachFailure.setMessage("You are not logged in as a coach for any of the teams in this meet");
-                    AlertDialog coachFailureAlert = coachFailure.create();
-                    coachFailure.show();
-                }
-
-//
-            }
-        });
-       // builder.set("Cancel", null);
-        // create and show the alert dialog
-        AlertDialog dialog = builder.create();
-        dialog.show();
+    public void onFanClick(){
+        System.out.println("clicked fan");
+        Meet.canManage = false;
+        Meet.canCoach = false;
+        selectMeetAction(listView);
     }
+
+    public void onCoachClick(){
+        System.out.println("clicked coach");
+        //ArrayList<String> keys = (ArrayList<String>)AppData.selectedMeet.getSchools().ke;
+        for (Map.Entry<String, String> entry : AppData.selectedMeet.getSchools().entrySet()){
+            for(School school: AppData.schools){
+                System.out.println("checking school" + school.getFull() + " with " + entry.getKey());
+                if(school.getFull().equalsIgnoreCase(entry.getKey())){
+                    for(String coach: school.getCoaches()){
+                        System.out.println("checking coach " + coach + " with "+ AppData.coach);
+                        if(coach.equalsIgnoreCase(AppData.coach)){
+                            System.out.println("found coach");
+                            Meet.canCoach = true;
+                            AppData.mySchool = school.getFull();
+                            AlertDialog.Builder coachSuccess = new AlertDialog.Builder(MeetsActivity.this);
+                            coachSuccess.setTitle("Success");
+                            coachSuccess.setMessage("You are logged in to edit entries for " + AppData.mySchool );
+                            coachSuccess.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do something like...
+                                    selectMeetAction(listView);
+                                }
+                            });
+                            AlertDialog coachSuccessAlert = coachSuccess.create();
+                            coachSuccessAlert.show();
+                            break;
+                        }
+                    }
+
+                }
+                if(Meet.canCoach){break;}
+            }
+            if(Meet.canCoach){break;}
+        }
+        if(!Meet.canCoach) {
+            AlertDialog.Builder coachFailure = new AlertDialog.Builder(MeetsActivity.this);
+            coachFailure.setTitle("Failure");
+            coachFailure.setMessage("You are not logged in as a coach for any of the teams in this meet");
+            coachFailure.setNegativeButton("Ok", null);
+            AlertDialog coachFailureAlert = coachFailure.create();
+            coachFailure.show();
+        }
+
+    }
+
+    public void onManageClick(){
+        System.out.println("selected meet userId " + AppData.selectedMeet.getUserId());
+        System.out.println("AppData.userID " + AppData.userID);
+        if(AppData.selectedMeet.getUserId().equalsIgnoreCase( AppData.userID)  || AppData.userID.equalsIgnoreCase("SRrCKcYVC8U6aZTMv0XCYHHR4BG3")){
+            Meet.canManage = true;
+            Meet.canCoach = true;
+            selectMeetAction(listView);
+        }
+        else {
+            LayoutInflater li = LayoutInflater.from(getApplicationContext());
+            View promptsView = li.inflate(R.layout.meet_manager_alert, null);
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    MeetsActivity.this);
+
+            // set alert_dialog.xml to alertdialog builder
+            alertDialogBuilder.setView(promptsView);
+            alertDialogBuilder.setNegativeButton("Cancel", null);
+            alertDialogBuilder.setCancelable(true);
+
+            EditText code = (EditText) promptsView.findViewById(R.id.meetCodeEditText);
+            alertDialogBuilder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    if (code.getText().toString().equalsIgnoreCase(AppData.selectedMeet.getManagerCode())) {
+                        Meet.canManage = true;
+                        Meet.canCoach = true;
+                        selectMeetAction(listView);
+                    } else {
+                        AlertDialog.Builder errorAlert = new AlertDialog.Builder(MeetsActivity.this);
+                        errorAlert.setTitle("Error!");
+                        errorAlert.setMessage("Incorrect Code");
+                        errorAlert.setPositiveButton("OK", null);
+                        AlertDialog errorDialog = errorAlert.create();
+                        errorDialog.show();
+                    }
+
+                }
+            });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
+    }
+
+    public void checkAccessNew(){
+        LayoutInflater li = LayoutInflater.from(getApplicationContext());
+        View promptsView = li.inflate(R.layout.check_access_alert, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                MeetsActivity.this);
+
+        // set alert_dialog.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+        alertDialogBuilder.setNegativeButton("Cancel", null);
+        alertDialogBuilder.setCancelable(true);
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        Button fanButton = (Button) promptsView.findViewById(R.id.fanButton);
+        Button coachButton = (Button) promptsView.findViewById(R.id.coachButton);
+        Button managerButton = (Button)promptsView.findViewById(R.id.managerButton);
+        fanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onFanClick();
+                alertDialog.dismiss();
+            }
+        });
+        coachButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onCoachClick();
+                alertDialog.dismiss();
+            }
+        });
+
+        managerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onManageClick();
+                alertDialog.dismiss();
+            }
+        });
+
+
+        // create alert dialog
+
+
+        // show it
+        alertDialog.show();
+    }
+
+
 
     public void selectMeetAction(View view){
        // Meet.canCoach = true;
