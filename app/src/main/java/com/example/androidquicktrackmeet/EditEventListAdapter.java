@@ -121,6 +121,13 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
         return athletes.size();
     }
 
+    public void moveItem(int from, int to){
+        Athlete temp = athletes.get(to);
+        athletes.set(to, athletes.get(from));
+        athletes.set(from, temp);
+       // adapter.notifyDataSetChanged();
+    }
+
     public boolean deleteItem(int position){
         if(Meet.canCoach) {
             Athlete a = athletes.get(position);
