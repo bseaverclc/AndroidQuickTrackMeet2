@@ -32,27 +32,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+
             >
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/RelativeLayout01"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                >
 
             <TextView
                 android:id="@+id/subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text = "initials and year"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-
-
                 />
-<TextView
-    android:id="@+id/points"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-android:gravity="right"
+            <TextView
+                android:id="@+id/points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="points"
 
-    android:text="points"
-
-    />
+            />
+            </RelativeLayout>
 
 
 

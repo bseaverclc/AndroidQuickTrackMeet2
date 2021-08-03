@@ -71,32 +71,43 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
 
         //imageView.setImageResource(imgid[position]);
         holder.subTitleText.setText(athletes.get(position).getSchool() + "  "+athletes.get(position).getGrade());
-
-        holder.markListener.updateAthlete(a);
-        holder.markListener.updatePosition(position);
-        holder.placeListener.updateAthlete(a);
-        holder.placeListener.updatePosition(position);
         holder.titleText.setText(athletes.get(position).getLast() + ", "+athletes.get(position).getFirst());
 
+        if(Meet.canManage && holder != null) {
+            holder.markListener.updateAthlete(a);
+            holder.markListener.updatePosition(position);
+            holder.placeListener.updateAthlete(a);
+            holder.placeListener.updatePosition(position);
+        }
+
         //System.out.println(athletes.get(position).showEvents().size());
-        for (Event e : a.showEvents()){
-            //System.out.println("attemptng to set mark");
-            if(e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName())) {
-                holder.mark.setText(e.getMarkString());
-                System.out.println("printing mark for " + a.getLast() + e.getMarkString());
-                if (e.getPlace() != null) {
-                    holder.place.setText(("" + e.getPlace()));
-                }
-                else{
-                    holder.place.setText("");
-                }
-                if (e.getPoints() != null){
-                    holder.points.setText("" + e.getPoints());
-                }
-                else{
-                    holder.points.setText("");
-                }
-                break;
+
+            for (Event e : a.showEvents()) {
+                //System.out.println("attemptng to set mark");
+                if (e.getName().equalsIgnoreCase(event) && e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName())) {
+                    holder.mark.setText(e.getMarkString());
+                    System.out.println("printing mark for " + a.getLast() + e.getMarkString());
+                    if (e.getPlace() != null) {
+                        holder.place.setText(("" + e.getPlace()));
+                    } else {
+                        holder.place.setText("");
+                    }
+
+                        if (e.getPoints() != null) {
+                            holder.points.setText("" + e.getPoints());
+
+                        } else {
+                            holder.points.setText("");
+
+                        }
+                        holder.points.setBackgroundColor(Color.TRANSPARENT);
+                        if(processButton.getText().toString().equalsIgnoreCase("Processed")) {
+                            if(e.getPoints()>0){
+                            holder.points.setBackgroundColor(Color.GREEN);
+                        }
+                    }
+                    break;
+
             }
         }
 
@@ -110,19 +121,28 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
         return athletes.size();
     }
 
-    public void deleteItem(int position){
-        Athlete a = athletes.get(position);
-        for(int i =0; i<a.showEvents().size(); i++){
-            if (a.showEvents().get(i).getName().equals(event) && a.showEvents().get(i).getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName())) {
+    public boolean deleteItem(int position){
+        if(Meet.canCoach) {
+            Athlete a = athletes.get(position);
+            for (int i = 0; i < a.showEvents().size(); i++) {
+                if (a.showEvents().get(i).getName().equals(event) && a.showEvents().get(i).getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName())) {
+                    if (a.showEvents().get(i).getMarkString().equalsIgnoreCase("") && a.showEvents().get(i).getPlace() == null) {
+                        // a.showEvents().remove(i);
+                        a.deleteEventFirebase(a.showEvents().get(i).getUid());
+                        athletes.remove(position);
+                        notifyItemRemoved(position);
+                        return true;
 
-               // a.showEvents().remove(i);
-                a.deleteEventFirebase(a.showEvents().get(i).getUid());
-                break;
+                    }
+                }
             }
         }
 
-        athletes.remove(position);
-        notifyItemRemoved(position);
+        return false;
+    }
+
+    public void changeEvent(String newEvent){
+        event = newEvent;
     }
 
     public class ViewHolderEditEvent extends RecyclerView.ViewHolder {
@@ -147,45 +167,51 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
             cell = itemView.findViewById(R.id.cell);
             subTitleText = itemView.findViewById(R.id.subtitle);
 
+            if(!Meet.canManage){
+                mark.setFocusable(false);
+                place.setFocusable(false);
+            }
+            else{
+                mark.setFocusable(true);
+                place.setFocusable(true);
             this.markListener = new MyMarkTextListener();
             this.placeListener = new MyPlaceTextListener();
             this.mark.addTextChangedListener(markListener);
             this.place.addTextChangedListener(placeListener);
 
-            mark.setOnKeyListener(new View.OnKeyListener() {
 
-                @Override
-                public boolean onKey(View v, int keyCode, KeyEvent event) {
-                    //key listening stuff
-                    processButton.setBackgroundColor(Color.LTGRAY);
-                  processButton.setText("Process Event");
+                mark.setOnKeyListener(new View.OnKeyListener() {
 
-                    AppData.selectedMeet.setBeenScored(EventsActivity.eventPosition, false);
-                    AppData.selectedMeet.updatebeenScoredFirebase();
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        //key listening stuff
+                        processButton.setBackgroundColor(Color.LTGRAY);
+                        processButton.setText("Process Event");
 
-                    return false;
-                }
-            });
+                        AppData.selectedMeet.setBeenScored(EventsActivity.eventPosition, false);
+                        AppData.selectedMeet.updatebeenScoredFirebase();
 
-            place.setOnKeyListener(new View.OnKeyListener() {
-
-                @Override
-                public boolean onKey(View v, int keyCode, KeyEvent event) {
-                    //key listening stuff
-                    processButton.setBackgroundColor(Color.GRAY);
-                    processButton.setText("Process Event");
-
-                    AppData.selectedMeet.setBeenScored(EventsActivity.eventPosition, false);
-                    AppData.selectedMeet.updatebeenScoredFirebase();
-                    return false;
-                }
-            });
+                        return false;
+                    }
+                });
 
 
+                place.setOnKeyListener(new View.OnKeyListener() {
 
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        //key listening stuff
+                        processButton.setBackgroundColor(Color.LTGRAY);
+                        processButton.setText("Process Event");
 
+                        AppData.selectedMeet.setBeenScored(EventsActivity.eventPosition, false);
+                        AppData.selectedMeet.updatebeenScoredFirebase();
+                        return false;
+                    }
+                });
 
-            //itemView.setOnClickListener(this);
+            }
+
         }
 
     }

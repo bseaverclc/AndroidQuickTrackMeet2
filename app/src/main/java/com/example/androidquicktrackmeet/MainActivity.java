@@ -387,12 +387,19 @@ public class MainActivity extends AppCompatActivity {
                         else {
                             //System.out.println("event snapshot" + dataSnapshot);
                             Event ev = dataSnapshot.getValue(Event.class);
+                            boolean add = true;
+                            for (Event ae : a.showEvents()){
+                                if(ae.getName().equalsIgnoreCase(ev.getName()) && ae.getMeetName().equalsIgnoreCase(ev.getMeetName())){
+                                    add = false;
+                                    break;
+                                }
+                            }
+                            if(add) {
+                                ev.setUid(dataSnapshot.getKey());
+                                //  System.out.println("Added event to firebase Event Uid " + ev.getUid());
 
-
-                            ev.setUid(dataSnapshot.getKey());
-                          //  System.out.println("Added event to firebase Event Uid " + ev.getUid());
-
-                            a.addEvent(ev);
+                                a.addEvent(ev);
+                            }
 
                             //System.out.println("getting an event from firebase ");
 //                            for (Event e : a.showEvents()) {

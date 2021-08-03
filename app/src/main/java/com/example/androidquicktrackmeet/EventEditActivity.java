@@ -35,16 +35,16 @@ public class EventEditActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<Athlete> eventAthletes = new ArrayList<Athlete>();
     private EditEventListAdapter adapter;
-    private int start = 0;
-    private Button processButton;
+    //private int start = 0;
+    private Button processButton, clearButton, addButton;
+    ActionBar actionBar;
 
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        System.out.println("onstart");
-        if(start!=0) {
-            System.out.println("onstart updating athletes showed");
+    protected void onResume(){
+        super.onResume();
+        System.out.println("onResume");
+            System.out.println("onResume updating athletes showed");
             eventAthletes.clear();
             for (Athlete a : AppData.allAthletes) {
                 for (Event e : a.showEvents()) {
@@ -58,13 +58,17 @@ public class EventEditActivity extends AppCompatActivity {
             }
 
 
+
+
             sortByName();
+            sortByMark();
             sortByPlace();
             beenScoredCheck();
+
             adapter.notifyDataSetChanged();
 
-        }
-        start++;
+
+        //start++;
     }
 
     @Override
@@ -72,7 +76,23 @@ public class EventEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_edit);
         processButton = (Button) this.findViewById(R.id.procesEventButton);
+        clearButton = (Button) this.findViewById(R.id.clearButton);
+        addButton = (Button)this.findViewById(R.id.addButton);
 
+        if(Meet.canManage){
+            processButton.setActivated(true);
+            clearButton.setVisibility(View.VISIBLE);
+        }
+        else{
+            processButton.setActivated(false);
+            clearButton.setVisibility(View.GONE);
+        }
+        if(Meet.canCoach){
+            addButton.setVisibility(View.VISIBLE);
+        }
+        else{
+            addButton.setVisibility(View.GONE);
+        }
 
         System.out.println("onCreate for eventEditActivity");
         Intent intent = getIntent();
@@ -132,7 +152,7 @@ public class EventEditActivity extends AppCompatActivity {
 
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
-        ActionBar actionBar = getSupportActionBar();;
+        actionBar = getSupportActionBar();;
         actionBar.setDisplayHomeAsUpEnabled(true);
         setSupportActionBar(topToolBar);
 
@@ -146,18 +166,18 @@ public class EventEditActivity extends AppCompatActivity {
         intent.putExtra("event", selectedEvent);
         intent.putExtra("athletes", eventAthletes);
         startActivity(intent);
-        //startActivityForResult(intent, 0);
 
-        //startActivity(intent);
     }
 
     public void beenScoredCheck(){
         if(AppData.selectedMeet != null) {
-            if (AppData.selectedMeet.getBeenScored().get(EventsActivity.eventPosition) == true) {
+            if (AppData.selectedMeet.getBeenScored().get(selectedRow) == true) {
                 processButton.setBackgroundColor(Color.GREEN);
+                processButton.setText("Processed");
 
             } else {
                 processButton.setBackgroundColor(Color.LTGRAY);
+                processButton.setText("Process Event");
 
             }
         }
@@ -201,6 +221,26 @@ public class EventEditActivity extends AppCompatActivity {
         }
     }
 
+    public void switcher(View view){
+            String check = selectedEvent.substring(0,selectedEvent.length()-3);
+            System.out.println("selected Row before switch " + selectedRow);
+            for (int i = 0; i < AppData.selectedMeet.getEvents().size(); i++){
+                String checker = AppData.selectedMeet.getEvents().get(i);
+                if(!checker.equalsIgnoreCase(selectedEvent) && checker.contains(check)){
+                    selectedEvent = checker;
+                    adapter.changeEvent(selectedEvent);
+                    selectedRow = i;
+
+                    actionBar.setTitle(selectedEvent);
+                    //setTitle(checker);
+
+                    onResume();
+                    System.out.println("selectedRow after switch " + selectedRow);
+                    break;
+                }
+            }
+    }
+
     public void calcPoints(){
         System.out.println("calling calcPoints");
         for(Athlete a: eventAthletes){
@@ -238,72 +278,6 @@ public class EventEditActivity extends AppCompatActivity {
         }
         adapter.notifyDataSetChanged();
     }
-//    func calcPoints(){
-//        print("starting to calculate points.  Ind points \(meet.indPoints)")
-//
-//        var scoringAthletes = [Athlete]()
-//        for a in heat1{
-//            scoringAthletes.append(a)
-//        }
-//        for a in heat2{
-//            scoringAthletes.append(a)
-//        }
-//        for a in eventAthletes{
-//            scoringAthletes.append(a)
-//        }
-//        for a in scoringAthletes{
-//
-//            print("Scoring \(a.last)")
-//            if let event = a.getEvent(eventName: self.title!, meetName: meet.name){
-//                if let place = event.place{
-//                    // print("event.meetName \(event.meetName) meet.name \(meet.name)")
-//                    if event.meetName == meet.name{
-//                        var scoring = [Int]()
-//                        if event.name.contains("4x"){
-//                            scoring = meet.relPoints
-//                        }
-//                    else{scoring = meet.indPoints}
-//                        if place <= scoring.count{
-//                            let ties = checkForTies(place: place, athletes: scoringAthletes)
-//                            var points = 0
-//                            if ties != 0{
-//                                for i in place - 1 ..< place - 1 + ties{
-//                                    if i > scoring.count - 1{
-//                                        points += 0
-//                                    }
-//                                else{
-//                                        points += scoring[i]
-//                                        print("Added some points")
-//                                    }
-//                                }
-//                                event.points = Double(points)/Double(ties)
-//
-//                            }
-//                        else{event.points = 0}  // if ties somehow = 0
-//
-//                            print("\(a.last) points added = \(event.points)")
-//                            for blah in a.events{
-//                                print("\(a.last) \(blah.name) \(blah.points)")
-//                            }
-//
-//                        }
-//                    else{
-//                            event.points = 0  // if place is not for a score
-//                        }
-//
-//                    }
-//                }
-//                // if there is no place
-//                    else{
-//                    event.points = 0
-//                }
-//            }
-//        }
-//
-//
-//        tableViewOutlet.reloadData()
-//    }
-
 
     public int checkForTies(Integer place, ArrayList<Athlete> athletes){
         int ties = 0;
@@ -317,17 +291,7 @@ public class EventEditActivity extends AppCompatActivity {
         }
         return ties;
     }
-//    func checkForTies(place: Int, athletes: [Athlete])-> Int{
-//        var ties = 0
-//        for a in athletes{
-//            if let event = a.getEvent(eventName: self.title!, meetName: meet.name){
-//                if event.place == place{
-//                    ties += 1
-//                }
-//            }
-//        }
-//        return ties
-//    }
+
 
     public void clearPlaces(View view){
 
@@ -341,6 +305,39 @@ public class EventEditActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     // do something like...
                    System.out.println("clicked yes");
+                   for(Athlete a : eventAthletes){
+                       for(Event e : a.showEvents()){
+                           if(e.getName().equalsIgnoreCase(selectedEvent) && e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName()) ){
+                               e.setPlace(null);
+                               a.updateFirebase();
+                           }
+                       }
+                   }
+                   AppData.selectedMeet.getBeenScored().set(selectedRow, false);
+                   AppData.selectedMeet.updatebeenScoredFirebase();
+                   beenScoredCheck();
+                   calcPoints();
+                   adapter.notifyDataSetChanged();
+
+//                    if Meet.canManage{
+//                        for a in eventAthletes{
+//                            for e in a.events{
+//                                if e.name == title  && e.meetName == meet.name{
+//                                    e.place = nil
+//                                    a.updateFirebase()
+//                                }
+//
+//                            }
+//                        }
+//                        meet.beenScored[selectedRow] = false
+//                        meet.updatebeenScoredFirebase()
+//                        processOutlet.backgroundColor = UIColor.lightGray
+//                        processOutlet.setTitle("Process Event", for: .normal)
+//                        calcPoints()
+//                        tableViewOutlet.reloadData()
+//
+//                    }
+
                 }
             });
             builder.setNegativeButton("Cancel", null);
@@ -349,14 +346,6 @@ public class EventEditActivity extends AppCompatActivity {
             dialog.show();
         }
 
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-
-    }
 
     public void placeAction(View view){
         System.out.println("Place button pushed");

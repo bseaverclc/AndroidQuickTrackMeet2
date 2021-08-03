@@ -131,9 +131,9 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
         //System.out.println("event athletes "+ eventAthletes);
         addAthletes();
 
-        Intent intent = new Intent();
-        intent.putExtra("eventAthletes", eventAthletes);
-        setResult(RESULT_OK, intent);
+//        Intent intent = new Intent();
+//        intent.putExtra("eventAthletes", eventAthletes);
+//        setResult(RESULT_OK, intent);
         finish();
 
     }

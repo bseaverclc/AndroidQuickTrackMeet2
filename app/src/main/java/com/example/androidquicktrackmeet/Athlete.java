@@ -28,6 +28,7 @@ public class Athlete implements Serializable {
         this.grade = grade;
         this.schoolFull = schoolFull;
         this.uid = uid;
+
     }
     // Map<String,String> toppings = new HashMap<>();
     /*
@@ -50,6 +51,7 @@ public class Athlete implements Serializable {
         this.schoolFull = schoolFull;
         this.grade = grade;
         this.uid = uid;
+
     }
 
     public boolean equals(Athlete other){
@@ -65,6 +67,7 @@ public class Athlete implements Serializable {
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("athletes").child(uid).child("events").push();
 
         e.setUid(mDatabase.getKey());
+        events.add(e);
         mDatabase.setValue(e);
         //events.add(e);  // already added when listener hears this pushed to firebase
     }

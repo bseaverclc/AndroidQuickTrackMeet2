@@ -1740,6 +1740,7 @@ id CTRL
 id FUNCTION
 id META
 id NO_DEBUG
+id RelativeLayout01
 id SHIFT
 id SHOW_ALL
 id SHOW_PATH
@@ -1801,6 +1802,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addButton
 id addSelectedButton
 id adjust_height
 id adjust_width
@@ -1849,6 +1851,7 @@ id chip3
 id chip_group
 id chronometer
 id circle_center
+id clearButton
 id clear_text
 id clip_horizontal
 id clip_vertical

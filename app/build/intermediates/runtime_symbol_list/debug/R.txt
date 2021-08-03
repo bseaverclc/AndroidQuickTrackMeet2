@@ -1739,6 +1739,7 @@ int id CTRL 0x7f080003
 int id FUNCTION 0x7f080004
 int id META 0x7f080005
 int id NO_DEBUG 0x7f080006
+int id RelativeLayout01 0x7f0801d8
 int id SHIFT 0x7f080007
 int id SHOW_ALL 0x7f080008
 int id SHOW_PATH 0x7f080009
@@ -1800,6 +1801,7 @@ int id action_text 0x7f080040
 int id actions 0x7f080041
 int id activity_chooser_view_content 0x7f080042
 int id add 0x7f080043
+int id addButton 0x7f0801d6
 int id addSelectedButton 0x7f080044
 int id adjust_height 0x7f080045
 int id adjust_width 0x7f080046
@@ -1848,6 +1850,7 @@ int id chip3 0x7f080070
 int id chip_group 0x7f080071
 int id chronometer 0x7f080072
 int id circle_center 0x7f080073
+int id clearButton 0x7f0801d7
 int id clear_text 0x7f080074
 int id clip_horizontal 0x7f080075
 int id clip_vertical 0x7f080076

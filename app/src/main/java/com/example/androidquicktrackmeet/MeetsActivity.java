@@ -63,8 +63,14 @@ private ListView listView;
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
             AppData.selectedMeet = (Meet)parent.getItemAtPosition(position);
-
-            checkAccessNew();
+            if(AppData.selectedMeet.getUserId().equalsIgnoreCase( AppData.userID)  || AppData.userID.equalsIgnoreCase("SRrCKcYVC8U6aZTMv0XCYHHR4BG3")){
+                Meet.canManage = true;
+                Meet.canCoach = true;
+                selectMeetAction(listView);
+            }
+            else {
+                checkAccessNew();
+            }
             //System.out.println("Clicked on" + AppData.selectedMeet.getName());
 
         }
@@ -126,12 +132,8 @@ private ListView listView;
     public void onManageClick(){
         System.out.println("selected meet userId " + AppData.selectedMeet.getUserId());
         System.out.println("AppData.userID " + AppData.userID);
-        if(AppData.selectedMeet.getUserId().equalsIgnoreCase( AppData.userID)  || AppData.userID.equalsIgnoreCase("SRrCKcYVC8U6aZTMv0XCYHHR4BG3")){
-            Meet.canManage = true;
-            Meet.canCoach = true;
-            selectMeetAction(listView);
-        }
-        else {
+
+
             LayoutInflater li = LayoutInflater.from(getApplicationContext());
             View promptsView = li.inflate(R.layout.meet_manager_alert, null);
 
@@ -165,7 +167,7 @@ private ListView listView;
             });
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
-        }
+
     }
 
     public void checkAccessNew(){
