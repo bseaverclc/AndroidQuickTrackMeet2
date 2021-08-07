@@ -1952,6 +1952,7 @@ id info
 id invisible
 id inward
 id italic
+id item_recycler_view
 id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
@@ -1969,6 +1970,7 @@ id linearLayoutScores
 id listMode
 id listView
 id list_item
+id list_item_text_view
 id logOutButton
 id managerButton
 id masked
@@ -2096,6 +2098,7 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
+id section_item_text_view
 id select_dialog_listview
 id selected
 id selection_type
@@ -2301,6 +2304,8 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout email_login
+layout list_item
+layout list_section
 layout material_chip_input_combo
 layout material_clock_display
 layout material_clock_display_divider

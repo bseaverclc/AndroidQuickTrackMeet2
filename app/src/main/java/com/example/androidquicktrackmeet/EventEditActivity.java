@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class EventEditActivity extends AppCompatActivity {
+public class EventEditActivity extends AppCompatActivity  {
 
     //private Meet meet;
     private String selectedEvent;
@@ -34,7 +34,10 @@ public class EventEditActivity extends AppCompatActivity {
     //private ListView listView;
     private RecyclerView recyclerView;
     private ArrayList<Athlete> eventAthletes = new ArrayList<Athlete>();
-    private EditEventListAdapter adapter;
+    private ArrayList<Athlete> heat1Athletes = new ArrayList<Athlete>();
+    private ArrayList<Athlete> heat2Athletes = new ArrayList<Athlete>();
+    private SectionAdapter adapter;
+    ArrayList<Section> sections;
     //private int start = 0;
     private Button processButton, clearButton, addButton;
     ActionBar actionBar;
@@ -46,26 +49,30 @@ public class EventEditActivity extends AppCompatActivity {
         System.out.println("onResume");
             System.out.println("onResume updating athletes showed");
             eventAthletes.clear();
-            for (Athlete a : AppData.allAthletes) {
-                for (Event e : a.showEvents()) {
-                    if (e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName()) && e.getName().equalsIgnoreCase(selectedEvent)) {
-                        eventAthletes.add(a);
-                        //break;
-                    }
-
-                }
-
-            }
-
-
-
-
-            sortByName();
-            sortByMark();
-            sortByPlace();
-            beenScoredCheck();
-
-            adapter.notifyDataSetChanged();
+            heat1Athletes.clear();
+            heat2Athletes.clear();
+            updateAthletesAndUI();
+        adapter.notifyDataSetChanged();
+//            for (Athlete a : AppData.allAthletes) {
+//                for (Event e : a.showEvents()) {
+//                    if (e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName()) && e.getName().equalsIgnoreCase(selectedEvent)) {
+//                        eventAthletes.add(a);
+//                        //break;
+//                    }
+//
+//                }
+//
+//            }
+//
+//
+//
+//
+//            sortByName();
+//            sortByMark();
+//            sortByPlace();
+//            beenScoredCheck();
+//
+//            adapter.notifyDataSetChanged();
 
 
         //start++;
@@ -103,22 +110,7 @@ public class EventEditActivity extends AppCompatActivity {
 
         //meet = (Meet)intent.getSerializableExtra("meet");
 
-        for(Athlete a: AppData.allAthletes) {
-            for(Event e: a.showEvents()){
-                if (e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName()) && e.getName().equalsIgnoreCase(selectedEvent)) {
-                    eventAthletes.add(a);
-                    //break;
-                }
-
-            }
-
-        }
-
-
-        sortByName();
-        sortByPlace();
-        sortByMark();
-        beenScoredCheck();
+       updateAthletesAndUI();
 
 
 //        adapter = new EditEventListAdapter(this, eventAthletes, selectedEvent, meet);
@@ -126,16 +118,28 @@ public class EventEditActivity extends AppCompatActivity {
 //        listView.setAdapter(adapter);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new EditEventListAdapter(this, eventAthletes,selectedEvent, processButton);
+        sections = new ArrayList<Section>();
+        Section open = new Section("open", eventAthletes, selectedEvent, processButton);
+        Section one = new Section("heat 1", heat1Athletes,selectedEvent, processButton);
+        Section two = new Section("heat 2", heat2Athletes,selectedEvent, processButton);
+        sections.add(one);
+        sections.add(two);
+        sections.add(open);
+        adapter = new SectionAdapter(this, sections);
+
+
+        //adapter = new EditEventListAdapter(eventAthletes,selectedEvent, processButton);
         //AthleteListAdapter.selectedAthletes.clear();
         //adapter.setClickListener(this);
-        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
+        DividerItemDecoration divider = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+
+        recyclerView.addItemDecoration(divider);
         recyclerView.setAdapter(adapter);
 
         // attach delete option to recyclerview
-        ItemTouchHelper itemTouchHelper = new
-                ItemTouchHelper(new SwipeToDeleteCallback(adapter));
-        itemTouchHelper.attachToRecyclerView(recyclerView);
+//        ItemTouchHelper itemTouchHelper = new
+//                ItemTouchHelper(new SwipeToDeleteCallback(adapter));
+//        itemTouchHelper.attachToRecyclerView(recyclerView);
 
         // Makes keyboard disappear when you click off editText
         recyclerView.setOnTouchListener(new View.OnTouchListener() {
@@ -152,9 +156,38 @@ public class EventEditActivity extends AppCompatActivity {
 
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
-        actionBar = getSupportActionBar();;
+        actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         setSupportActionBar(topToolBar);
+
+
+    }
+
+    public void updateAthletesAndUI(){
+        for(Athlete a: AppData.allAthletes) {
+            for(Event e: a.showEvents()){
+                if (e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName()) && e.getName().equalsIgnoreCase(selectedEvent)) {
+                    if(e.getHeat()==null || e.getHeat() == 0)
+                        eventAthletes.add(a);
+                    else if (e.getHeat().intValue() == 1){
+                        heat1Athletes.add(a);
+                    }
+                    else if (e.getHeat().intValue() == 2){
+                        heat2Athletes.add(a);
+                    }
+                    else eventAthletes.add(a);
+                    //break;
+                }
+
+            }
+
+        }
+
+
+        sortByName();
+        sortByPlace();
+        sortByMark();
+        beenScoredCheck();
 
 
     }
@@ -185,23 +218,10 @@ public class EventEditActivity extends AppCompatActivity {
 
     public void refresh(View view){
         eventAthletes.clear();
-        for(Athlete a: AppData.allAthletes) {
-            for(Event e: a.showEvents()){
-                if (e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName()) && e.getName().equalsIgnoreCase(selectedEvent)) {
-                    eventAthletes.add(a);
-                    //break;
-                }
+        heat2Athletes.clear();
+        heat1Athletes.clear();
 
-            }
-
-        }
-
-
-        sortByName();
-        sortByMark();
-        sortByPlace();
-
-        beenScoredCheck();
+        updateAthletesAndUI();
 
         adapter.notifyDataSetChanged();
     }
@@ -228,7 +248,10 @@ public class EventEditActivity extends AppCompatActivity {
                 String checker = AppData.selectedMeet.getEvents().get(i);
                 if(!checker.equalsIgnoreCase(selectedEvent) && checker.contains(check)){
                     selectedEvent = checker;
-                    adapter.changeEvent(selectedEvent);
+                    //adapter.changeEvent(selectedEvent);
+                    for(Section s: sections){
+                        s.setEvent(selectedEvent);
+                    }
                     selectedRow = i;
 
                     actionBar.setTitle(selectedEvent);

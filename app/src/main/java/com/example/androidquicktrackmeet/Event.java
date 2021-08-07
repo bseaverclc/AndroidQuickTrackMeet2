@@ -68,6 +68,7 @@ public class Event implements Serializable {
     public ArrayList<String> getRelayMembers(){return relayMembers;}
     public Double getPoints(){return points;}
     public Double getMark(){return mark;}
+    public Integer getHeat(){return heat;}
 
 
 
@@ -81,6 +82,7 @@ public class Event implements Serializable {
     }
     public void setPlace(Integer place){this.place = place;}
     public void setPoints(Double points){this.points = points;}
+    public void setHeat(int heat){this.heat = heat;}
 
 
 

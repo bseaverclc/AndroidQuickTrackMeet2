@@ -137,6 +137,7 @@ public class Athlete implements Serializable {
     public void setGrade(int grade){this.grade = grade;}
     public void setUid(String uid){this.uid = uid;}
 
+
     public void updateFirebase(){
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("athletes").child(this.uid);
         Map<String, Object> dictAth = new HashMap<String, Object>();
@@ -145,6 +146,7 @@ public class Athlete implements Serializable {
         dictAth.put("school", this.school);
         dictAth.put("schoolFull", this.schoolFull);
         dictAth.put("grade", this.grade);
+
         ref.updateChildren(dictAth);
 
         for(Event e : this.events){
@@ -156,6 +158,7 @@ public class Athlete implements Serializable {
             dict.put("place", e.getPlace());
             dict.put("points", e.getPoints());
             dict.put("uid", e.getUid());
+            dict.put("heat", e.getHeat());
 
             try {
                 ref.child("events").child(e.getUid()).updateChildren(dict);
