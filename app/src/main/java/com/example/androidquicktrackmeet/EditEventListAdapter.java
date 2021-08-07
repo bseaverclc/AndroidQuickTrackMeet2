@@ -146,7 +146,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
             }
             else if (holder != null){
                 holder.mark.setFocusable(false);
-                holder.mark.setFocusable(false);
+                holder.place.setFocusable(false);
             }
 
 

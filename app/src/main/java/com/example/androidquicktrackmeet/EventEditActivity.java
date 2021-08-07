@@ -37,6 +37,8 @@ public class EventEditActivity extends AppCompatActivity  {
     private ArrayList<Athlete> heat1Athletes = new ArrayList<Athlete>();
     private ArrayList<Athlete> heat2Athletes = new ArrayList<Athlete>();
     private SectionAdapter adapter;
+    private boolean hasSections = false;
+    private boolean fieldEvent = false;
     ArrayList<Section> sections;
     //private int start = 0;
     private Button processButton, clearButton, addButton;
@@ -86,6 +88,8 @@ public class EventEditActivity extends AppCompatActivity  {
         clearButton = (Button) this.findViewById(R.id.clearButton);
         addButton = (Button)this.findViewById(R.id.addButton);
 
+
+
         if(Meet.canManage){
             processButton.setActivated(true);
             clearButton.setVisibility(View.VISIBLE);
@@ -106,6 +110,12 @@ public class EventEditActivity extends AppCompatActivity  {
         selectedEvent = (String)intent.getSerializableExtra("Selected");
         selectedRow = (Integer)intent.getSerializableExtra("selectedRow");
 
+        if(selectedEvent.contains("100M") || selectedEvent.contains("200M") && !selectedEvent.contains("3200M")|| selectedEvent.contains("400M")){
+            hasSections = true;
+        }
+        if(selectedEvent.contains("Jump") || selectedEvent.contains("Pole") || selectedEvent.contains("Discus")|| selectedEvent.contains("Shot")){
+            fieldEvent = true;
+        }
         setTitle(selectedEvent);
 
         //meet = (Meet)intent.getSerializableExtra("meet");
@@ -119,11 +129,15 @@ public class EventEditActivity extends AppCompatActivity  {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         sections = new ArrayList<Section>();
+
+        if(hasSections) {
+
+            Section one = new Section("heat 1", heat1Athletes, selectedEvent, processButton);
+            Section two = new Section("heat 2", heat2Athletes, selectedEvent, processButton);
+            sections.add(one);
+            sections.add(two);
+        }
         Section open = new Section("open", eventAthletes, selectedEvent, processButton);
-        Section one = new Section("heat 1", heat1Athletes,selectedEvent, processButton);
-        Section two = new Section("heat 2", heat2Athletes,selectedEvent, processButton);
-        sections.add(one);
-        sections.add(two);
         sections.add(open);
         adapter = new SectionAdapter(this, sections);
 
@@ -378,16 +392,22 @@ public class EventEditActivity extends AppCompatActivity  {
 
     public void sortByPlace(){
         Comparator<Athlete> sortByPlace = (Athlete o1, Athlete o2) -> {
-            if (o1.findEvent(AppData.selectedMeet.getName(), selectedEvent).getPlace() == null) {
-                return (o2.findEvent(AppData.selectedMeet.getName(), selectedEvent).getPlace() == null) ? 0 : 1;
-            }
-            if (o2.findEvent(AppData.selectedMeet.getName(), selectedEvent).getPlace() == null) {
-                return -1;
-            }
-            return o1.findEvent(AppData.selectedMeet.getName(), selectedEvent).getPlace().compareTo(o2.findEvent(AppData.selectedMeet.getName(), selectedEvent).getPlace());
+            Integer placeo1 = o1.findEvent(AppData.selectedMeet.getName(),selectedEvent).getPlace();
+            Integer placeo2 = o2.findEvent(AppData.selectedMeet.getName(),selectedEvent).getPlace();
+
+                if (placeo1 == null) {
+                    return (placeo2 == null) ? 0 : 1;
+                }
+                if (placeo2 == null) {
+                    return -1;
+                }
+                return placeo1.compareTo(placeo2);
+
         };
+
         Collections.sort(eventAthletes, sortByPlace);
-        //System.out.println(eventAthletes);
+        Collections.sort(heat1Athletes, sortByPlace);
+        Collections.sort(heat2Athletes, sortByPlace);
 
     }
 
@@ -399,15 +419,41 @@ public class EventEditActivity extends AppCompatActivity  {
 
     public void sortByMark(){
         Comparator<Athlete> sortByMark = (Athlete o1, Athlete o2) -> {
-            if (o1.findEvent(AppData.selectedMeet.getName(), selectedEvent).getMarkString().equalsIgnoreCase("")) {
-                return (o2.findEvent(AppData.selectedMeet.getName(), selectedEvent).getMarkString().equalsIgnoreCase("")) ? 0 : 1;
+            String marko1 = o1.findEvent(AppData.selectedMeet.getName(), selectedEvent).getMarkString();
+            String marko2 = o2.findEvent(AppData.selectedMeet.getName(), selectedEvent).getMarkString();
+            if(!marko1.equalsIgnoreCase("")) {
+                while (marko1.length() < marko2.length()) {
+                    marko1 = 0 + marko1;
+                }
             }
-            if (o2.findEvent(AppData.selectedMeet.getName(), selectedEvent).getMarkString().equalsIgnoreCase("")) {
-                return -1;
+            if(!marko2.equalsIgnoreCase("")) {
+                while (marko2.length() < marko1.length()) {
+                    marko2 = 0 + marko2;
+                }
             }
-            return o1.findEvent(AppData.selectedMeet.getName(), selectedEvent).getMarkString().compareTo(o2.findEvent(AppData.selectedMeet.getName(), selectedEvent).getMarkString());
+            if(!fieldEvent) {
+                if (marko1.equalsIgnoreCase("")) {
+                    return (marko2.equalsIgnoreCase("")) ? 0 : 1;
+                }
+                if (marko2.equalsIgnoreCase("")) {
+                    return -1;
+                }
+                return marko1.compareTo(marko2);
+            }
+            else{
+                if (marko1.equalsIgnoreCase("")) {
+                    return (marko2.equalsIgnoreCase("")) ? 0 : 1;
+                }
+                if (marko2.equalsIgnoreCase("")) {
+                    return -1;
+                }
+                return -1*(marko1.compareTo(marko2));
+            }
         };
         Collections.sort(eventAthletes, sortByMark);
+        Collections.sort(heat1Athletes, sortByMark);
+        Collections.sort(heat2Athletes, sortByMark);
+
         //System.out.println(eventAthletes);
 
     }
