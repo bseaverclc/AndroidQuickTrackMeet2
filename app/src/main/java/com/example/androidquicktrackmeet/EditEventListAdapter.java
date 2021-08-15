@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdapter.ViewHolderEditEvent> {
@@ -40,6 +41,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
     private LayoutInflater mInflater;
     private Button processButton;
     private TextView sectionName;
+    private RecyclerView recyclerView;
 
 
     // private final Integer[] imgid;
@@ -65,18 +67,26 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
 
         public ArrayList<Athlete> getAthletes(){return athletes;}
 
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        this.recyclerView = recyclerView;
+    }
+
     // inflates the row layout from xml when needed
     @Override
     public EditEventListAdapter.ViewHolderEditEvent onCreateViewHolder(ViewGroup parent, int viewType) {
         mInflater = LayoutInflater.from(parent.getContext());
         View view = mInflater.inflate(R.layout.custom_editeventlist, parent, false);
+
         return new EditEventListAdapter.ViewHolderEditEvent(view);
     }
 
     @Override
     public void onBindViewHolder(EditEventListAdapter.ViewHolderEditEvent holder, int position) {
-       // System.out.println("Onbindbeing called");
+        System.out.println("Onbindbeing called");
         Athlete a;
+
         if(athletes.size() == 0){
             holder.subTitleText.setText("");
             holder.titleText.setText("");
@@ -150,6 +160,8 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
             }
 
 
+
+
         }
         holder.cell.setTag(position);
 
@@ -185,16 +197,29 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
 
     public boolean deleteItem(int position){
         if(Meet.canCoach) {
-            Athlete a = athletes.get(position);
-            for (int i = 0; i < a.showEvents().size(); i++) {
-                if (a.showEvents().get(i).getName().equals(event) && a.showEvents().get(i).getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName())) {
-                    if (a.showEvents().get(i).getMarkString().equalsIgnoreCase("") && a.showEvents().get(i).getPlace() == null) {
-                        // a.showEvents().remove(i);
-                        a.deleteEventFirebase(a.showEvents().get(i).getUid());
-                        athletes.remove(position);
-                        notifyItemRemoved(position);
-                        return true;
+            if (position < athletes.size()) {
+                Athlete a = athletes.get(position);
+                System.out.println("Trying to delete athleete " + a.getLast());
+                for (int i = 0; i < a.showEvents().size(); i++) {
+                    if (a.showEvents().get(i).getName().equals(event) && a.showEvents().get(i).getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName())) {
+                        System.out.println("Place of athlete " + a.showEvents().get(i).getPlace());
+                        if (a.showEvents().get(i).getMarkString().equalsIgnoreCase("") && a.showEvents().get(i).getPlace() == null) {
+                            // a.showEvents().remove(i);
+                            a.deleteEventFirebase(a.showEvents().get(i).getUid());
+                            athletes.remove(position);
+                            recyclerView.setAdapter(this);
 
+                            notifyItemRemoved(position);
+                            //notifyDataSetChanged();
+                            processButton.setBackgroundColor(Color.LTGRAY);
+                            processButton.setText("Process Event");
+
+                            AppData.selectedMeet.setBeenScored(EventsActivity.eventPosition, false);
+                            AppData.selectedMeet.updatebeenScoredFirebase();
+
+                            return true;
+
+                        }
                     }
                 }
             }

@@ -84,19 +84,6 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
         adapter.setClickListener(this);
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);
-
-//        adapter=new AthleteListAdapter(this, displayedAthletes);
-//        listView=(ListView)findViewById(R.id.listView);
-//
-//        listView.setAdapter(adapter);
-//
-//        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-//
-//        sp = listView.getCheckedItemPositions();
-
-
-        //attachListener();
-
     }
 
     public void addAthletes(){

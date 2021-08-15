@@ -1,41 +1,44 @@
-//package com.example.androidquicktrackmeet;
+package com.example.androidquicktrackmeet;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
+    private EditEventListAdapter mAdapter;
+   // private SectionAdapter mAdapter;
+
+    public SwipeToDeleteCallback(EditEventListAdapter adapter) {
+        super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT );
+        mAdapter = adapter;
+    }
+
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+        int position = viewHolder.getAdapterPosition();
+        if(mAdapter.deleteItem(position)){
+            System.out.println("deleteItem returned true");
+
+        }
+        else{
+            mAdapter.notifyDataSetChanged();
+        }
+
+    }
 //
-//import androidx.annotation.NonNull;
-//import androidx.annotation.Nullable;
-//import androidx.recyclerview.widget.ItemTouchHelper;
-//import androidx.recyclerview.widget.RecyclerView;
+    @Override
+    public boolean onMove(RecyclerView recyclerView,  RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+//return false;
+//        System.out.println("OnMove being called");
+//        int from = viewHolder.getAdapterPosition();
+//            int to = target.getAdapterPosition();
+//            mAdapter.moveItem(from,to);
+//            mAdapter.notifyItemMoved(from,to);
 //
-//public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
-//    //private EditEventListAdapter mAdapter;
-//    private SectionAdapter mAdapter;
-//
-//    public SwipeToDeleteCallback(SectionAdapter adapter) {
-//        super(ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT );
-//        mAdapter = adapter;
-//    }
-//
-////    @Override
-////    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-////
-////        int position = viewHolder.getAdapterPosition();
-////
-////
-////        if(mAdapter.deleteItem(position))
-////            {return;}
-////        mAdapter.notifyDataSetChanged();
-////    }
-////
-////    @Override
-////    public boolean onMove(RecyclerView recyclerView,  RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-////        System.out.println("OnMove being called");
-////        int from = viewHolder.getAdapterPosition();
-////            int to = target.getAdapterPosition();
-////            mAdapter.moveItem(from,to);
-////            mAdapter.notifyItemMoved(from,to);
-////
-////        return true;
-////    }
-//
+        return true;
+    }
+
 //    @Override
 //    public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
 //        super.onSelectedChanged(viewHolder, actionState);
@@ -49,6 +52,6 @@
 //    @Override
 //    public void clearView(RecyclerView recyclerView,RecyclerView.ViewHolder viewHolder) {
 //        super.clearView(recyclerView, viewHolder);
-//        viewHolder.itemView.setAlpha((1.0f));
+//       // viewHolder.itemView.setAlpha((1.0f));
 //    }
-//}
+}

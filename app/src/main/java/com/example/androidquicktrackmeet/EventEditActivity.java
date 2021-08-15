@@ -55,29 +55,6 @@ public class EventEditActivity extends AppCompatActivity  {
             heat2Athletes.clear();
             updateAthletesAndUI();
         adapter.notifyDataSetChanged();
-//            for (Athlete a : AppData.allAthletes) {
-//                for (Event e : a.showEvents()) {
-//                    if (e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName()) && e.getName().equalsIgnoreCase(selectedEvent)) {
-//                        eventAthletes.add(a);
-//                        //break;
-//                    }
-//
-//                }
-//
-//            }
-//
-//
-//
-//
-//            sortByName();
-//            sortByMark();
-//            sortByPlace();
-//            beenScoredCheck();
-//
-//            adapter.notifyDataSetChanged();
-
-
-        //start++;
     }
 
     @Override
@@ -87,8 +64,6 @@ public class EventEditActivity extends AppCompatActivity  {
         processButton = (Button) this.findViewById(R.id.procesEventButton);
         clearButton = (Button) this.findViewById(R.id.clearButton);
         addButton = (Button)this.findViewById(R.id.addButton);
-
-
 
         if(Meet.canManage){
             processButton.setActivated(true);
@@ -150,10 +125,7 @@ public class EventEditActivity extends AppCompatActivity  {
         recyclerView.addItemDecoration(divider);
         recyclerView.setAdapter(adapter);
 
-        // attach delete option to recyclerview
-//        ItemTouchHelper itemTouchHelper = new
-//                ItemTouchHelper(new SwipeToDeleteCallback(adapter));
-//        itemTouchHelper.attachToRecyclerView(recyclerView);
+
 
         // Makes keyboard disappear when you click off editText
         recyclerView.setOnTouchListener(new View.OnTouchListener() {
