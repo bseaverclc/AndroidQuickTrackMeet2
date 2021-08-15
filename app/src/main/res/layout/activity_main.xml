@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/black">
+    android:background="@color/black"
+
+    >
 
 
     <LinearLayout
@@ -16,7 +18,7 @@
 
         android:orientation="vertical"
         android:weightSum=".6"
-        android:background="@color/black"
+        android:backgroundTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -26,10 +28,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".2"
-            android:text="Meets"
+
             android:onClick="meetsAction"
-            android:textColor="#0000ff"
-            android:background="@color/black"
+
+            android:text="Meets"
+            android:backgroundTint="@color/black"
+            android:textColor="#FFA500"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="120dp" />
@@ -40,8 +47,9 @@
             android:layout_height="0dp"
             android:layout_weight=".2"
             android:text="Schools"
-            android:textColor="#ffa500"
-            android:background="@color/black"
+            android:backgroundTint="@color/black"
+            android:textColor="#FFA500"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:onClick="schoolsAction"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,8 +63,9 @@
             android:layout_height="0dp"
             android:layout_weight=".2"
             android:text="athletic.net"
-            android:textColor="#ffa500"
-            android:background="@color/black"
+            android:backgroundTint="@color/black"
+            android:textColor="#FFA500"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="120dp" />
@@ -91,11 +100,18 @@
         android:text="Login with email"
         android:layout_gravity="center"
         android:onClick="signInEmail"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/emailButton"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="log out"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+
         android:layout_gravity="center"
         android:id="@+id/logOutButton"
         android:onClick="logOut"/>

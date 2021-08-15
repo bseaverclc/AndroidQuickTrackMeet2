@@ -61,7 +61,7 @@ public class EventEditActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_edit);
-        processButton = (Button) this.findViewById(R.id.procesEventButton);
+        processButton = (Button) this.findViewById(R.id.processEventButton);
         clearButton = (Button) this.findViewById(R.id.clearButton);
         addButton = (Button)this.findViewById(R.id.addButton);
 
@@ -193,6 +193,7 @@ public class EventEditActivity extends AppCompatActivity  {
             if (AppData.selectedMeet.getBeenScored().get(selectedRow) == true) {
                 processButton.setBackgroundColor(Color.GREEN);
                 processButton.setText("Processed");
+
 
             } else {
                 processButton.setBackgroundColor(Color.LTGRAY);
