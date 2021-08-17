@@ -1,11 +1,14 @@
 package com.example.androidquicktrackmeet;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -55,12 +58,17 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
         public void bind(Section section) {
             System.out.println("Section onBind being called");
             sectionName.setText(section.getHeatNumber());
+            sectionName.setTextColor(Color.rgb(255,165,0));
             // RecyclerView for items
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
             itemRecyclerView.setLayoutManager(linearLayoutManager);
            EditEventListAdapter itemAdapter = new EditEventListAdapter(section.getAthletes(), section.getEvent(),section.getProcessButton(), sectionName);
             //itemAdapter = new ItemAdapter(section.getAllItemsInSection());
-            itemRecyclerView.addItemDecoration(new DividerItemDecoration(itemRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
+            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(itemRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
+            //Drawable mDivider = ContextCompat.getDrawable(itemRecyclerView.getContext(), R.drawable.divider);
+            //dividerItemDecoration.setDrawable(mDivider);
+            itemRecyclerView.addItemDecoration(dividerItemDecoration);
+
 
             itemRecyclerView.setAdapter(itemAdapter);
 

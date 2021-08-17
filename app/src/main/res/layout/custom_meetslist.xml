@@ -14,9 +14,10 @@
         android:layout_weight=".5"
         android:text="Date"
         android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSearchResultTitle"
         android:layout_marginTop="5dp"
         android:textColor="#4d4d4d"
+       android:height="50dp"
         />
 
 
@@ -28,7 +29,9 @@
         android:layout_height="wrap_content"
         android:layout_weight=".5"
         android:text = ""
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textAlignment="viewEnd"
+        android:layout_gravity="end"
+        android:textAppearance="?android:attr/textAppearanceMedium"
 
 
         />

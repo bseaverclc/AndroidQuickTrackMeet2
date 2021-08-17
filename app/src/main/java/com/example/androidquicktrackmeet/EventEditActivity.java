@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -120,9 +122,12 @@ public class EventEditActivity extends AppCompatActivity  {
         //adapter = new EditEventListAdapter(eventAthletes,selectedEvent, processButton);
         //AthleteListAdapter.selectedAthletes.clear();
         //adapter.setClickListener(this);
-        DividerItemDecoration divider = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        //DividerItemDecoration divider = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        Drawable mDivider = ContextCompat.getDrawable(recyclerView.getContext(), R.drawable.divider);
+        dividerItemDecoration.setDrawable(mDivider);
 
-        recyclerView.addItemDecoration(divider);
+        recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(adapter);
 
 
@@ -251,21 +256,20 @@ public class EventEditActivity extends AppCompatActivity  {
             }
     }
 
-    public void calcPoints(){
-        System.out.println("calling calcPoints");
-        for(Athlete a: eventAthletes){
-           Event event =  a.findEvent( AppData.selectedMeet.getName(), selectedEvent);
-           System.out.println(event.getName() + " points being calculated");
-           if(event != null && event.getPlace()!= null) {
-               ArrayList<Integer> scoring = new ArrayList<Integer>();
-               if (event.getMeetName().contains("4x")){
-                   scoring = AppData.selectedMeet.getRelPoints();
-               }
-               else{scoring = AppData.selectedMeet.getIndPoints();}
-               System.out.println("scoring size " + scoring.size());
+    public void calcPoints(ArrayList<Athlete> theAthletes){
+        for(Athlete a: theAthletes){
+            Event event =  a.findEvent( AppData.selectedMeet.getName(), selectedEvent);
+            System.out.println(event.getName() + " points being calculated");
+            if(event != null && event.getPlace()!= null) {
+                ArrayList<Integer> scoring = new ArrayList<Integer>();
+                if (event.getMeetName().contains("4x")){
+                    scoring = AppData.selectedMeet.getRelPoints();
+                }
+                else{scoring = AppData.selectedMeet.getIndPoints();}
+                System.out.println("scoring size " + scoring.size());
 
-               if(event.getPlace() <= scoring.size()){
-                    int ties = checkForTies(event.getPlace(), eventAthletes);
+                if(event.getPlace() <= scoring.size()){
+                    int ties = checkForTies(event.getPlace(), theAthletes);
                     System.out.println("Number of ties " + ties);
                     double points = 0.0;
                     if(ties !=0){
@@ -281,11 +285,19 @@ public class EventEditActivity extends AppCompatActivity  {
                         event.setPoints(points/ties);
                     }
                     else{event.setPoints(0.0);}  // if ties somehow =0
-               }
-               else{event.setPoints(0.0);} // if place is not for points
-           }
-           else{event.setPoints(0.0);}  // if there is not place
+                }
+                else{event.setPoints(0.0);} // if place is not for points
+            }
+            else{event.setPoints(0.0);}  // if there is not place
         }
+
+    }
+    public void calcPoints(){
+        System.out.println("calling calcPoints");
+        calcPoints(eventAthletes);
+        calcPoints(heat1Athletes);
+        calcPoints(heat2Athletes);
+
         adapter.notifyDataSetChanged();
     }
 

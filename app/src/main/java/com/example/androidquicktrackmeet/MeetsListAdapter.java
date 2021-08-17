@@ -44,6 +44,7 @@ public class MeetsListAdapter extends ArrayAdapter<Meet> {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.custom_meetslist, null,true);
 
+
         TextView titleText = (TextView) rowView.findViewById(R.id.title);
         TextView subTitleText = (TextView) rowView.findViewById(R.id.subtitle);
 
@@ -53,6 +54,7 @@ public class MeetsListAdapter extends ArrayAdapter<Meet> {
          String datey = DateFormat.getDateInstance().format(date);
         titleText.setText(datey);
         subTitleText.setText(meets.get(position).getName());
+        //view.setMinimumHeight((int)(view.getParent().getHeight()*.10));
 
         //imageView.setImageResource(imgid[position]);
 

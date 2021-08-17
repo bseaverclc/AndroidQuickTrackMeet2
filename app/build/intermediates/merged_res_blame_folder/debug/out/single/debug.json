@@ -8,6 +8,10 @@
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
     },
     {
+        "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/drawable_divider.xml.flat",
+        "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/drawable/divider.xml"
+    },
+    {
         "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_launcher_background.xml.flat",
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_launcher_background.xml"
     },

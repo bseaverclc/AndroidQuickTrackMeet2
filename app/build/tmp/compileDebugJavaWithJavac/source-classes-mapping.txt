@@ -1,8 +1,7 @@
 com/example/androidquicktrackmeet/HomeActivity.java
  com.example.androidquicktrackmeet.HomeActivity
-com/example/androidquicktrackmeet/SectionAdapter.java
- com.example.androidquicktrackmeet.SectionAdapter
- com.example.androidquicktrackmeet.SectionAdapter$ViewHolder
+com/example/androidquicktrackmeet/BuildConfig.java
+ com.example.androidquicktrackmeet.BuildConfig
 com/example/androidquicktrackmeet/ScoresActivity.java
  com.example.androidquicktrackmeet.ScoresActivity
 com/example/androidquicktrackmeet/AppData.java
@@ -51,9 +50,8 @@ com/example/androidquicktrackmeet/MainActivity.java
  com.example.androidquicktrackmeet.MainActivity$7
  com.example.androidquicktrackmeet.MainActivity$7$1
  com.example.androidquicktrackmeet.MainActivity$8
-com/example/androidquicktrackmeet/EventsActivity.java
- com.example.androidquicktrackmeet.EventsActivity
- com.example.androidquicktrackmeet.EventsActivity$1
+com/example/androidquicktrackmeet/EventsListAdapter.java
+ com.example.androidquicktrackmeet.EventsListAdapter
 com/example/androidquicktrackmeet/AddAthleteToEventActivity.java
  com.example.androidquicktrackmeet.AddAthleteToEventActivity
 com/example/androidquicktrackmeet/School.java
@@ -64,11 +62,13 @@ com/example/androidquicktrackmeet/MeetsListAdapter.java
  com.example.androidquicktrackmeet.MeetsListAdapter
 com/example/androidquicktrackmeet/AddMeetActivity.java
  com.example.androidquicktrackmeet.AddMeetActivity
+com/example/androidquicktrackmeet/EventsActivity.java
+ com.example.androidquicktrackmeet.EventsActivity
+ com.example.androidquicktrackmeet.EventsActivity$1
+com/example/androidquicktrackmeet/SectionAdapter.java
+ com.example.androidquicktrackmeet.SectionAdapter
+ com.example.androidquicktrackmeet.SectionAdapter$ViewHolder
 com/example/androidquicktrackmeet/EventEditActivity.java
  com.example.androidquicktrackmeet.EventEditActivity
  com.example.androidquicktrackmeet.EventEditActivity$1
  com.example.androidquicktrackmeet.EventEditActivity$2
-com/example/androidquicktrackmeet/EventsListAdapter.java
- com.example.androidquicktrackmeet.EventsListAdapter
-com/example/androidquicktrackmeet/BuildConfig.java
- com.example.androidquicktrackmeet.BuildConfig

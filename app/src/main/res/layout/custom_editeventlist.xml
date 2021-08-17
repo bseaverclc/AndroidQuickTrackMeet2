@@ -5,14 +5,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:id="@+id/cell"
+    android:weightSum="100"
 
 
     >
 
     <LinearLayout
         android:layout_height="wrap_content"
-        android:layout_width= "200dp"
+        android:layout_width= "0dp"
         android:orientation="vertical"
+        android:layout_weight="50"
 
         >
 
@@ -52,14 +54,7 @@
                 android:layout_marginLeft="16dp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 />
-            <TextView
-                android:id="@+id/points"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="points"
 
-            />
             </RelativeLayout>
 
 
@@ -69,7 +64,24 @@
 
 
 
+<LinearLayout
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:gravity="end"
 
+    android:layout_weight="50"
+
+
+    >
+
+    <TextView
+        android:id="@+id/points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      android:layout_marginRight="10dp"
+        android:text="points"
+
+        />
 
     <EditText
         android:id="@+id/editMark"
@@ -78,6 +90,10 @@
         android:hint="Mark"
         android:inputType="time"
         android:digits="0123456789:."
+
+
+
+
         />
 
     <EditText
@@ -86,6 +102,11 @@
         android:layout_height="wrap_content"
         android:hint="PL"
         android:inputType="number"
+        android:layout_marginRight="20dp"
+
+
         />
+
+</LinearLayout>
 
 </LinearLayout>

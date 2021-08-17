@@ -11,13 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:gravity="right"
-
-
-
+        android:gravity="end"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
 
 
 <LinearLayout
@@ -116,31 +115,36 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:onClick="nameAction"
-            android:text="Name" />
+            android:text="Name"
+            android:layout_weight="1"/>
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:onClick="schoolAction"
-            android:text="School" />
+            android:text="School"
+            android:layout_weight="1"/>
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:onClick="placeAction"
-            android:text="Place" />
+            android:text="Place"
+            android:layout_weight="1"/>
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:onClick="markAction"
-            android:text="Mark" />
+            android:text="Mark"
+            android:layout_weight="1"/>
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
