@@ -1,9 +1,12 @@
 package com.example.androidquicktrackmeet;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -36,6 +39,7 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
     private AthleteListAdapter adapter;
     SparseBooleanArray sp;
     RecyclerView recyclerView;
+    ActionBar actionBar;
    // ArrayList<Athlete> selectedAthletes = new ArrayList<Athlete>();
 
     @Override
@@ -84,6 +88,13 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
         adapter.setClickListener(this);
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);
+
+// Keep getting an error when trying to add the add athlete button to top bar
+//        Toolbar topToolBar2 = (Toolbar) findViewById(R.id.toolbar2);
+//       // setSupportActionBar(topToolBar2);
+//        actionBar = getSupportActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+//        setSupportActionBar(topToolBar2);
     }
 
     public void addAthletes(){
@@ -123,6 +134,16 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
 //        setResult(RESULT_OK, intent);
         finish();
 
+    }
+
+    public void addToRoster(View view){
+        System.out.println("addToRoster being called");
+        Intent intent = new Intent(this, AddAthlete.class);
+        //intent.putExtra("meet", meet);
+        intent.putExtra("event", event);
+        intent.putExtra("level", level);
+        intent.putExtra("athletes", eventAthletes);
+        startActivity(intent);
     }
 
     public void selectSchool(View view){

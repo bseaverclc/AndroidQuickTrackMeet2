@@ -360,9 +360,16 @@ public class MainActivity extends AppCompatActivity {
                 Athlete a = dataSnapshot.getValue((Athlete.class));
                 a.setUid(key);
                // System.out.println("Athletes uid " + a.getUid());
-
-
-                AppData.allAthletes.add(a);
+                boolean add = true;
+                for(Athlete ath: AppData.allAthletes){
+                    if(ath.equals(a)){
+                        add = false;
+                        break;
+                    }
+                }
+                if(add) {
+                    AppData.allAthletes.add(a);
+                }
                 //System.out.println("printing athletes" + AppData.allAthletes);
                 //System.out.println("allAthletes count "+ AppData.allAthletes.size());
 

@@ -79,8 +79,9 @@ public class Athlete implements Serializable {
     }
 
     public void saveToFirebase(){
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users").push();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("athletes").push();
         uid = mDatabase.getKey();
+        this.setUid(uid);
         mDatabase.setValue(this);
     }
 

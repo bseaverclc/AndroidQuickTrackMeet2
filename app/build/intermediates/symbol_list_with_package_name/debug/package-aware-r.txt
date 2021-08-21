@@ -1806,6 +1806,7 @@ id activity_chooser_view_content
 id add
 id addButton
 id addSelectedButton
+id addToRoster
 id adjust_height
 id adjust_width
 id alertTitle
@@ -1922,6 +1923,7 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id firstName
 id fitToContents
 id fixed
 id flip
@@ -1961,6 +1963,7 @@ id jumpToStart
 id labelGroup
 id labeled
 id largeLabel
+id lastName
 id layout
 id left
 id leftToRight
@@ -1968,6 +1971,7 @@ id light
 id line1
 id line3
 id linear
+id linearLayout
 id linearLayoutScores
 id listMode
 id listView
@@ -2068,6 +2072,7 @@ id ratio
 id rectangles
 id recyclerView
 id refreshButton
+id relativeScreen
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2080,10 +2085,12 @@ id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
 id scale
+id scholRelative
 id school1
 id school2
 id school3
 id school4
+id schoolRadio
 id schoolsButton
 id screen
 id scroll
@@ -2183,9 +2190,11 @@ id titleDividerNoCustom
 id title_template
 id toggle
 id toolbar
+id toolbar2
 id top
 id topButtonsRow
 id topPanel
+id topRow
 id touch_outside
 id transitionToEnd
 id transitionToStart
@@ -2211,6 +2220,12 @@ id withText
 id withinBounds
 id wrap
 id wrap_content
+id year10
+id year11
+id year12
+id year9
+id yearRadio
+id yearRelative
 id zero_corner_chip
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
@@ -2273,6 +2288,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_add_athlete2
 layout activity_add_athlete_to_event
 layout activity_add_meet
 layout activity_event_edit
