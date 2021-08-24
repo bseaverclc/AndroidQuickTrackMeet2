@@ -1817,6 +1817,7 @@ id animateToEnd
 id animateToStart
 id asConfigured
 id async
+id athleteNameYear
 id athletesButton
 id athleticButton
 id auto
@@ -1936,6 +1937,7 @@ id gone
 id grade
 id graph
 id graph_wrap
+id gridLayout
 id group_divider
 id grouping
 id groups
@@ -1999,6 +2001,7 @@ id material_timepicker_mode_button
 id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
+id meetAthletesRecycler
 id meetCodeEditText
 id meetName
 id meetsButton
@@ -2091,6 +2094,7 @@ id school2
 id school3
 id school4
 id schoolRadio
+id schoolRow
 id schoolsButton
 id screen
 id scroll
@@ -2295,6 +2299,7 @@ layout activity_event_edit
 layout activity_events
 layout activity_home
 layout activity_main
+layout activity_meet_athletes
 layout activity_meets
 layout activity_schools2
 layout activity_scores
@@ -2340,6 +2345,7 @@ layout material_timepicker
 layout material_timepicker_dialog
 layout material_timepicker_textinput_display
 layout meet_manager_alert
+layout meetathletes
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title

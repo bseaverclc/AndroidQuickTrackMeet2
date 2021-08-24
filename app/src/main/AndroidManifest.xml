@@ -9,13 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidQuickTrackMeet">
-        <activity android:name=".AddAthlete"
+        <activity
+            android:name=".MeetAthletesActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".AddAthleteToEventActivity"
-            >
+            android:parentActivityName=".HomeActivity"
+            />
 
-
-        </activity>
+        <activity
+            android:name=".AddAthlete"
+            android:launchMode="singleTask"
+            android:parentActivityName=".AddAthleteToEventActivity"/>
         <activity
             android:name=".ScoresActivity"
             android:launchMode="singleTask"
@@ -23,8 +26,8 @@
         <activity
             android:name=".AddAthleteToEventActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".EventEditActivity"
-            android:noHistory="true"/>
+            android:noHistory="true"
+            android:parentActivityName=".EventEditActivity" />
         <activity
             android:name=".EventEditActivity"
             android:launchMode="singleTask"

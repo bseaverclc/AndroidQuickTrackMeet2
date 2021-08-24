@@ -44,7 +44,7 @@
             android:text="Athletes"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#FFA500"
-
+            android:onClick="selectAthletesAction"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

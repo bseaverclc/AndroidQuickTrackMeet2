@@ -1816,6 +1816,7 @@ int id animateToEnd 0x7f08004d
 int id animateToStart 0x7f08004e
 int id asConfigured 0x7f08004f
 int id async 0x7f080050
+int id athleteNameYear 0x7f0801f2
 int id athletesButton 0x7f080051
 int id athleticButton 0x7f080052
 int id auto 0x7f080053
@@ -1935,6 +1936,7 @@ int id gone 0x7f0800c3
 int id grade 0x7f0800c4
 int id graph 0x7f0800c5
 int id graph_wrap 0x7f0800c6
+int id gridLayout 0x7f0801f3
 int id group_divider 0x7f0800c7
 int id grouping 0x7f0800c8
 int id groups 0x7f0800c9
@@ -1998,6 +2000,7 @@ int id material_timepicker_mode_button 0x7f080100
 int id material_timepicker_ok_button 0x7f080101
 int id material_timepicker_view 0x7f080102
 int id material_value_index 0x7f080103
+int id meetAthletesRecycler 0x7f0801f4
 int id meetCodeEditText 0x7f080104
 int id meetName 0x7f080105
 int id meetsButton 0x7f080106
@@ -2090,6 +2093,7 @@ int id school2 0x7f08015a
 int id school3 0x7f08015b
 int id school4 0x7f08015c
 int id schoolRadio 0x7f0801e6
+int id schoolRow 0x7f0801f5
 int id schoolsButton 0x7f08015d
 int id screen 0x7f08015e
 int id scroll 0x7f08015f
@@ -2294,6 +2298,7 @@ int layout activity_event_edit 0x7f0b001f
 int layout activity_events 0x7f0b0020
 int layout activity_home 0x7f0b0021
 int layout activity_main 0x7f0b0022
+int layout activity_meet_athletes 0x7f0b0084
 int layout activity_meets 0x7f0b0023
 int layout activity_schools2 0x7f0b0024
 int layout activity_scores 0x7f0b0025
@@ -2339,6 +2344,7 @@ int layout material_timepicker 0x7f0b004c
 int layout material_timepicker_dialog 0x7f0b004d
 int layout material_timepicker_textinput_display 0x7f0b004e
 int layout meet_manager_alert 0x7f0b004f
+int layout meetathletes 0x7f0b0085
 int layout mtrl_alert_dialog 0x7f0b0050
 int layout mtrl_alert_dialog_actions 0x7f0b0051
 int layout mtrl_alert_dialog_title 0x7f0b0052

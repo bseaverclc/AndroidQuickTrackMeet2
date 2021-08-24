@@ -63,5 +63,11 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void selectAthletesAction(View view){
+        Intent intent = new Intent(this,MeetAthletesActivity.class);
+
+        startActivity(intent);
+    }
+
 
 }
