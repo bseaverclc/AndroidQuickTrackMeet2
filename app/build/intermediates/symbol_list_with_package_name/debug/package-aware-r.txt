@@ -2294,7 +2294,9 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_add_athlete2
 layout activity_add_athlete_to_event
+layout activity_add_events_to_athlete
 layout activity_add_meet
+layout activity_athlete_events_from_meets
 layout activity_event_edit
 layout activity_events
 layout activity_home

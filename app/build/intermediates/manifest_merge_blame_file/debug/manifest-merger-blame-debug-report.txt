@@ -41,317 +41,323 @@
 24        android:testOnly="true"
 25        android:theme="@style/Theme.AndroidQuickTrackMeet" >
 25-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:11:9-59
-26        <activity
-26-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:12:9-16:15
-27            android:name="com.example.androidquicktrackmeet.MeetAthletesActivity"
-27-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:13:13-49
-28            android:launchMode="singleTask"
-28-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:14:13-44
-29            android:parentActivityName="com.example.androidquicktrackmeet.HomeActivity" />
-29-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:15:13-55
-30        <activity
-30-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:18:9-21:70
-31            android:name="com.example.androidquicktrackmeet.AddAthlete"
-31-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:19:13-39
-32            android:launchMode="singleTask"
-32-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:20:13-44
-33            android:parentActivityName="com.example.androidquicktrackmeet.AddAthleteToEventActivity" />
-33-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:21:13-68
-34        <activity
-34-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:22:9-25:58
-35            android:name="com.example.androidquicktrackmeet.ScoresActivity"
-35-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:23:13-43
-36            android:launchMode="singleTask"
-36-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:24:13-44
-37            android:parentActivityName="com.example.androidquicktrackmeet.HomeActivity" />
-37-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:25:13-55
-38        <activity
-38-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:26:9-30:63
-39            android:name="com.example.androidquicktrackmeet.AddAthleteToEventActivity"
-39-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:27:13-54
-40            android:launchMode="singleTask"
-40-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:28:13-44
-41            android:noHistory="true"
-41-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:29:13-37
-42            android:parentActivityName="com.example.androidquicktrackmeet.EventEditActivity" />
-42-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:30:13-60
-43        <activity
-43-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:31:9-35:72
-44            android:name="com.example.androidquicktrackmeet.EventEditActivity"
-44-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:32:13-46
-45            android:launchMode="singleTask"
-45-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:33:13-44
-46            android:parentActivityName="com.example.androidquicktrackmeet.EventsActivity"
-46-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:34:13-57
-47            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-47-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:35:13-69
-48        <activity
-48-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:36:9-39:58
-49            android:name="com.example.androidquicktrackmeet.EventsActivity"
-49-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:37:13-43
-50            android:launchMode="singleTask"
-50-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:38:13-44
-51            android:parentActivityName="com.example.androidquicktrackmeet.HomeActivity" />
-51-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:39:13-55
-52        <activity
-52-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:40:9-43:59
-53            android:name="com.example.androidquicktrackmeet.HomeActivity"
-53-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:41:13-41
-54            android:launchMode="singleTask"
-54-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:42:13-44
-55            android:parentActivityName="com.example.androidquicktrackmeet.MeetsActivity" />
-55-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:43:13-56
-56        <activity
-56-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:44:9-47:59
-57            android:name="com.example.androidquicktrackmeet.AddMeetActivity"
-57-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:45:13-44
-58            android:launchMode="singleTask"
-58-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:46:13-44
-59            android:parentActivityName="com.example.androidquicktrackmeet.MeetsActivity" />
-59-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:47:13-56
-60        <activity
-60-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:48:9-52:58
-61            android:name="com.example.androidquicktrackmeet.SchoolsActivity"
-61-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:49:13-44
-62            android:label="Schools"
-62-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:50:13-36
-63            android:launchMode="singleTask"
-63-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:51:13-44
-64            android:parentActivityName="com.example.androidquicktrackmeet.MainActivity" />
-64-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:52:13-55
-65        <activity
-65-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:53:9-57:58
-66            android:name="com.example.androidquicktrackmeet.MeetsActivity"
-66-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:54:13-42
-67            android:label="Meets"
-67-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:55:13-34
-68            android:launchMode="singleTask"
-68-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:56:13-44
-69            android:parentActivityName="com.example.androidquicktrackmeet.MainActivity" />
-69-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:57:13-55
-70        <activity
-70-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:58:9-66:20
-71            android:name="com.example.androidquicktrackmeet.MainActivity"
-71-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:59:13-41
-72            android:launchMode="singleTask" >
-72-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:60:13-44
-73            <intent-filter>
-73-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:61:13-65:29
-74                <action android:name="android.intent.action.MAIN" />
-74-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:62:17-69
-74-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:62:25-66
-75
-76                <category android:name="android.intent.category.LAUNCHER" />
-76-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:64:17-77
-76-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:64:27-74
-77            </intent-filter>
-78        </activity>
-79        <activity
-79-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:27:9-44:20
-80            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-80-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:28:13-80
-81            android:excludeFromRecents="true"
-81-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:29:13-46
-82            android:exported="true"
-82-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:30:13-36
-83            android:launchMode="singleTask"
-83-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:31:13-44
-84            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-84-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:32:13-72
-85            <intent-filter>
-85-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:33:13-43:29
-86                <action android:name="android.intent.action.VIEW" />
-86-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:17-69
-86-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:25-66
-87
-88                <category android:name="android.intent.category.DEFAULT" />
-88-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
-88-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
-89                <category android:name="android.intent.category.BROWSABLE" />
-89-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:17-78
-89-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:27-75
-90
-91                <data
-91-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:39:17-42:51
-92                    android:host="firebase.auth"
-92-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:40:21-49
-93                    android:path="/"
-93-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:41:21-37
-94                    android:scheme="genericidp" />
-94-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:42:21-48
-95            </intent-filter>
-96        </activity>
-97        <activity
-97-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:45:9-62:20
-98            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-98-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:46:13-79
-99            android:excludeFromRecents="true"
-99-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:47:13-46
-100            android:exported="true"
-100-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:48:13-36
-101            android:launchMode="singleTask"
-101-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:49:13-44
-102            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-102-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:50:13-72
-103            <intent-filter>
-103-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:51:13-61:29
-104                <action android:name="android.intent.action.VIEW" />
-104-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:17-69
-104-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:25-66
-105
-106                <category android:name="android.intent.category.DEFAULT" />
-106-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
-106-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
-107                <category android:name="android.intent.category.BROWSABLE" />
-107-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:17-78
-107-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:27-75
-108
-109                <data
-109-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:39:17-42:51
-110                    android:host="firebase.auth"
-110-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:40:21-49
-111                    android:path="/"
-111-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:41:21-37
-112                    android:scheme="recaptcha" />
-112-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:42:21-48
-113            </intent-filter>
-114        </activity>
-115
-116        <service
-116-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:64:9-73:19
-117            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
-117-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:65:13-101
-118            android:enabled="true"
-118-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:66:13-35
-119            android:exported="false" >
-119-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:67:13-37
-120            <intent-filter>
-120-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:68:13-72:29
-121                <action android:name="com.google.firebase.auth.api.gms.service.START" />
-121-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:69:17-89
-121-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:69:25-86
-122
-123                <category android:name="android.intent.category.DEFAULT" />
-123-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
-123-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
-124            </intent-filter>
-125        </service>
-126        <service
-126-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:74:9-80:19
-127            android:name="com.google.firebase.components.ComponentDiscoveryService"
-127-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:75:13-84
-128            android:directBootAware="true"
-128-->[com.google.firebase:firebase-common:20.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:35:13-43
-129            android:exported="false" >
-129-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:76:13-37
-130            <meta-data
-130-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:77:13-79:85
-131                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-131-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:78:17-109
-132                android:value="com.google.firebase.components.ComponentRegistrar" />
-132-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:79:17-82
-133            <meta-data
-133-->[com.google.firebase:firebase-database:20.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/d04d33aa3e9158f85616b2ce7e5e21e7/firebase-database-20.0.1/AndroidManifest.xml:32:13-34:85
-134                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
-134-->[com.google.firebase:firebase-database:20.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/d04d33aa3e9158f85616b2ce7e5e21e7/firebase-database-20.0.1/AndroidManifest.xml:33:17-109
-135                android:value="com.google.firebase.components.ComponentRegistrar" />
-135-->[com.google.firebase:firebase-database:20.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/d04d33aa3e9158f85616b2ce7e5e21e7/firebase-database-20.0.1/AndroidManifest.xml:34:17-82
-136            <meta-data
-136-->[com.google.android.gms:play-services-measurement-api:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/de2c13ed196484300b446ed312f50cec/play-services-measurement-api-19.0.0/AndroidManifest.xml:30:13-32:85
-137                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-137-->[com.google.android.gms:play-services-measurement-api:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/de2c13ed196484300b446ed312f50cec/play-services-measurement-api-19.0.0/AndroidManifest.xml:31:17-139
-138                android:value="com.google.firebase.components.ComponentRegistrar" />
-138-->[com.google.android.gms:play-services-measurement-api:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/de2c13ed196484300b446ed312f50cec/play-services-measurement-api-19.0.0/AndroidManifest.xml:32:17-82
-139            <meta-data
-139-->[com.google.firebase:firebase-installations:17.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a30eae67e308f2990f34fd0ceabcf627/firebase-installations-17.0.0/AndroidManifest.xml:18:13-20:85
-140                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-140-->[com.google.firebase:firebase-installations:17.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a30eae67e308f2990f34fd0ceabcf627/firebase-installations-17.0.0/AndroidManifest.xml:19:17-127
-141                android:value="com.google.firebase.components.ComponentRegistrar" />
-141-->[com.google.firebase:firebase-installations:17.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a30eae67e308f2990f34fd0ceabcf627/firebase-installations-17.0.0/AndroidManifest.xml:20:17-82
-142        </service>
-143
-144        <activity
-144-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:23:9-27:75
-145            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-145-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:24:13-93
-146            android:excludeFromRecents="true"
-146-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:25:13-46
-147            android:exported="false"
-147-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:26:13-37
-148            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-148-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:27:13-72
-149        <!--
-150            Service handling Google Sign-In user revocation. For apps that do not integrate with
-151            Google Sign-In, this service will never be started.
-152        -->
-153        <service
-153-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:33:9-37:51
-154            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-154-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:34:13-89
-155            android:exported="true"
-155-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:35:13-36
-156            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-156-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:36:13-107
-157            android:visibleToInstantApps="true" />
-157-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:37:13-48
-158
-159        <provider
-159-->[com.google.firebase:firebase-common:20.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:26:9-31:39
-160            android:name="com.google.firebase.provider.FirebaseInitProvider"
-160-->[com.google.firebase:firebase-common:20.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:27:13-77
-161            android:authorities="com.example.androidquicktrackmeet.firebaseinitprovider"
-161-->[com.google.firebase:firebase-common:20.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:28:13-72
-162            android:directBootAware="true"
-162-->[com.google.firebase:firebase-common:20.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:29:13-43
-163            android:exported="false"
-163-->[com.google.firebase:firebase-common:20.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:30:13-37
-164            android:initOrder="100" />
-164-->[com.google.firebase:firebase-common:20.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:31:13-36
-165
-166        <activity
-166-->[com.google.android.gms:play-services-base:17.5.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/e6ebcc1aa38d1fbf18302b33ac84119e/play-services-base-17.5.0/AndroidManifest.xml:23:9-26:75
-167            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-167-->[com.google.android.gms:play-services-base:17.5.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/e6ebcc1aa38d1fbf18302b33ac84119e/play-services-base-17.5.0/AndroidManifest.xml:24:13-79
-168            android:exported="false"
-168-->[com.google.android.gms:play-services-base:17.5.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/e6ebcc1aa38d1fbf18302b33ac84119e/play-services-base-17.5.0/AndroidManifest.xml:25:13-37
-169            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-169-->[com.google.android.gms:play-services-base:17.5.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/e6ebcc1aa38d1fbf18302b33ac84119e/play-services-base-17.5.0/AndroidManifest.xml:26:13-72
-170
-171        <receiver
-171-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:29:9-33:20
-172            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-172-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:30:13-85
-173            android:enabled="true"
-173-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:31:13-35
-174            android:exported="false" >
-174-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:32:13-37
-175        </receiver>
-176
-177        <service
-177-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:35:9-38:40
-178            android:name="com.google.android.gms.measurement.AppMeasurementService"
-178-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:36:13-84
-179            android:enabled="true"
-179-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:37:13-35
-180            android:exported="false" />
-180-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:38:13-37
-181        <service
-181-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:39:9-43:72
-182            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-182-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:40:13-87
-183            android:enabled="true"
-183-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:41:13-35
-184            android:exported="false"
-184-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:42:13-37
-185            android:permission="android.permission.BIND_JOB_SERVICE" />
-185-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:43:13-69
-186
-187        <meta-data
-187-->[com.google.android.gms:play-services-basement:17.5.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/fbb4f3ea1d174970a28ba7ffbf67fa8f/play-services-basement-17.5.0/AndroidManifest.xml:23:9-25:69
-188            android:name="com.google.android.gms.version"
-188-->[com.google.android.gms:play-services-basement:17.5.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/fbb4f3ea1d174970a28ba7ffbf67fa8f/play-services-basement-17.5.0/AndroidManifest.xml:24:13-58
-189            android:value="@integer/google_play_services_version" />
-189-->[com.google.android.gms:play-services-basement:17.5.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/fbb4f3ea1d174970a28ba7ffbf67fa8f/play-services-basement-17.5.0/AndroidManifest.xml:25:13-66
-190    </application>
-191
-192</manifest>
+26        <activity android:name="com.example.androidquicktrackmeet.meets.themeet.meetathletes.AthleteEventsFromMeets" />
+26-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:12:9-96
+26-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:12:19-84
+27        <activity android:name="com.example.androidquicktrackmeet.meets.themeet.meetathletes.AddEventsToAthlete" />
+27-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:13:9-83
+27-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:13:19-80
+28        <activity
+28-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:14:9-17:72
+29            android:name="com.example.androidquicktrackmeet.meets.themeet.meetathletes.MeetAthletesActivity"
+29-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:15:13-76
+30            android:launchMode="singleTask"
+30-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:16:13-44
+31            android:parentActivityName="com.example.androidquicktrackmeet.meets.themeet.HomeActivity" />
+31-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:17:13-69
+32        <activity
+32-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:18:9-21:120
+33            android:name="com.example.androidquicktrackmeet.meets.themeet.events.theevent.addathletestoevent.AddAthlete"
+33-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:19:13-88
+34            android:launchMode="singleTask"
+34-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:20:13-44
+35            android:parentActivityName="com.example.androidquicktrackmeet.meets.themeet.events.theevent.addathletestoevent.AddAthleteToEventActivity" />
+35-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:21:13-117
+36        <activity
+36-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:22:9-25:72
+37            android:name="com.example.androidquicktrackmeet.meets.themeet.ScoresActivity"
+37-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:23:13-57
+38            android:launchMode="singleTask"
+38-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:24:13-44
+39            android:parentActivityName="com.example.androidquicktrackmeet.meets.themeet.HomeActivity" />
+39-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:25:13-69
+40        <activity
+40-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:26:9-30:93
+41            android:name="com.example.androidquicktrackmeet.meets.themeet.events.theevent.addathletestoevent.AddAthleteToEventActivity"
+41-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:27:13-103
+42            android:launchMode="singleTask"
+42-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:28:13-44
+43            android:noHistory="true"
+43-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:29:13-37
+44            android:parentActivityName="com.example.androidquicktrackmeet.meets.themeet.events.theevent.EventEditActivity" />
+44-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:30:13-90
+45        <activity
+45-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:31:9-35:72
+46            android:name="com.example.androidquicktrackmeet.meets.themeet.events.theevent.EventEditActivity"
+46-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:32:13-76
+47            android:launchMode="singleTask"
+47-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:33:13-44
+48            android:parentActivityName="com.example.androidquicktrackmeet.meets.themeet.events.EventsActivity"
+48-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:34:13-78
+49            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+49-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:35:13-69
+50        <activity
+50-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:36:9-39:72
+51            android:name="com.example.androidquicktrackmeet.meets.themeet.events.EventsActivity"
+51-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:37:13-64
+52            android:launchMode="singleTask"
+52-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:38:13-44
+53            android:parentActivityName="com.example.androidquicktrackmeet.meets.themeet.HomeActivity" />
+53-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:39:13-69
+54        <activity
+54-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:40:9-43:65
+55            android:name="com.example.androidquicktrackmeet.meets.themeet.HomeActivity"
+55-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:41:13-55
+56            android:launchMode="singleTask"
+56-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:42:13-44
+57            android:parentActivityName="com.example.androidquicktrackmeet.meets.MeetsActivity" />
+57-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:43:13-62
+58        <activity
+58-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:44:9-47:65
+59            android:name="com.example.androidquicktrackmeet.meets.AddMeetActivity"
+59-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:45:13-50
+60            android:launchMode="singleTask"
+60-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:46:13-44
+61            android:parentActivityName="com.example.androidquicktrackmeet.meets.MeetsActivity" />
+61-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:47:13-62
+62        <activity
+62-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:48:9-52:58
+63            android:name="com.example.androidquicktrackmeet.schools.SchoolsActivity"
+63-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:49:13-52
+64            android:label="Schools"
+64-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:50:13-36
+65            android:launchMode="singleTask"
+65-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:51:13-44
+66            android:parentActivityName="com.example.androidquicktrackmeet.MainActivity" />
+66-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:52:13-55
+67        <activity
+67-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:53:9-57:58
+68            android:name="com.example.androidquicktrackmeet.meets.MeetsActivity"
+68-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:54:13-48
+69            android:label="Meets"
+69-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:55:13-34
+70            android:launchMode="singleTask"
+70-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:56:13-44
+71            android:parentActivityName="com.example.androidquicktrackmeet.MainActivity" />
+71-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:57:13-55
+72        <activity
+72-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:58:9-66:20
+73            android:name="com.example.androidquicktrackmeet.MainActivity"
+73-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:59:13-41
+74            android:launchMode="singleTask" >
+74-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:60:13-44
+75            <intent-filter>
+75-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:61:13-65:29
+76                <action android:name="android.intent.action.MAIN" />
+76-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:62:17-69
+76-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:62:25-66
+77
+78                <category android:name="android.intent.category.LAUNCHER" />
+78-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:64:17-77
+78-->/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/AndroidManifest.xml:64:27-74
+79            </intent-filter>
+80        </activity>
+81        <activity
+81-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:27:9-44:20
+82            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+82-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:28:13-80
+83            android:excludeFromRecents="true"
+83-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:29:13-46
+84            android:exported="true"
+84-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:30:13-36
+85            android:launchMode="singleTask"
+85-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:31:13-44
+86            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+86-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:32:13-72
+87            <intent-filter>
+87-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:33:13-43:29
+88                <action android:name="android.intent.action.VIEW" />
+88-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:17-69
+88-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:25-66
+89
+90                <category android:name="android.intent.category.DEFAULT" />
+90-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
+90-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
+91                <category android:name="android.intent.category.BROWSABLE" />
+91-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:17-78
+91-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:27-75
+92
+93                <data
+93-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:39:17-42:51
+94                    android:host="firebase.auth"
+94-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:40:21-49
+95                    android:path="/"
+95-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:41:21-37
+96                    android:scheme="genericidp" />
+96-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:42:21-48
+97            </intent-filter>
+98        </activity>
+99        <activity
+99-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:45:9-62:20
+100            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+100-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:46:13-79
+101            android:excludeFromRecents="true"
+101-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:47:13-46
+102            android:exported="true"
+102-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:48:13-36
+103            android:launchMode="singleTask"
+103-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:49:13-44
+104            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+104-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:50:13-72
+105            <intent-filter>
+105-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:51:13-61:29
+106                <action android:name="android.intent.action.VIEW" />
+106-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:17-69
+106-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:34:25-66
+107
+108                <category android:name="android.intent.category.DEFAULT" />
+108-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
+108-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
+109                <category android:name="android.intent.category.BROWSABLE" />
+109-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:17-78
+109-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:37:27-75
+110
+111                <data
+111-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:39:17-42:51
+112                    android:host="firebase.auth"
+112-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:40:21-49
+113                    android:path="/"
+113-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:41:21-37
+114                    android:scheme="recaptcha" />
+114-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:42:21-48
+115            </intent-filter>
+116        </activity>
+117
+118        <service
+118-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:64:9-73:19
+119            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
+119-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:65:13-101
+120            android:enabled="true"
+120-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:66:13-35
+121            android:exported="false" >
+121-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:67:13-37
+122            <intent-filter>
+122-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:68:13-72:29
+123                <action android:name="com.google.firebase.auth.api.gms.service.START" />
+123-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:69:17-89
+123-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:69:25-86
+124
+125                <category android:name="android.intent.category.DEFAULT" />
+125-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:17-76
+125-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:36:27-73
+126            </intent-filter>
+127        </service>
+128        <service
+128-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:74:9-80:19
+129            android:name="com.google.firebase.components.ComponentDiscoveryService"
+129-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:75:13-84
+130            android:directBootAware="true"
+130-->[com.google.firebase:firebase-common:20.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:35:13-43
+131            android:exported="false" >
+131-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:76:13-37
+132            <meta-data
+132-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:77:13-79:85
+133                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+133-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:78:17-109
+134                android:value="com.google.firebase.components.ComponentRegistrar" />
+134-->[com.google.firebase:firebase-auth:21.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa5c9d71e49d94ddd96894f0d2fe3b32/firebase-auth-21.0.1/AndroidManifest.xml:79:17-82
+135            <meta-data
+135-->[com.google.firebase:firebase-database:20.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/d04d33aa3e9158f85616b2ce7e5e21e7/firebase-database-20.0.1/AndroidManifest.xml:32:13-34:85
+136                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+136-->[com.google.firebase:firebase-database:20.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/d04d33aa3e9158f85616b2ce7e5e21e7/firebase-database-20.0.1/AndroidManifest.xml:33:17-109
+137                android:value="com.google.firebase.components.ComponentRegistrar" />
+137-->[com.google.firebase:firebase-database:20.0.1] /Users/brian/.gradle/caches/transforms-2/files-2.1/d04d33aa3e9158f85616b2ce7e5e21e7/firebase-database-20.0.1/AndroidManifest.xml:34:17-82
+138            <meta-data
+138-->[com.google.android.gms:play-services-measurement-api:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/de2c13ed196484300b446ed312f50cec/play-services-measurement-api-19.0.0/AndroidManifest.xml:30:13-32:85
+139                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+139-->[com.google.android.gms:play-services-measurement-api:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/de2c13ed196484300b446ed312f50cec/play-services-measurement-api-19.0.0/AndroidManifest.xml:31:17-139
+140                android:value="com.google.firebase.components.ComponentRegistrar" />
+140-->[com.google.android.gms:play-services-measurement-api:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/de2c13ed196484300b446ed312f50cec/play-services-measurement-api-19.0.0/AndroidManifest.xml:32:17-82
+141            <meta-data
+141-->[com.google.firebase:firebase-installations:17.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a30eae67e308f2990f34fd0ceabcf627/firebase-installations-17.0.0/AndroidManifest.xml:18:13-20:85
+142                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+142-->[com.google.firebase:firebase-installations:17.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a30eae67e308f2990f34fd0ceabcf627/firebase-installations-17.0.0/AndroidManifest.xml:19:17-127
+143                android:value="com.google.firebase.components.ComponentRegistrar" />
+143-->[com.google.firebase:firebase-installations:17.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a30eae67e308f2990f34fd0ceabcf627/firebase-installations-17.0.0/AndroidManifest.xml:20:17-82
+144        </service>
+145
+146        <activity
+146-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:23:9-27:75
+147            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+147-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:24:13-93
+148            android:excludeFromRecents="true"
+148-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:25:13-46
+149            android:exported="false"
+149-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:26:13-37
+150            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+150-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:27:13-72
+151        <!--
+152            Service handling Google Sign-In user revocation. For apps that do not integrate with
+153            Google Sign-In, this service will never be started.
+154        -->
+155        <service
+155-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:33:9-37:51
+156            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+156-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:34:13-89
+157            android:exported="true"
+157-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:35:13-36
+158            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+158-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:36:13-107
+159            android:visibleToInstantApps="true" />
+159-->[com.google.android.gms:play-services-auth:19.2.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/aa010aeeddb6e0be7e82475c4f6cf6e5/play-services-auth-19.2.0/AndroidManifest.xml:37:13-48
+160
+161        <provider
+161-->[com.google.firebase:firebase-common:20.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:26:9-31:39
+162            android:name="com.google.firebase.provider.FirebaseInitProvider"
+162-->[com.google.firebase:firebase-common:20.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:27:13-77
+163            android:authorities="com.example.androidquicktrackmeet.firebaseinitprovider"
+163-->[com.google.firebase:firebase-common:20.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:28:13-72
+164            android:directBootAware="true"
+164-->[com.google.firebase:firebase-common:20.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:29:13-43
+165            android:exported="false"
+165-->[com.google.firebase:firebase-common:20.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:30:13-37
+166            android:initOrder="100" />
+166-->[com.google.firebase:firebase-common:20.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/ba99f0db75ff1152780be89a71df52d7/firebase-common-20.0.0/AndroidManifest.xml:31:13-36
+167
+168        <activity
+168-->[com.google.android.gms:play-services-base:17.5.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/e6ebcc1aa38d1fbf18302b33ac84119e/play-services-base-17.5.0/AndroidManifest.xml:23:9-26:75
+169            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+169-->[com.google.android.gms:play-services-base:17.5.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/e6ebcc1aa38d1fbf18302b33ac84119e/play-services-base-17.5.0/AndroidManifest.xml:24:13-79
+170            android:exported="false"
+170-->[com.google.android.gms:play-services-base:17.5.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/e6ebcc1aa38d1fbf18302b33ac84119e/play-services-base-17.5.0/AndroidManifest.xml:25:13-37
+171            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+171-->[com.google.android.gms:play-services-base:17.5.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/e6ebcc1aa38d1fbf18302b33ac84119e/play-services-base-17.5.0/AndroidManifest.xml:26:13-72
+172
+173        <receiver
+173-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:29:9-33:20
+174            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+174-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:30:13-85
+175            android:enabled="true"
+175-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:31:13-35
+176            android:exported="false" >
+176-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:32:13-37
+177        </receiver>
+178
+179        <service
+179-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:35:9-38:40
+180            android:name="com.google.android.gms.measurement.AppMeasurementService"
+180-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:36:13-84
+181            android:enabled="true"
+181-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:37:13-35
+182            android:exported="false" />
+182-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:38:13-37
+183        <service
+183-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:39:9-43:72
+184            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+184-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:40:13-87
+185            android:enabled="true"
+185-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:41:13-35
+186            android:exported="false"
+186-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:42:13-37
+187            android:permission="android.permission.BIND_JOB_SERVICE" />
+187-->[com.google.android.gms:play-services-measurement:19.0.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/a2984f0210723d09e67626552b7d859d/play-services-measurement-19.0.0/AndroidManifest.xml:43:13-69
+188
+189        <meta-data
+189-->[com.google.android.gms:play-services-basement:17.5.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/fbb4f3ea1d174970a28ba7ffbf67fa8f/play-services-basement-17.5.0/AndroidManifest.xml:23:9-25:69
+190            android:name="com.google.android.gms.version"
+190-->[com.google.android.gms:play-services-basement:17.5.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/fbb4f3ea1d174970a28ba7ffbf67fa8f/play-services-basement-17.5.0/AndroidManifest.xml:24:13-58
+191            android:value="@integer/google_play_services_version" />
+191-->[com.google.android.gms:play-services-basement:17.5.0] /Users/brian/.gradle/caches/transforms-2/files-2.1/fbb4f3ea1d174970a28ba7ffbf67fa8f/play-services-basement-17.5.0/AndroidManifest.xml:25:13-66
+192    </application>
+193
+194</manifest>

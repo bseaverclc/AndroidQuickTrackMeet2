@@ -9,49 +9,49 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidQuickTrackMeet">
+        <activity android:name=".meets.themeet.meetathletes.AthleteEventsFromMeets"></activity>
+        <activity android:name=".meets.themeet.meetathletes.AddEventsToAthlete" />
         <activity
-            android:name=".MeetAthletesActivity"
+            android:name=".meets.themeet.meetathletes.MeetAthletesActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".HomeActivity"
-            />
-
+            android:parentActivityName=".meets.themeet.HomeActivity" />
         <activity
-            android:name=".AddAthlete"
+            android:name=".meets.themeet.events.theevent.addathletestoevent.AddAthlete"
             android:launchMode="singleTask"
-            android:parentActivityName=".AddAthleteToEventActivity"/>
+            android:parentActivityName=".meets.themeet.events.theevent.addathletestoevent.AddAthleteToEventActivity" />
         <activity
-            android:name=".ScoresActivity"
+            android:name=".meets.themeet.ScoresActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".meets.themeet.HomeActivity" />
         <activity
-            android:name=".AddAthleteToEventActivity"
+            android:name=".meets.themeet.events.theevent.addathletestoevent.AddAthleteToEventActivity"
             android:launchMode="singleTask"
             android:noHistory="true"
-            android:parentActivityName=".EventEditActivity" />
+            android:parentActivityName=".meets.themeet.events.theevent.EventEditActivity" />
         <activity
-            android:name=".EventEditActivity"
+            android:name=".meets.themeet.events.theevent.EventEditActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".EventsActivity"
+            android:parentActivityName=".meets.themeet.events.EventsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".EventsActivity"
+            android:name=".meets.themeet.events.EventsActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".meets.themeet.HomeActivity" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".meets.themeet.HomeActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".MeetsActivity" />
+            android:parentActivityName=".meets.MeetsActivity" />
         <activity
-            android:name=".AddMeetActivity"
+            android:name=".meets.AddMeetActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".MeetsActivity" />
+            android:parentActivityName=".meets.MeetsActivity" />
         <activity
-            android:name=".SchoolsActivity"
+            android:name=".schools.SchoolsActivity"
             android:label="Schools"
             android:launchMode="singleTask"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".MeetsActivity"
+            android:name=".meets.MeetsActivity"
             android:label="Meets"
             android:launchMode="singleTask"
             android:parentActivityName=".MainActivity" />
