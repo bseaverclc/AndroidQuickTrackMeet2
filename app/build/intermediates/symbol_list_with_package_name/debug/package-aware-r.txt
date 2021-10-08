@@ -2308,7 +2308,7 @@ layout activity_scores
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout check_access_alert
-layout custom_athleteslist
+layout custom_addathletetoevent
 layout custom_dialog
 layout custom_editeventlist
 layout custom_eventslist

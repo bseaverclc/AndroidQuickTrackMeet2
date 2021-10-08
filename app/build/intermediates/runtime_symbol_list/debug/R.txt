@@ -2307,7 +2307,7 @@ int layout activity_scores 0x7f0b0025
 int layout browser_actions_context_menu_page 0x7f0b0026
 int layout browser_actions_context_menu_row 0x7f0b0027
 int layout check_access_alert 0x7f0b0028
-int layout custom_athleteslist 0x7f0b0029
+int layout custom_addathletetoevent 0x7f0b0088
 int layout custom_dialog 0x7f0b002a
 int layout custom_editeventlist 0x7f0b002b
 int layout custom_eventslist 0x7f0b002c

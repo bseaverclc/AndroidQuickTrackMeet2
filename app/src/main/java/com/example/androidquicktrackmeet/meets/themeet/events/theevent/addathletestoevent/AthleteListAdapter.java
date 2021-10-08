@@ -46,7 +46,7 @@ public class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.custom_athleteslist, parent, false);
+        View view = mInflater.inflate(R.layout.custom_addathletetoevent, parent, false);
 
         return new ViewHolder(view);
     }
