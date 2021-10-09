@@ -32,6 +32,7 @@ public class AthleteEventsFromMeets extends AppCompatActivity {
 
         Intent intent = getIntent();
         selectedAthlete = (Athlete)intent.getSerializableExtra("selectedAthlete");
+        System.out.println(selectedAthlete.getLast() + "was accepted");
 
 
         for(Event e : selectedAthlete.showEvents()) {

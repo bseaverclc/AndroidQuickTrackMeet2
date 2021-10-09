@@ -61,7 +61,7 @@ public class MeetAthletesAdapter extends RecyclerView.Adapter<MeetAthletesAdapte
                 TextView tv = new TextView(context);
                 tv.setText(e.getName());
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT);
-                params.setMargins(10,0,10,0);
+                params.setMargins(10, 0, 10, 0);
 
                 GridLayout.LayoutParams gParams = new GridLayout.LayoutParams();
                 gParams.columnSpec =
@@ -70,21 +70,21 @@ public class MeetAthletesAdapter extends RecyclerView.Adapter<MeetAthletesAdapte
                 //tv.setLayoutParams(gParams);
 
 
-               // tv.setTextSize(20);
+                // tv.setTextSize(20);
                 TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
                 holder.gridLayout.addView(tv);
-
+            }
                 holder.athleteNameYr.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        System.out.println("clicked on athletNameYr");
+                        System.out.println("clicked on " + a.getLast() + " at position " + position);
                         Intent intent = new Intent(context, AthleteEventsFromMeets.class);
 
-                        intent.putExtra("selectedAthlete", athletes.get(position));
+                        intent.putExtra("selectedAthlete", a);
                         context.startActivity(intent);
                     }
                 });
-            }
+
 
         }
 
@@ -120,7 +120,9 @@ public class MeetAthletesAdapter extends RecyclerView.Adapter<MeetAthletesAdapte
 
         @Override
         public void onClick(View v) {
+
             System.out.println("clicked on a row");
+
 
         }
     }
