@@ -1817,6 +1817,7 @@ id animateToEnd
 id animateToStart
 id asConfigured
 id async
+id athleteEventsFromMeets
 id athleteNameYear
 id athletesButton
 id athleticButton
@@ -1914,6 +1915,7 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
+id eventName
 id eventsButton
 id exitUntilCollapsed
 id expand_activities_button
@@ -2305,6 +2307,7 @@ layout activity_meet_athletes
 layout activity_meets
 layout activity_schools2
 layout activity_scores
+layout adapter_athlete_events_from_meets
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout check_access_alert

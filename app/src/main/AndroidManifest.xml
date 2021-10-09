@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidQuickTrackMeet">
-        <activity android:name=".meets.themeet.meetathletes.AthleteEventsFromMeets"></activity>
+        <activity android:name=".meets.themeet.meetathletes.AthleteEventsFromMeets"
+            android:launchMode="singleTask"
+            android:parentActivityName=".meets.themeet.meetathletes.MeetAthletesActivity"/>
+
+
         <activity android:name=".meets.themeet.meetathletes.AddEventsToAthlete" />
         <activity
             android:name=".meets.themeet.meetathletes.MeetAthletesActivity"

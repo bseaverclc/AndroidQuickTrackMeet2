@@ -1816,6 +1816,7 @@ int id animateToEnd 0x7f08004d
 int id animateToStart 0x7f08004e
 int id asConfigured 0x7f08004f
 int id async 0x7f080050
+int id athleteEventsFromMeets 0x7f0801f6
 int id athleteNameYear 0x7f0801f2
 int id athletesButton 0x7f080051
 int id athleticButton 0x7f080052
@@ -1913,6 +1914,7 @@ int id end 0x7f0800ad
 int id endToStart 0x7f0800ae
 int id enterAlways 0x7f0800af
 int id enterAlwaysCollapsed 0x7f0800b0
+int id eventName 0x7f0801f7
 int id eventsButton 0x7f0800b1
 int id exitUntilCollapsed 0x7f0800b2
 int id expand_activities_button 0x7f0800b3
@@ -2304,6 +2306,7 @@ int layout activity_meet_athletes 0x7f0b0084
 int layout activity_meets 0x7f0b0023
 int layout activity_schools2 0x7f0b0024
 int layout activity_scores 0x7f0b0025
+int layout adapter_athlete_events_from_meets 0x7f0b0089
 int layout browser_actions_context_menu_page 0x7f0b0026
 int layout browser_actions_context_menu_row 0x7f0b0027
 int layout check_access_alert 0x7f0b0028

@@ -1,6 +1,7 @@
 package com.example.androidquicktrackmeet.meets.themeet.meetathletes;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.androidquicktrackmeet.AppData;
 import com.example.androidquicktrackmeet.Athlete;
+import com.example.androidquicktrackmeet.meets.themeet.ScoresActivity;
 import com.example.androidquicktrackmeet.meets.themeet.events.theevent.addathletestoevent.AthleteListAdapter;
 import com.example.androidquicktrackmeet.R;
 import com.example.androidquicktrackmeet.Event;
@@ -75,7 +77,11 @@ public class MeetAthletesAdapter extends RecyclerView.Adapter<MeetAthletesAdapte
                 holder.athleteNameYr.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        System.out.println("clicked on athletNameYr");
+                        Intent intent = new Intent(context, AthleteEventsFromMeets.class);
 
+                        intent.putExtra("selectedAthlete", athletes.get(position));
+                        context.startActivity(intent);
                     }
                 });
             }
@@ -105,6 +111,7 @@ public class MeetAthletesAdapter extends RecyclerView.Adapter<MeetAthletesAdapte
             super(itemView);
 
             athleteNameYr = (TextView) itemView.findViewById(R.id.athleteNameYear);
+            System.out.println("GridLayout being created");
             gridLayout = (GridLayout)itemView.findViewById(R.id.gridLayout);
 
             //row = itemView.findViewById(R.id.row);

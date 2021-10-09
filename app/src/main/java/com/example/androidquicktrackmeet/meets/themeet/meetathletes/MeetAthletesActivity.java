@@ -45,6 +45,8 @@ public class MeetAthletesActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);
 
+
+
         LinearLayoutCompat linearLayout = (LinearLayoutCompat)findViewById(R.id.schoolRow);
         for(Map.Entry<String,String> s: AppData.selectedMeet.getSchools().entrySet()){
             Button but = new Button(this);
@@ -74,6 +76,8 @@ public class MeetAthletesActivity extends AppCompatActivity {
 
         }
     }
+
+
 
 
 
