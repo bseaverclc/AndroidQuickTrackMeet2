@@ -35,9 +35,6 @@ public class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.
         //super(context, R.layout.custom_athleteslist, athletes);
         this.mInflater = LayoutInflater.from(context);
         this.athletes = athletes;
-
-
-
         this.context = context;
 
 
