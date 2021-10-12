@@ -29,33 +29,19 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AthleteEventsFromMeetsAdapter extends RecyclerView.Adapter<AthleteEventsFromMeetsAdapter.ViewHolder>  {
 
 
-
+    private final ArrayList<Event> events;
     private Athlete athlete;
-    // private Meet meet;
-    private LayoutInflater mInflater;
 
+    private LayoutInflater mInflater;
+    private AthleteEventsFromMeetsAdapter adapter = this;
     private RecyclerView recyclerView;
 
-    //private final Activity context;
-    // private final String[] names;
-    //private final Integer[] grades;
-    private final ArrayList<Event> events;
-    private AthleteEventsFromMeetsAdapter adapter = this;
-    //private Meet meet;
 
-    // private final Integer[] imgid;
     public AthleteEventsFromMeetsAdapter(ArrayList<Event> events, Athlete athlete) {
-       // super(context, R.layout.adapter_athlete_events_from_meets, events);
 
-        //this.mInflater = LayoutInflater.from(context);
-        //this.context=context;
-        // this.names=names;
-        // this.grades=grades;
-        //this.imgid=imgid;
         this.events = events;
         this.athlete = athlete;
-        //this.meet = meet;
-        //this.context = context;
+
 
 
     }

@@ -6,4 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".meets.themeet.meetathletes.AddEventsToAthlete">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

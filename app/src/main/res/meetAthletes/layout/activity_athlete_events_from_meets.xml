@@ -7,6 +7,9 @@
     android:id="@+id/linearLayout"
     tools:context=".meets.themeet.meetathletes.AthleteEventsFromMeets">
 
+
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"
         android:layout_width="match_parent"

@@ -24,6 +24,20 @@ public class MeetAthletesActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     MeetAthletesAdapter adapter;
 
+
+    @Override
+    protected void onResume() {
+
+        displayedAthletes.clear();
+        for(Athlete a: AppData.allAthletes){
+            if(AppData.selectedMeet.getSchools().keySet().contains(a.getSchoolFull())){
+                displayedAthletes.add(a);
+            }
+        }
+        adapter.notifyDataSetChanged();
+        super.onResume();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

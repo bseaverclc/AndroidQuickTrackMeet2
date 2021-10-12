@@ -27,7 +27,10 @@
             android:name="com.example.androidquicktrackmeet.meets.themeet.meetathletes.AthleteEventsFromMeets"
             android:launchMode="singleTask"
             android:parentActivityName="com.example.androidquicktrackmeet.meets.themeet.meetathletes.MeetAthletesActivity" />
-        <activity android:name="com.example.androidquicktrackmeet.meets.themeet.meetathletes.AddEventsToAthlete" />
+        <activity
+            android:name="com.example.androidquicktrackmeet.meets.themeet.meetathletes.AddEventsToAthlete"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.example.androidquicktrackmeet.meets.themeet.meetathletes.AthleteEventsFromMeets" />
         <activity
             android:name="com.example.androidquicktrackmeet.meets.themeet.meetathletes.MeetAthletesActivity"
             android:launchMode="singleTask"
