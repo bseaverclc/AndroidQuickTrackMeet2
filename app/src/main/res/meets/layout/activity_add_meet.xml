@@ -35,5 +35,37 @@
                 />
         </RadioGroup>
 
+        <Button
+            android:id="@+id/setDateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="setDate"
+            android:text="Set Date" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date?"
+            android:id="@+id/meetDate"
+            android:layout_gravity="center"
+
+            />
+        <Button
+            android:id="@+id/setDateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="selectSchools"
+            android:text="Select Schools" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Schools"
+            android:layout_gravity="center"
+            android:id="@+id/theSchools" />
+
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

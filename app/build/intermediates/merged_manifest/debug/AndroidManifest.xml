@@ -24,9 +24,13 @@
         android:testOnly="true"
         android:theme="@style/Theme.AndroidQuickTrackMeet" >
         <activity
-            android:name="com.example.androidquicktrackmeet.meets.themeet.meetathletes.AthleteEventsFromMeets"
+            android:name="com.example.androidquicktrackmeet.meets.AddSchoolsToMeet"
             android:launchMode="singleTask"
             android:parentActivityName="com.example.androidquicktrackmeet.meets.themeet.meetathletes.MeetAthletesActivity" />
+        <activity
+            android:name="com.example.androidquicktrackmeet.meets.themeet.meetathletes.AthleteEventsFromMeets"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.example.androidquicktrackmeet.meets.AddMeetActivity" />
         <activity
             android:name="com.example.androidquicktrackmeet.meets.themeet.meetathletes.AddEventsToAthlete"
             android:launchMode="singleTask"

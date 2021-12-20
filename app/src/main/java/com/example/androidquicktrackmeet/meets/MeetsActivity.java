@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -18,6 +20,7 @@ import com.example.androidquicktrackmeet.Meet;
 import com.example.androidquicktrackmeet.meets.themeet.HomeActivity;
 import com.example.androidquicktrackmeet.R;
 import com.example.androidquicktrackmeet.School;
+import com.example.androidquicktrackmeet.meets.themeet.meetathletes.AddEventsToAthlete;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -59,6 +62,28 @@ private ListView listView;
         Meet.canCoach = false;
         Meet.canManage = false;
         System.out.println("onResume happening");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.addmenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_add) {
+            Intent intent = new Intent(this, AddMeetActivity.class);
+
+            //intent.putExtra("selectedAthlete", selectedAthlete);
+           // intent.putExtra("events", displayedEvents);
+
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void attachListener(){

@@ -2007,6 +2007,7 @@ int id material_timepicker_view 0x7f080102
 int id material_value_index 0x7f080103
 int id meetAthletesRecycler 0x7f0801f4
 int id meetCodeEditText 0x7f080104
+int id meetDate 0x7f080201
 int id meetName 0x7f080105
 int id meetsButton 0x7f080106
 int id message 0x7f080107
@@ -2124,6 +2125,7 @@ int id section_item_text_view 0x7f08016e
 int id select_dialog_listview 0x7f08016f
 int id selected 0x7f080170
 int id selection_type 0x7f080171
+int id setDateButton 0x7f080200
 int id shortcut 0x7f080172
 int id showCustom 0x7f080173
 int id showHome 0x7f080174
@@ -2196,6 +2198,7 @@ int id textinput_helper_text 0x7f0801b6
 int id textinput_placeholder 0x7f0801b7
 int id textinput_prefix_text 0x7f0801b8
 int id textinput_suffix_text 0x7f0801b9
+int id theSchools 0x7f080203
 int id time 0x7f0801ba
 int id title 0x7f0801bb
 int id titleDividerNoCustom 0x7f0801bc
@@ -2304,6 +2307,7 @@ int layout activity_add_athlete2 0x7f0b001c
 int layout activity_add_athlete_to_event 0x7f0b001d
 int layout activity_add_events_to_athlete 0x7f0b0086
 int layout activity_add_meet 0x7f0b001e
+int layout activity_add_schools_to_meet 0x7f0b008b
 int layout activity_athlete_events_from_meets 0x7f0b0087
 int layout activity_event_edit 0x7f0b001f
 int layout activity_events 0x7f0b0020
@@ -2314,6 +2318,7 @@ int layout activity_meets 0x7f0b0023
 int layout activity_schools2 0x7f0b0024
 int layout activity_scores 0x7f0b0025
 int layout adapter_add_events_to_athlete 0x7f0b008a
+int layout adapter_add_schools_to_meet 0x7f0b008c
 int layout adapter_athlete_events_from_meets 0x7f0b0089
 int layout browser_actions_context_menu_page 0x7f0b0026
 int layout browser_actions_context_menu_row 0x7f0b0027
