@@ -1,5 +1,6 @@
 package com.example.androidquicktrackmeet.meets;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -28,6 +29,7 @@ import java.util.Map;
 
 public class MeetsActivity extends AppCompatActivity {
 private ListView listView;
+private MeetsListAdapter adapter;
 //private Meet selectedMeet;
 
 
@@ -43,10 +45,11 @@ private ListView listView;
         Collections.reverse(AppData.meets);
 
 
-        MeetsListAdapter adapter=new MeetsListAdapter(this, AppData.meets);
+        adapter=new MeetsListAdapter(this, AppData.meets);
         listView=(ListView)findViewById(R.id.listView);
         listView.setAdapter(adapter);
         attachListener();
+
 
 
     }
@@ -62,7 +65,15 @@ private ListView listView;
         Meet.canCoach = false;
         Meet.canManage = false;
         System.out.println("onResume happening");
+        Comparator<Meet> sortByDate = (Meet o1, Meet o2) -> {
+            return o1.getDate2().compareTo(o2.getDate2());
+        };
+        Collections.sort(AppData.meets, sortByDate);
+        Collections.reverse(AppData.meets);
+       adapter.notifyDataSetChanged();
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -77,7 +88,7 @@ private ListView listView;
             Intent intent = new Intent(this, AddMeetActivity.class);
 
             //intent.putExtra("selectedAthlete", selectedAthlete);
-           // intent.putExtra("events", displayedEvents);
+            // intent.putExtra("events", displayedEvents);
 
             startActivity(intent);
             return true;

@@ -1807,6 +1807,7 @@ int id add 0x7f080044
 int id addButton 0x7f080045
 int id addSelectedButton 0x7f080046
 int id addToRoster 0x7f0801f0
+int id add_athlete 0x7f080220
 int id add_selected 0x7f0801ff
 int id adjust_height 0x7f080047
 int id adjust_width 0x7f080048
@@ -1818,7 +1819,9 @@ int id animateToEnd 0x7f08004d
 int id animateToStart 0x7f08004e
 int id asConfigured 0x7f08004f
 int id async 0x7f080050
+int id athleteName 0x7f08021d
 int id athleteNameYear 0x7f0801f2
+int id athleteYear 0x7f08021e
 int id athletesButton 0x7f080051
 int id athleticButton 0x7f080052
 int id auto 0x7f080053
@@ -1847,6 +1850,7 @@ int id center_horizontal 0x7f080069
 int id center_vertical 0x7f08006a
 int id chain 0x7f08006b
 int id chains 0x7f08006c
+int id check_coaches 0x7f080221
 int id checkbox 0x7f08006d
 int id checked 0x7f08006e
 int id chip 0x7f08006f
@@ -1862,6 +1866,7 @@ int id clip_horizontal 0x7f080078
 int id clip_vertical 0x7f080079
 int id clockwise 0x7f08007a
 int id coachButton 0x7f08007b
+int id coachCode 0x7f080217
 int id collapseActionView 0x7f08007c
 int id confirm_button 0x7f08007d
 int id container 0x7f08007e
@@ -1907,6 +1912,7 @@ int id easeInOut 0x7f0800a5
 int id easeOut 0x7f0800a6
 int id editMark 0x7f0800a7
 int id editPlace 0x7f0800a8
+int id edit_info 0x7f08021c
 int id edit_query 0x7f0800a9
 int id elastic 0x7f0800aa
 int id email 0x7f0800ab
@@ -1935,6 +1941,8 @@ int id flip 0x7f0800bd
 int id floating 0x7f0800be
 int id forever 0x7f0800bf
 int id fragment_container_view_tag 0x7f0800c0
+int id fs 0x7f080204
+int id fullSchoolEdit 0x7f080222
 int id ghost_view 0x7f0800c1
 int id ghost_view_holder 0x7f0800c2
 int id gone 0x7f0800c3
@@ -1958,7 +1966,16 @@ int id ifRoom 0x7f0800d3
 int id ignore 0x7f0800d4
 int id ignoreRequest 0x7f0800d5
 int id image 0x7f0800d6
+int id ind1 0x7f080207
+int id ind2 0x7f080208
+int id ind3 0x7f080209
+int id ind4 0x7f08020a
+int id ind5 0x7f08020b
+int id ind6 0x7f08020c
+int id ind7 0x7f08020d
+int id ind8 0x7f08020e
 int id info 0x7f0800d7
+int id initEdit 0x7f080223
 int id invisible 0x7f0800d8
 int id inward 0x7f0800d9
 int id italic 0x7f0800da
@@ -1966,6 +1983,7 @@ int id item_recycler_view 0x7f0800db
 int id item_touch_helper_previous_elevation 0x7f0800dc
 int id jumpToEnd 0x7f0800dd
 int id jumpToStart 0x7f0800de
+int id jv 0x7f080205
 int id labelGroup 0x7f0800df
 int id labeled 0x7f0800e0
 int id largeLabel 0x7f0800e1
@@ -1985,6 +2003,7 @@ int id list_item 0x7f0800ec
 int id list_item_text_view 0x7f0800ed
 int id logOutButton 0x7f0800ee
 int id managerButton 0x7f0800ef
+int id managerCode 0x7f080218
 int id masked 0x7f0800f0
 int id material_clock_display 0x7f0800f1
 int id material_clock_face 0x7f0800f2
@@ -2010,6 +2029,7 @@ int id meetCodeEditText 0x7f080104
 int id meetDate 0x7f080201
 int id meetName 0x7f080105
 int id meetsButton 0x7f080106
+int id menRadio 0x7f080219
 int id message 0x7f080107
 int id middle 0x7f080108
 int id mini 0x7f080109
@@ -2083,6 +2103,14 @@ int id recyclerView 0x7f08014b
 int id recyclerView2 0x7f0801f8
 int id recyclerView3 0x7f0801fd
 int id refreshButton 0x7f08014c
+int id rel1 0x7f08020f
+int id rel2 0x7f080210
+int id rel3 0x7f080211
+int id rel4 0x7f080212
+int id rel5 0x7f080213
+int id rel6 0x7f080214
+int id rel7 0x7f080215
+int id rel8 0x7f080216
 int id relativeScreen 0x7f0801ef
 int id reverseSawtooth 0x7f08014d
 int id right 0x7f08014e
@@ -2093,6 +2121,7 @@ int id rounded 0x7f080152
 int id row 0x7f080153
 int id row3 0x7f0801fe
 int id row_index_key 0x7f080154
+int id salistView 0x7f08021f
 int id save_non_transition_alpha 0x7f080155
 int id save_overlay_view 0x7f080156
 int id sawtooth 0x7f080157
@@ -2161,6 +2190,8 @@ int id staticPostLayout 0x7f080191
 int id stop 0x7f080192
 int id stretch 0x7f080193
 int id submenuarrow 0x7f080194
+int id submit 0x7f0801e7
+int id submitSchool 0x7f080224
 int id submit_area 0x7f080195
 int id subtitle 0x7f080196
 int id tabMode 0x7f080197
@@ -2224,15 +2255,18 @@ int id uniform 0x7f0801cd
 int id unlabeled 0x7f0801ce
 int id up 0x7f0801cf
 int id useLogo 0x7f0801d0
+int id var 0x7f080206
 int id view_offset_helper 0x7f0801d1
 int id view_tree_lifecycle_owner 0x7f0801d2
 int id view_tree_saved_state_registry_owner 0x7f0801d3
 int id view_tree_view_model_store_owner 0x7f0801d4
 int id visible 0x7f0801d5
 int id visible_removing_fragment_view_tag 0x7f0801d6
+int id wholeScreen 0x7f08021b
 int id wide 0x7f0801d7
 int id withText 0x7f0801d8
 int id withinBounds 0x7f0801d9
+int id womenRadio 0x7f08021a
 int id wrap 0x7f0801da
 int id wrap_content 0x7f0801db
 int id year10 0x7f0801e8
@@ -2307,6 +2341,7 @@ int layout activity_add_athlete2 0x7f0b001c
 int layout activity_add_athlete_to_event 0x7f0b001d
 int layout activity_add_events_to_athlete 0x7f0b0086
 int layout activity_add_meet 0x7f0b001e
+int layout activity_add_school 0x7f0b008f
 int layout activity_add_schools_to_meet 0x7f0b008b
 int layout activity_athlete_events_from_meets 0x7f0b0087
 int layout activity_event_edit 0x7f0b001f
@@ -2315,11 +2350,13 @@ int layout activity_home 0x7f0b0021
 int layout activity_main 0x7f0b0022
 int layout activity_meet_athletes 0x7f0b0084
 int layout activity_meets 0x7f0b0023
+int layout activity_school_athletes 0x7f0b008d
 int layout activity_schools2 0x7f0b0024
 int layout activity_scores 0x7f0b0025
 int layout adapter_add_events_to_athlete 0x7f0b008a
 int layout adapter_add_schools_to_meet 0x7f0b008c
 int layout adapter_athlete_events_from_meets 0x7f0b0089
+int layout adapter_school_athletes 0x7f0b008e
 int layout browser_actions_context_menu_page 0x7f0b0026
 int layout browser_actions_context_menu_row 0x7f0b0027
 int layout check_access_alert 0x7f0b0028
@@ -2417,6 +2454,8 @@ int layout text_view_with_theme_line_height 0x7f0b0082
 int layout text_view_without_line_height 0x7f0b0083
 int menu addmenu 0x7f120000
 int menu addselected 0x7f120001
+int menu editmenu 0x7f120002
+int menu schoolathletesmenu 0x7f120003
 int mipmap ic_launcher 0x7f0c0000
 int mipmap ic_launcher_round 0x7f0c0001
 int plurals mtrl_badge_content_description 0x7f0d0000

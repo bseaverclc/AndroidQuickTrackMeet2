@@ -15,7 +15,7 @@
             android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_weight="0.85"
 
             android:text="School Name"
             android:textStyle="bold"
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:gravity="right"
-                android:layout_weight="0.5"
+                android:layout_weight="0.15"
 
                 android:text = "Initials"
                 android:textAppearance="?android:attr/textAppearanceSmall"

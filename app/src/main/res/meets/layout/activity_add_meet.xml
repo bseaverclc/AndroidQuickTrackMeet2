@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".meets.AddMeetActivity">
+    tools:context=".meets.AddMeetActivity"
+    >
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:id="@+id/wholeScreen"
         >
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Meet Name (can't change!)"
+            android:id="@+id/meetName"
             />
 
         <RadioGroup
@@ -27,11 +30,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Men"
+                android:id="@+id/menRadio"
                 />
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Women"
+                android:id="@+id/womenRadio"
                 />
         </RadioGroup>
 
@@ -41,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="setDate"
-            android:text="Set Date" />
+            android:text="Set Meet Date" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -64,6 +69,246 @@
             android:text="No Schools"
             android:layout_gravity="center"
             android:id="@+id/theSchools" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/var"
+                android:text="VAR" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fs"
+                android:text="F/S" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/jv"
+                android:text="JV" />
+
+
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+            <TableRow>
+                <TextView
+                    android:text="Scoring"
+                    android:layout_weight="0.2"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal" />
+                <TextView
+                    android:text="1"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <TextView
+                    android:text="2"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <TextView
+                    android:text="3"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <TextView
+                    android:text="4"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <TextView
+                    android:text="5"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <TextView
+                    android:text="6"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <TextView
+                    android:text="7"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <TextView
+                    android:text="8"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Individual"
+                    android:layout_weight="0.2"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal" />
+                <EditText
+                    android:hint="0"
+                    android:text="7"
+                    android:id="@+id/ind1"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/ind2"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/ind3"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/ind4"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/ind5"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/ind6"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/ind7"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/ind8"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Relay"
+                    android:layout_weight="0.2"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal" />
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/rel1"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/rel2"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/rel3"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/rel4"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/rel5"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/rel6"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/rel7"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+                <EditText
+                    android:hint="0"
+                    android:id="@+id/rel8"
+                    android:layout_weight="0.1"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"/>
+            </TableRow>
+
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3
+"
+                android:text="Coaches Code:  "
+               />
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:hint="enter coaches code"
+                android:id="@+id/coachCode"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3
+"
+                android:text="Manager Code:  "
+                />
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:hint="enter coaches code"
+                android:id="@+id/managerCode"/>
+
+
+        </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_gravity="center"
+        android:id="@+id/submit"
+        android:onClick="onSubmit"/>
+
 
 
 

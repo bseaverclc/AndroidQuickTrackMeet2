@@ -112,12 +112,64 @@ public Meet(String name, Date date, HashMap<String,String> schools, String gende
         bs.put("beenScored", beenScored);
         ref.updateChildren(bs);
     }
-//    func updatebeenScoredFirebase(){
-//        let ref = Database.database().reference().child("meets").child(uid!)
-//
-//        ref.updateChildValues(["beenScored": beenScored])
-//
-//    }
+
+    public void updateFirebase(Meet m)
+    {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("meets").child(this.uid);
+
+        SimpleDateFormat outputFormat = new SimpleDateFormat("MM/dd/yy");
+        String datey = outputFormat.format(m.getDate2());
+
+
+        HashMap<String,Object> hash = new HashMap<String,Object>();
+        hash.put("name", m.getName());
+        hash.put("date", datey);
+        hash.put("schools", m.getSchools());
+        hash.put("gender", m.getGender());
+        hash.put("levels", m.getLevels());
+        hash.put("events", m.getEvents());
+        hash.put("indPoints", m.getIndPoints());
+        hash.put("relPoints", m.getRelPoints());
+        hash.put("beenScored", m.getBeenScored());
+        hash.put("coachCode", m.getCoachCode());
+        hash.put("managerCode", m.getManagerCode());
+        hash.put("userId", m.getUserId());
+
+        mDatabase.updateChildren(hash);
+
+    }
+
+    public void saveToFirebase(){
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("meets").push();
+        uid = mDatabase.getKey();
+        this.setUid(uid);
+
+//        let dict = ["name": self.name, "date": dateString, "schools": self.schools,
+//                "gender":self.gender, "levels":self.levels, "events": self.events,
+//                "indPoints":self.indPoints, "relPoints": self.relPoints,
+//                "beenScored": self.beenScored, "coachCode": coachCode,
+//                "managerCode": managerCode, "userId": userId] as [String : Any]
+
+        SimpleDateFormat outputFormat = new SimpleDateFormat("MM/dd/yy");
+        String datey = outputFormat.format(date);
+
+
+        HashMap<String,Object> hash = new HashMap<String,Object>();
+        hash.put("name", name);
+        hash.put("date", datey);
+        hash.put("schools", schools);
+        hash.put("gender", gender);
+        hash.put("levels", levels);
+        hash.put("events", events);
+        hash.put("indPoints", indPoints);
+        hash.put("relPoints", relPoints);
+        hash.put("beenScored", beenScored);
+        hash.put("coachCode", coachCode);
+        hash.put("managerCode", managerCode);
+        hash.put("userId", userId);
+
+        mDatabase.setValue(hash);
+    }
 
 
 

@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import com.example.androidquicktrackmeet.AppData;
 import com.example.androidquicktrackmeet.Athlete;
 import com.example.androidquicktrackmeet.R;
+import com.example.androidquicktrackmeet.School;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -29,6 +30,8 @@ public class AddAthlete extends AppCompatActivity {
     private EditText firstName, lastName;
     private RelativeLayout relativeScreen;
 
+    private String theSchool;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,21 +43,41 @@ public class AddAthlete extends AppCompatActivity {
         yearRadio = (RadioGroup)findViewById(R.id.yearRadio);
         schoolRadio = (RadioGroup)findViewById(R.id.schoolRadio);
         relativeScreen =(RelativeLayout)findViewById(R.id.relativeScreen);
-
+        setTitle("Add an Athlete");
 
 
         Intent intent = getIntent();
         //meet = (Meet)intent.getSerializableExtra("meet");
 
         event = (String) intent.getSerializableExtra("event");
-        level = event.substring(event.length() - 3);
-        eventAthletes = (ArrayList<Athlete>) intent.getSerializableExtra("athletes");
-        setTitle("Add an Athlete");
+        if(event != null)
+        {
+            level = event.substring(event.length() - 3);
+            eventAthletes = (ArrayList<Athlete>) intent.getSerializableExtra("athletes");
 
-        for(String sch: AppData.selectedMeet.getSchools().values()){
+
+            for (String sch : AppData.selectedMeet.getSchools().values()) {
+                RadioButton button = new RadioButton(this);
+                button.setText(sch);
+                schoolRadio.addView(button);
+            }
+        }
+
+        theSchool = (String) intent.getSerializableExtra("theSchool");
+        if(theSchool != null)
+        {
+            String schoolInit = "";
+           for(School s: AppData.schools)
+           {
+               if(s.getFull().equalsIgnoreCase(theSchool))
+               {
+                   schoolInit = s.getInits();
+               }
+           }
             RadioButton button = new RadioButton(this);
-            button.setText(sch);
+            button.setText(schoolInit);
             schoolRadio.addView(button);
+            button.setChecked(true);
         }
 
 
@@ -100,10 +123,16 @@ public class AddAthlete extends AppCompatActivity {
         } else {
 
             String schoolFull = "";
-            for (Map.Entry<String, String> entry : AppData.selectedMeet.getSchools().entrySet()) {
-                if (entry.getValue().equalsIgnoreCase(selectedSchool.getText().toString())) {
-                    schoolFull = entry.getKey();
+            if(theSchool == null)
+            {
+                for (Map.Entry<String, String> entry : AppData.selectedMeet.getSchools().entrySet()) {
+                    if (entry.getValue().equalsIgnoreCase(selectedSchool.getText().toString())) {
+                        schoolFull = entry.getKey();
+                    }
                 }
+            }
+            else{
+                schoolFull = theSchool;
             }
             System.out.println("FirstLast " + first + last + selectedSchool.getText().toString() + schoolFull);
 
@@ -120,8 +149,10 @@ public class AddAthlete extends AppCompatActivity {
 
                 AppData.allAthletes.add(a);
                 a.saveToFirebase();
-                a.addEvent(event, level, AppData.selectedMeet.getName());
-                eventAthletes.add(a);
+                if(event != null) {
+                    a.addEvent(event, level, AppData.selectedMeet.getName());
+                    eventAthletes.add(a);
+                }
                 finish();
             }
 

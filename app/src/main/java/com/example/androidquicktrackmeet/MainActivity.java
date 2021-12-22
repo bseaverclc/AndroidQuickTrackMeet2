@@ -277,9 +277,20 @@ public class MainActivity extends AppCompatActivity {
                     m.addDate(new Date());
                 }
 
+                boolean add = true;
+                for(Meet am: AppData.meets){
+                    if(am.getName().equalsIgnoreCase(m.getName())){
+                        add = false;
+                        break;
+                    }
+                }
+                if(add) {
+                    AppData.meets.add(m);
+                }
 
 
-                AppData.meets.add(m);
+
+                //AppData.meets.add(m);
                // System.out.println(m.getDate2());
               //  System.out.println("total meets added "+ AppData.meets.size());
 
@@ -460,6 +471,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
                 School s = snapshot.getValue((School.class));
+                s.setUid(snapshot.getKey());
+                for(School oldSchool: AppData.schools)
+                {
+                    if(oldSchool.showUid().equals(s.showUid()))
+                    {
+                        return;
+                    }
+                }
                 AppData.schools.add(s);
             }
 

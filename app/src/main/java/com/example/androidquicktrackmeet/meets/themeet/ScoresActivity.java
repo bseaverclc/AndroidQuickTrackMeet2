@@ -41,18 +41,18 @@ public class ScoresActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scores);
         linearLayout = (LinearLayout)this.findViewById(R.id.linearLayoutScores);
         Intent intent = getIntent();
-        meet = (Meet)intent.getSerializableExtra("meet");
+        //meet = (Meet)intent.getSerializableExtra("meet");
 
         meetName = (TextView)this.findViewById(R.id.meetName);
-        meetName.setText(meet.getName());
+        meetName.setText(AppData.selectedMeet.getName());
         setTitle("Team Scores");
 
-        Collection<String> values = meet.getSchools().values();
+        Collection<String> values = AppData.selectedMeet.getSchools().values();
         ArrayList<String> initials = new ArrayList<String>(values);
         Collections.sort(initials);
 
 
-        for(String lev: meet.getLevels()){
+        for(String lev: AppData.selectedMeet.getLevels()){
             HashMap<String, Double> inner = new HashMap<String, Double>();
             for(int i = 0; i < initials.size(); i++) {
 
@@ -87,7 +87,7 @@ public class ScoresActivity extends AppCompatActivity {
 
 
     public void displayScores(){
-        for (String l: meet.getLevels()){
+        for (String l: AppData.selectedMeet.getLevels()){
             TextView levelTitle = new TextView(this);
             levelTitle.setText(l + " Scores");
             TextViewCompat.setTextAppearance(levelTitle, android.R.style.TextAppearance_Medium);
@@ -115,14 +115,14 @@ public class ScoresActivity extends AppCompatActivity {
 
                 String fullSchool = "";
 
-                for (Map.Entry<String,String> sch: meet.getSchools().entrySet()) {
+                for (Map.Entry<String,String> sch: AppData.selectedMeet.getSchools().entrySet()) {
                     if (sch.getValue().equalsIgnoreCase(ts.getKey())) {
                         fullSchool = sch.getKey();
                         break;
                     }
                 }
 
-                output += "S,"+ meet.getGender() + "," + l + ",," + fullSchool + "," + ts.getValue() + "\n";
+                output += "S,"+ AppData.selectedMeet.getGender() + "," + l + ",," + fullSchool + "," + ts.getValue() + "\n";
 
 
             }
@@ -135,7 +135,7 @@ public class ScoresActivity extends AppCompatActivity {
         public void computeScores(){
         for(Athlete a : AppData.allAthletes){
             for(Event e : a.showEvents()){
-                if (e.getMeetName().equalsIgnoreCase(meet.getName())){
+                if (e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName())){
                     if(!e.getMarkString().equalsIgnoreCase("")){
                         String units = "";
                         if(e.getName().contains("Jump") || e.getName().contains("Vault") || e.getName().contains("Shot") || e.getName().contains("Discus")){
@@ -171,19 +171,19 @@ public class ScoresActivity extends AppCompatActivity {
 
 
                             if (e.getPlace() != null) {
-                                output += "R," + meet.getGender() + "," + e.getLevel() + "," + e.getName().substring(0, e.getName().length() - 4) + "," + e.getPlace() + ",,,," + a.getSchoolFull() + "," + e.getMarkString() + units + "," + e.getPoints() + ",Finals,," + relayString + "\n";
+                                output += "R," + AppData.selectedMeet.getGender() + "," + e.getLevel() + "," + e.getName().substring(0, e.getName().length() - 4) + "," + e.getPlace() + ",,,," + a.getSchoolFull() + "," + e.getMarkString() + units + "," + e.getPoints() + ",Finals,," + relayString + "\n";
                             } else {
-                                output += "R," + meet.getGender() + "," + e.getLevel() + "," + e.getName().substring(0, e.getName().length() - 4) + ",,,,," + a.getSchoolFull() + "," + e.getMarkString() + units + "," + e.getPoints() + ",Finals,," + relayString + "\n";
+                                output += "R," + AppData.selectedMeet.getGender() + "," + e.getLevel() + "," + e.getName().substring(0, e.getName().length() - 4) + ",,,,," + a.getSchoolFull() + "," + e.getMarkString() + units + "," + e.getPoints() + ",Finals,," + relayString + "\n";
                             }
                         }
 
                         // If event was an individual event
                         else{
                             if(e.getPlace() != null){
-                                output += "E," + meet.getGender() + "," + e.getLevel() + "," + e.getName().substring(0, e.getName().length() - 4) + "," + e.getPlace() + "," + a.getLast() + "," + a.getFirst() + "," + a.getGrade() + "," + a.getSchoolFull() + "," + e.getMarkString() + units + "," + e.getPoints() + ",Finals,," + "\n";
+                                output += "E," + AppData.selectedMeet.getGender() + "," + e.getLevel() + "," + e.getName().substring(0, e.getName().length() - 4) + "," + e.getPlace() + "," + a.getLast() + "," + a.getFirst() + "," + a.getGrade() + "," + a.getSchoolFull() + "," + e.getMarkString() + units + "," + e.getPoints() + ",Finals,," + "\n";
                             }
                             else{
-                                output += "E," + meet.getGender() + "," + e.getLevel() + "," + e.getName().substring(0, e.getName().length() - 4) + ","  + "," + a.getLast() + "," + a.getFirst() + "," + a.getGrade() + "," + a.getSchoolFull() + "," + e.getMarkString() + units + "," + e.getPoints() + ",Finals,," + "\n";
+                                output += "E," + AppData.selectedMeet.getGender() + "," + e.getLevel() + "," + e.getName().substring(0, e.getName().length() - 4) + ","  + "," + a.getLast() + "," + a.getFirst() + "," + a.getGrade() + "," + a.getSchoolFull() + "," + e.getMarkString() + units + "," + e.getPoints() + ",Finals,," + "\n";
                             }
                         }
 
@@ -203,7 +203,7 @@ public class ScoresActivity extends AppCompatActivity {
 //            //var updated = false
 //
 //            for e in a.events{
-//                if e.meetName == meet.name{
+//                if e.meetName == AppData.selectedMeet.name{
 //                    if e.markString != "" {
 //
 //                        //  If event was individual
