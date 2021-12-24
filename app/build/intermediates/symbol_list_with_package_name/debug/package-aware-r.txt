@@ -1918,6 +1918,7 @@ id edit_query
 id elastic
 id email
 id emailButton
+id emailText
 id end
 id endToStart
 id enterAlways
@@ -2103,6 +2104,7 @@ id rectangles
 id recyclerView
 id recyclerView2
 id recyclerView3
+id recyclerViewCoaches
 id refreshButton
 id rel1
 id rel2
@@ -2352,12 +2354,14 @@ layout activity_main
 layout activity_meet_athletes
 layout activity_meets
 layout activity_school_athletes
+layout activity_school_coaches
 layout activity_schools2
 layout activity_scores
 layout adapter_add_events_to_athlete
 layout adapter_add_schools_to_meet
 layout adapter_athlete_events_from_meets
 layout adapter_school_athletes
+layout adapter_school_coaches
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout check_access_alert

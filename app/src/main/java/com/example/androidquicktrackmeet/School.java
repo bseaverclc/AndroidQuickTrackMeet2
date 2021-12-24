@@ -51,6 +51,17 @@ public class School {
 
     }
 
+    public void updateFirebase()
+    {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("schoolsNew").child(this.uid);
+
+        HashMap<String,Object> hash = new HashMap<String,Object>();
+        hash.put("full", full);
+        hash.put("inits", inits);
+        hash.put("coaches", coaches);
+        mDatabase.updateChildren(hash);
+    }
+
 
 
 

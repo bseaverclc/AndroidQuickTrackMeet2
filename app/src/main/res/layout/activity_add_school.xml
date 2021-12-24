@@ -38,13 +38,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:hint="Enter Full School Name"
-            android:id="@+id/fullSchoolEdit"/>
+            android:id="@+id/fullSchoolEdit"
+            android:inputType="textCapCharacters"/>
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:hint="Enter Initials"
-            android:id="@+id/initEdit"/>
+            android:id="@+id/initEdit"
+            android:inputType="textCapCharacters"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

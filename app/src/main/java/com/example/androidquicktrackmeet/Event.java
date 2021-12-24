@@ -83,6 +83,7 @@ public class Event implements Serializable {
     public void setPlace(Integer place){this.place = place;}
     public void setPoints(Double points){this.points = points;}
     public void setHeat(int heat){this.heat = heat;}
+    public void setName(String name){this.name = name;}
 
 
 

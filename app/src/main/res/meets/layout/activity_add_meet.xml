@@ -12,12 +12,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/wholeScreen"
+        android:windowSoftInputMode="adjustResize"
         >
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Meet Name (can't change!)"
             android:id="@+id/meetName"
+            android:inputType="textCapCharacters"
+            android:imeOptions="actionDone"
             />
 
         <RadioGroup
@@ -154,53 +157,69 @@
                     android:gravity="center_horizontal" />
                 <EditText
                     android:hint="0"
-                    android:text="7"
                     android:id="@+id/ind1"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"
+                    />
                 <EditText
                     android:hint="0"
                     android:id="@+id/ind2"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
                 <EditText
                     android:hint="0"
                     android:id="@+id/ind3"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
                 <EditText
                     android:hint="0"
                     android:id="@+id/ind4"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
                 <EditText
                     android:hint="0"
                     android:id="@+id/ind5"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
                 <EditText
                     android:hint="0"
                     android:id="@+id/ind6"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
                 <EditText
                     android:hint="0"
                     android:id="@+id/ind7"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
                 <EditText
                     android:hint="0"
                     android:id="@+id/ind8"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
             </TableRow>
             <TableRow>
                 <TextView
@@ -213,49 +232,65 @@
                     android:id="@+id/rel1"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
                 <EditText
                     android:hint="0"
                     android:id="@+id/rel2"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
                 <EditText
                     android:hint="0"
                     android:id="@+id/rel3"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
                 <EditText
                     android:hint="0"
                     android:id="@+id/rel4"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
                 <EditText
                     android:hint="0"
                     android:id="@+id/rel5"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
                 <EditText
                     android:hint="0"
                     android:id="@+id/rel6"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
                 <EditText
                     android:hint="0"
                     android:id="@+id/rel7"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
                 <EditText
                     android:hint="0"
                     android:id="@+id/rel8"
                     android:layout_weight="0.1"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"/>
             </TableRow>
 
         </TableLayout>
@@ -276,7 +311,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:hint="enter coaches code"
-                android:id="@+id/coachCode"/>
+                android:id="@+id/coachCode"
+                android:inputType="textCapCharacters"
+                android:imeOptions="actionDone"
+                />
 
 
         </LinearLayout>
@@ -297,7 +335,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:hint="enter coaches code"
-                android:id="@+id/managerCode"/>
+                android:id="@+id/managerCode"
+                android:inputType="textCapCharacters"/>
 
 
         </LinearLayout>

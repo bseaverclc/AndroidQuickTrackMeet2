@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.androidquicktrackmeet.AppData;
+import com.example.androidquicktrackmeet.Athlete;
+import com.example.androidquicktrackmeet.Event;
 import com.example.androidquicktrackmeet.Meet;
 import com.example.androidquicktrackmeet.meets.themeet.HomeActivity;
 import com.example.androidquicktrackmeet.R;
@@ -38,6 +40,11 @@ private MeetsListAdapter adapter;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meets);
 
+        if(AppData.userID.equals("SRrCKcYVC8U6aZTMv0XCYHHR4BG3")){
+            AppData.fullAccess = true;
+        }
+        else{AppData.fullAccess = false;}
+
         Comparator<Meet> sortByDate = (Meet o1, Meet o2) -> {
             return o1.getDate2().compareTo(o2.getDate2());
         };
@@ -49,10 +56,55 @@ private MeetsListAdapter adapter;
         listView=(ListView)findViewById(R.id.listView);
         listView.setAdapter(adapter);
         attachListener();
+// Added this code to change all 800 to 800M
+//        for (int i = 0; i < AppData.allAthletes.size(); i++)
+//        {
+//            for(int j = 0; j < AppData.allAthletes.get(i).showEvents().size(); j++)
+//            {
+//                Event e = AppData.allAthletes.get(i).showEvents().get(j);
+//                if(e.getName().equalsIgnoreCase("800 VAR"))
+//                {
+//                    AppData.allAthletes.get(i).showEvents().get(j).setName("800M VAR");
+//                    AppData.allAthletes.get(i).updateFirebase();
+//
+//                }
+//                if(e.getName().equalsIgnoreCase("800 F/S"))
+//                {
+//                    AppData.allAthletes.get(i).showEvents().get(j).setName("800M F/S");
+//                    AppData.allAthletes.get(i).updateFirebase();
+//                }
+//                if(e.getName().equalsIgnoreCase("800 J/V"))
+//                {
+//                    AppData.allAthletes.get(i).showEvents().get(j).setName("800M J/V");
+//                    AppData.allAthletes.get(i).updateFirebase();
+//                }
+//            }
+//
+//
+//        }
+//
+//        for(int j = 0; j<AppData.meets.size(); j++){
+//            Meet m = AppData.meets.get(j);
+//            for (int i = 0; i < m.getEvents().size(); i++) {
+//                String theEvent = m.getEvents().get(i);
+//                if (theEvent.equalsIgnoreCase("800 VAR")) {
+//                    m.getEvents().set(i, "800M VAR");
+//                    AppData.meets.get(j).updateFirebase(m);
+//                }
+//                if (theEvent.equalsIgnoreCase("800 F/S")) {
+//                    m.getEvents().set(i, "800M F/S");
+//                    AppData.meets.get(j).updateFirebase(m);
+//                }
+//                if (theEvent.equalsIgnoreCase("800M J/V")) {
+//                    m.getEvents().set(i, "800M J/V");
+//                    AppData.meets.get(j).updateFirebase(m);
+//                }
+//
+//            }
+//
+//        }
 
-
-
-    }
+   }
 
 //    public void addMeetAction(View view){
 //        startActivity(new Intent(MeetsActivity.this, AddMeetActivity.class));
@@ -85,13 +137,18 @@ private MeetsListAdapter adapter;
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_add) {
-            Intent intent = new Intent(this, AddMeetActivity.class);
-
-            //intent.putExtra("selectedAthlete", selectedAthlete);
-            // intent.putExtra("events", displayedEvents);
-
-            startActivity(intent);
-            return true;
+            if(AppData.userID.length()!=0) {
+                Intent intent = new Intent(this, AddMeetActivity.class);
+                startActivity(intent);
+                return true;
+            }
+            else{
+                AlertDialog.Builder addFailure = new AlertDialog.Builder(MeetsActivity.this);
+                addFailure.setTitle("Error!");
+                addFailure.setMessage("You need to be logged in to add a meet");
+                addFailure.setPositiveButton("OK", null );
+                addFailure.show();
+            }
         }
 
         return super.onOptionsItemSelected(item);
@@ -104,7 +161,7 @@ private MeetsListAdapter adapter;
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
             AppData.selectedMeet = (Meet)parent.getItemAtPosition(position);
-            if(AppData.selectedMeet.getUserId().equalsIgnoreCase( AppData.userID)  || AppData.userID.equalsIgnoreCase("SRrCKcYVC8U6aZTMv0XCYHHR4BG3")){
+            if(AppData.selectedMeet.getUserId().equalsIgnoreCase( AppData.userID)  || AppData.fullAccess){
                 Meet.canManage = true;
                 Meet.canCoach = true;
                 selectMeetAction(listView);

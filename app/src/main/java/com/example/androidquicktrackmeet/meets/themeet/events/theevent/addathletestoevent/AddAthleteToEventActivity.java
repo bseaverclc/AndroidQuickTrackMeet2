@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
@@ -15,7 +16,9 @@ import android.widget.Button;
 
 import com.example.androidquicktrackmeet.AppData;
 import com.example.androidquicktrackmeet.Athlete;
+import com.example.androidquicktrackmeet.Meet;
 import com.example.androidquicktrackmeet.R;
+import com.example.androidquicktrackmeet.meets.MeetsActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,7 +53,10 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
         setTitle(event);
 
         for(Athlete a: AppData.allAthletes){
-            if(AppData.selectedMeet.getSchools().keySet().contains(a.getSchoolFull())){
+//            if(AppData.selectedMeet.getSchools().keySet().contains(a.getSchoolFull())){
+//                displayedAthletes.add(a);
+//            }
+            if(a.getSchoolFull().equalsIgnoreCase(AppData.mySchool)){
                 displayedAthletes.add(a);
             }
         }
@@ -141,24 +147,36 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
     }
 
     public void selectSchool(View view){
-        addAthletes();
-        Button button = (Button)view;
-        String buttonText = button.getText().toString();
-        System.out.println("select school" + buttonText);
-        displayedAthletes.clear();
-        for(Athlete a : AppData.allAthletes){
-            if(a.getSchool().equalsIgnoreCase(buttonText) && AppData.selectedMeet.getSchools().containsKey(a.getSchoolFull())){
-                displayedAthletes.add(a);
-                System.out.println("added an athlete");
+        if(Meet.canManage) {
+            addAthletes();
+            Button button = (Button) view;
+            String buttonText = button.getText().toString();
+            System.out.println("select school" + buttonText);
+
+
+            displayedAthletes.clear();
+            for (Athlete a : AppData.allAthletes) {
+                if (a.getSchool().equalsIgnoreCase(buttonText) && AppData.selectedMeet.getSchools().containsKey(a.getSchoolFull())) {
+                    displayedAthletes.add(a);
+                    System.out.println("added an athlete");
+                }
             }
+
+            Comparator<Athlete> sortByName = (Athlete o1, Athlete o2) -> {
+
+                return o1.getLast().compareTo(o2.getLast());
+            };
+            Collections.sort(displayedAthletes, sortByName);
+            adapter.notifyDataSetChanged();
         }
-
-        Comparator<Athlete> sortByName = (Athlete o1, Athlete o2) -> {
-
-            return o1.getLast().compareTo(o2.getLast());
-        };
-        Collections.sort(displayedAthletes, sortByName);
-        adapter.notifyDataSetChanged();
+        else{
+            AlertDialog.Builder coachFailure = new AlertDialog.Builder(AddAthleteToEventActivity.this);
+            coachFailure.setTitle("Failure");
+            coachFailure.setMessage("You can only make changes to your team");
+            coachFailure.setNegativeButton("Ok", null);
+            AlertDialog coachFailureAlert = coachFailure.create();
+            coachFailure.show();
+        }
 
     }
 

@@ -66,6 +66,7 @@ private EditText fullSchoolEdit, initEdit;
             }
 
             School addSchool = new School(schoolFull,initials);
+            addSchool.addCoach(AppData.coach);
             AppData.schools.add(addSchool);
             addSchool.saveToFirebase();
 

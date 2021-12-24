@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,7 +10,9 @@
     android:weightSum="100"
 
 
+
     >
+
 
     <LinearLayout
         android:layout_height="wrap_content"
@@ -90,6 +94,8 @@
         android:hint="Mark"
         android:inputType="time"
         android:digits="0123456789:."
+        android:imeOptions="actionDone"
+
 
 
 
@@ -103,6 +109,8 @@
         android:hint="PL"
         android:inputType="number"
         android:layout_marginRight="20dp"
+        android:imeOptions="actionDone"
+
 
 
         />

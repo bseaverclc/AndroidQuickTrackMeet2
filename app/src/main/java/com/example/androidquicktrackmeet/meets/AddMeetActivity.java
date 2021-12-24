@@ -41,7 +41,7 @@ public class AddMeetActivity extends AppCompatActivity {
     private boolean changeMeet = false;
 
     ArrayList<String> events = new ArrayList<String>(
-            Arrays.asList("4x800", "4x100", "3200", "110HH", "100M", "800", "4x200", "400M", "300IM", "1600", "200M", "4x400", "Long Jump", "Triple Jump", "High Jump", "Pole Vault", "Shot Put", "Discus"));
+            Arrays.asList("4x800", "4x100", "3200", "110HH", "100M", "800M", "4x200", "400M", "300IM", "1600", "200M", "4x400", "Long Jump", "Triple Jump", "High Jump", "Pole Vault", "Shot Put", "Discus"));
 
     ArrayList<String> lev = new ArrayList<>();
     ArrayList<Integer> indPoints = new ArrayList<Integer>();

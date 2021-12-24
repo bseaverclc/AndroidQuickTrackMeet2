@@ -1917,6 +1917,7 @@ int id edit_query 0x7f0800a9
 int id elastic 0x7f0800aa
 int id email 0x7f0800ab
 int id emailButton 0x7f0800ac
+int id emailText 0x7f080225
 int id end 0x7f0800ad
 int id endToStart 0x7f0800ae
 int id enterAlways 0x7f0800af
@@ -2102,6 +2103,7 @@ int id rectangles 0x7f08014a
 int id recyclerView 0x7f08014b
 int id recyclerView2 0x7f0801f8
 int id recyclerView3 0x7f0801fd
+int id recyclerViewCoaches 0x7f080226
 int id refreshButton 0x7f08014c
 int id rel1 0x7f08020f
 int id rel2 0x7f080210
@@ -2351,12 +2353,14 @@ int layout activity_main 0x7f0b0022
 int layout activity_meet_athletes 0x7f0b0084
 int layout activity_meets 0x7f0b0023
 int layout activity_school_athletes 0x7f0b008d
+int layout activity_school_coaches 0x7f0b0090
 int layout activity_schools2 0x7f0b0024
 int layout activity_scores 0x7f0b0025
 int layout adapter_add_events_to_athlete 0x7f0b008a
 int layout adapter_add_schools_to_meet 0x7f0b008c
 int layout adapter_athlete_events_from_meets 0x7f0b0089
 int layout adapter_school_athletes 0x7f0b008e
+int layout adapter_school_coaches 0x7f0b0091
 int layout browser_actions_context_menu_page 0x7f0b0026
 int layout browser_actions_context_menu_row 0x7f0b0027
 int layout check_access_alert 0x7f0b0028

@@ -2,6 +2,7 @@ package com.example.androidquicktrackmeet.schools;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,6 +17,7 @@ import com.example.androidquicktrackmeet.Meet;
 import com.example.androidquicktrackmeet.R;
 import com.example.androidquicktrackmeet.School;
 import com.example.androidquicktrackmeet.meets.AddMeetActivity;
+import com.example.androidquicktrackmeet.meets.MeetsActivity;
 import com.example.androidquicktrackmeet.meets.themeet.meetathletes.AddEventsToAthleteAdapter;
 
 import java.util.Collections;
@@ -31,6 +33,10 @@ public class SchoolsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schools2);
+        if(AppData.userID.equals("SRrCKcYVC8U6aZTMv0XCYHHR4BG3")){
+            AppData.fullAccess = true;
+        }
+        else{AppData.fullAccess = false;}
 
         System.out.println("Number of athletes" + AppData.allAthletes.size());
         // Setting up the ListView
@@ -68,13 +74,19 @@ public class SchoolsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_add) {
-            Intent intent = new Intent(this, ActivityAddSchool.class);
-
-            //intent.putExtra("selectedAthlete", selectedAthlete);
-            // intent.putExtra("events", displayedEvents);
-
-            startActivity(intent);
-            return true;
+            if(AppData.userID.length() !=0)
+            {
+                Intent intent = new Intent(this, ActivityAddSchool.class);
+                startActivity(intent);
+                return true;
+            }
+            else {
+                AlertDialog.Builder addFailure = new AlertDialog.Builder(SchoolsActivity.this);
+                addFailure.setTitle("Error!");
+                addFailure.setMessage("You need to be logged in to add a school");
+                addFailure.setPositiveButton("OK", null );
+                addFailure.show();
+            }
         }
 
         return super.onOptionsItemSelected(item);

@@ -17,6 +17,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
@@ -107,7 +108,9 @@ public class EventEditActivity extends AppCompatActivity  {
 //        listView=(ListView)findViewById(R.id.listView);
 //        listView.setAdapter(adapter);
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+       LinearLayoutManager manager = new LinearLayoutManager(this);
+
+         recyclerView.setLayoutManager(manager);
         sections = new ArrayList<Section>();
 
         if(hasSections) {
@@ -136,23 +139,25 @@ public class EventEditActivity extends AppCompatActivity  {
 
 
         // Makes keyboard disappear when you click off editText
-        recyclerView.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-
-                return false;
-            }
-        });
+//        recyclerView.setOnTouchListener(new View.OnTouchListener() {
+//
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//
+//                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+//
+//                return false;
+//            }
+//        });
 
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         setSupportActionBar(topToolBar);
+
+
 
 
     }

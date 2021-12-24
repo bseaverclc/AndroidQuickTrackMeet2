@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".meets.themeet.events.theevent.EventEditActivity">
+    tools:context=".meets.themeet.events.theevent.EventEditActivity"
+    >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -105,9 +106,12 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonView"
-        app:layout_constraintTop_toBottomOf="@id/topButtonsRow"
-        tools:layout_editor_absoluteX="16dp" />
+    app:layout_constraintBottom_toTopOf="@+id/buttonView"
+    app:layout_constraintTop_toBottomOf="@id/topButtonsRow"
+        tools:layout_editor_absoluteX="16dp"
+
+
+        />
 
 
 
@@ -117,6 +121,7 @@
         android:layout_height="50dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
+
         >
 
         <Button

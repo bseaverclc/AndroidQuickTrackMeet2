@@ -2,6 +2,7 @@ package com.example.androidquicktrackmeet.schools;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import com.example.androidquicktrackmeet.AppData;
 import com.example.androidquicktrackmeet.Athlete;
 import com.example.androidquicktrackmeet.Meet;
 import com.example.androidquicktrackmeet.R;
+import com.example.androidquicktrackmeet.School;
 import com.example.androidquicktrackmeet.meets.AddMeetActivity;
 import com.example.androidquicktrackmeet.meets.themeet.events.theevent.addathletestoevent.AddAthlete;
 
@@ -26,6 +28,7 @@ private ListView listView;
 private ArrayList<Athlete> athletes = new ArrayList<Athlete>();
 private String selectedSchool;
     private SchoolAthletesAdapter adapter;
+    private School sch = new School();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,17 @@ private String selectedSchool;
             return o1.getLast().compareTo(o2.getLast());
         };
         Collections.sort(athletes, sortByName);
+
+        if(AppData.schools.size()>0) {
+
+            for (School s : AppData.schools) {
+                if (s.getFull().equalsIgnoreCase(selectedSchool)) {
+                    sch = s;
+                    break;
+                }
+            }
+        }
+
 
         adapter=new SchoolAthletesAdapter(this, athletes);
         listView=(ListView)findViewById(R.id.salistView);
@@ -82,18 +96,31 @@ private String selectedSchool;
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.add_athlete) {
-            Intent intent = new Intent(this, AddAthlete.class);
-            intent.putExtra("theSchool", selectedSchool);
+            if (sch.getCoaches().contains(AppData.coach) || AppData.fullAccess) {
+                Intent intent = new Intent(this, AddAthlete.class);
+                intent.putExtra("theSchool", selectedSchool);
 
-            //intent.putExtra("selectedAthlete", selectedAthlete);
-            // intent.putExtra("events", displayedEvents);
+                //intent.putExtra("selectedAthlete", selectedAthlete);
+                // intent.putExtra("events", displayedEvents);
 
-            startActivity(intent);
-            return true;
+                startActivity(intent);
+                return true;
+            }
+            else{
+                AlertDialog.Builder addFailure = new AlertDialog.Builder(this);
+                addFailure.setTitle("Error!");
+                addFailure.setMessage("You need to be a coach of this school to add an athlete");
+                addFailure.setPositiveButton("OK", null );
+                addFailure.show();
+                return true;
+            }
         }
         if(id == R.id.check_coaches)
         {
-
+              Intent intent = new Intent(this,SchoolCoachesActivity.class);
+              intent.putExtra("theSchool", selectedSchool);
+              startActivity(intent);
+              return true;
         }
 
         return super.onOptionsItemSelected(item);

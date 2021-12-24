@@ -1,16 +1,21 @@
 package com.example.androidquicktrackmeet.meets.themeet.events.theevent;
 
 
+import android.app.Activity;
 import android.content.ClipData;
+import android.content.Context;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.DragEvent;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 //import android.widget.ImageView;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -25,6 +30,7 @@ import com.example.androidquicktrackmeet.meets.themeet.events.EventsActivity;
 
 import java.util.ArrayList;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdapter.ViewHolderEditEvent> {
@@ -70,6 +76,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
         this.recyclerView = recyclerView;
+
     }
 
     // inflates the row layout from xml when needed
@@ -167,6 +174,13 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
             holder.cell.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
+                    Activity focussed = (Activity)view.getContext();
+                    if(focussed.getCurrentFocus() != null) {
+                        focussed.getCurrentFocus().clearFocus();
+                    }
+                    InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
                     ClipData data = ClipData.newPlainText("", "");
                     View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
                     view.startDrag(data, shadowBuilder, view, 0);
@@ -199,25 +213,27 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
             if (position < athletes.size()) {
                 Athlete a = athletes.get(position);
                 System.out.println("Trying to delete athleete " + a.getLast());
-                for (int i = 0; i < a.showEvents().size(); i++) {
-                    if (a.showEvents().get(i).getName().equals(event) && a.showEvents().get(i).getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName())) {
-                        System.out.println("Place of athlete " + a.showEvents().get(i).getPlace());
-                        if (a.showEvents().get(i).getMarkString().equalsIgnoreCase("") && a.showEvents().get(i).getPlace() == null) {
-                            // a.showEvents().remove(i);
-                            a.deleteEventFirebase(a.showEvents().get(i).getUid());
-                            athletes.remove(position);
-                            recyclerView.setAdapter(this);
+                if(a.getSchoolFull().equalsIgnoreCase(AppData.mySchool) || Meet.canManage) {
+                    for (int i = 0; i < a.showEvents().size(); i++) {
+                        if (a.showEvents().get(i).getName().equals(event) && a.showEvents().get(i).getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName())) {
+                            System.out.println("Place of athlete " + a.showEvents().get(i).getPlace());
+                            if (a.showEvents().get(i).getMarkString().equalsIgnoreCase("") && a.showEvents().get(i).getPlace() == null) {
+                                // a.showEvents().remove(i);
+                                a.deleteEventFirebase(a.showEvents().get(i).getUid());
+                                athletes.remove(position);
+                                recyclerView.setAdapter(this);
 
-                            notifyItemRemoved(position);
-                            //notifyDataSetChanged();
-                            processButton.setBackgroundColor(Color.LTGRAY);
-                            processButton.setText("Process Event");
+                                notifyItemRemoved(position);
+                                //notifyDataSetChanged();
+                                processButton.setBackgroundColor(Color.LTGRAY);
+                                processButton.setText("Process Event");
 
-                            AppData.selectedMeet.setBeenScored(EventsActivity.eventPosition, false);
-                            AppData.selectedMeet.updatebeenScoredFirebase();
+                                AppData.selectedMeet.setBeenScored(EventsActivity.eventPosition, false);
+                                AppData.selectedMeet.updatebeenScoredFirebase();
 
-                            return true;
+                                return true;
 
+                            }
                         }
                     }
                 }
@@ -280,6 +296,25 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                         return false;
                     }
                 });
+
+
+// Attempting to keep everything in view when click on a mark
+//                mark.setOnTouchListener(new View.OnTouchListener() {
+//                    @Override
+//                    public boolean onTouch(View v, MotionEvent event) {
+//                        if(MotionEvent.ACTION_UP == event.getAction()) {
+//                            Activity a = (Activity)recyclerView.getContext();
+//                            a.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+//                            a.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+//                            System.out.println("Trying to scroll to position" + (adapter.getItemCount() -1));
+//
+//                           //recyclerView.smoothScrollToPosition(adapter.getItemCount()-1);
+//                            //recyclerView.scrollToPosition(getLayoutPosition());
+//                        }
+//
+//                        return false; // return is important...
+//                    }
+ //               });
 
 
                 place.setOnKeyListener(new View.OnKeyListener() {
@@ -359,6 +394,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
 
         public void updatePosition(int position) {
             this.position = position;
+
         }
         public void updateAthlete(Athlete a){
             this.a = a;
@@ -499,11 +535,16 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                 case DragEvent.ACTION_DROP:
                     System.out.println("Action Drop Happening");
                     isDropped = true;
+                    View viewSource = (View) event.getLocalState();
+                    Activity focussed = (Activity)viewSource.getContext();
+                    if(focussed.getCurrentFocus() != null) {
+                        focussed.getCurrentFocus().clearFocus();
+                    }
 
                     int positionSource = -1;
                     int positionTarget = -1;
                     v.setBackgroundColor(Color.WHITE);
-                    View viewSource = (View) event.getLocalState();
+                    //View viewSource = (View) event.getLocalState();
                     //((EditText)viewSource.findViewById(R.id.editMark)).removeTextChangedListener();
                     // Stop them from dropping a blank row
                     if((int)viewSource.getTag() == -1) break;
@@ -519,7 +560,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                         Athlete athleteMove = adapterSource.getAthletes().get(positionSource);
 
                         adapterSource.getAthletes().remove(positionSource);
-                        adapterSource.notifyDataSetChanged();
+
                         //List<CustomList> customListSource = adapterSource.getCustomList();
 //                        customListSource.remove(positionSource);
 //                        adapterSource.updateCustomList(customListSource);
@@ -538,7 +579,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                     else{
                         athleteMove.findEvent(AppData.selectedMeet.getName(), EditEventListAdapter.this.event).setHeat(0);
                     }
-                    athleteMove.updateFirebase();
+
 
                         // add athlete to target array
                          if(positionTarget >=0) {
@@ -549,6 +590,8 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                          else {
                              adapterTarget.getAthletes().add(athleteMove);
                          }
+                        athleteMove.updateFirebase();
+                        adapterSource.notifyDataSetChanged();
                          adapterTarget.notifyDataSetChanged();
                          v.setVisibility(View.VISIBLE);
 

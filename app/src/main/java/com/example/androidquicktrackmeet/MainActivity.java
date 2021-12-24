@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
       if (user != null) {
           AppData.userID = user.getUid();
           AppData.coach = user.getEmail();
+          System.out.println("Userid: " + AppData.userID);
           // search for mySchool
           for (School school : AppData.schools){
               for(String coach: school.getCoaches()){
@@ -278,6 +279,21 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 boolean add = true;
+                // Trying to fix the 800M problem!
+//                for(int i = 0; i < m.getEvents().size(); i++)
+//                {
+//                    String theEvent = m.getEvents().get(i);
+//                    if(theEvent.equalsIgnoreCase("800 VAR")){
+//                        m.getEvents().set(i, "800M VAR");
+//                    }
+//                    if(theEvent.equalsIgnoreCase("800 F/S")){
+//                        m.getEvents().set(i, "800M F/S");
+//                    }
+//                    if(theEvent.equalsIgnoreCase("800M J/V")){
+//                        m.getEvents().set(i, "800M J/V");
+//                    }
+//
+//                }
                 for(Meet am: AppData.meets){
                     if(am.getName().equalsIgnoreCase(m.getName())){
                         add = false;
@@ -402,8 +418,22 @@ public class MainActivity extends AppCompatActivity {
                         else {
                             //System.out.println("event snapshot" + dataSnapshot);
                             Event ev = dataSnapshot.getValue(Event.class);
+                            // Trying to fix the 800M problem!
+//                            if(ev.getName().equalsIgnoreCase("800 VAR"))
+//                            {
+//                                ev.setName("800M VAR");
+//                            }
+//                            if(ev.getName().equalsIgnoreCase("800 F/S"))
+//                            {
+//                                ev.setName("800M F/S");
+//                            }
+//                            if(ev.getName().equalsIgnoreCase("800 J/V"))
+//                            {
+//                                ev.setName("800M J/V");
+//                            }
                             boolean add = true;
                             for (Event ae : a.showEvents()){
+
                                 if(ae.getName().equalsIgnoreCase(ev.getName()) && ae.getMeetName().equalsIgnoreCase(ev.getMeetName())){
                                     add = false;
                                     break;
@@ -484,7 +514,16 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
-
+                School s = snapshot.getValue((School.class));
+                s.setUid(snapshot.getKey());
+                for(int i = 0; i<AppData.schools.size(); i++)
+                {
+                    if(AppData.schools.get(i).getFull().equalsIgnoreCase(s.getFull()))
+                    {
+                        AppData.schools.set(i,s);
+                        break;
+                    }
+                }
             }
 
             @Override
