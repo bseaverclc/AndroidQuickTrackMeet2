@@ -39,9 +39,8 @@ com/example/androidquicktrackmeet/MainActivity.java
  com.example.androidquicktrackmeet.MainActivity$8
 com/example/androidquicktrackmeet/School.java
  com.example.androidquicktrackmeet.School
-com/example/androidquicktrackmeet/meets/themeet/events/theevent/SectionAdapter.java
- com.example.androidquicktrackmeet.meets.themeet.events.theevent.SectionAdapter
- com.example.androidquicktrackmeet.meets.themeet.events.theevent.SectionAdapter$ViewHolder
+com/example/androidquicktrackmeet/BuildConfig.java
+ com.example.androidquicktrackmeet.BuildConfig
 com/example/androidquicktrackmeet/schools/SchoolsActivity.java
  com.example.androidquicktrackmeet.schools.SchoolsActivity
  com.example.androidquicktrackmeet.schools.SchoolsActivity$1
@@ -64,6 +63,10 @@ com/example/androidquicktrackmeet/meets/themeet/meetathletes/MeetAthletesActivit
  com.example.androidquicktrackmeet.meets.themeet.meetathletes.MeetAthletesActivity$1
 com/example/androidquicktrackmeet/AppData.java
  com.example.androidquicktrackmeet.AppData
+com/example/androidquicktrackmeet/meets/themeet/events/EventsListAdapter.java
+ com.example.androidquicktrackmeet.meets.themeet.events.EventsListAdapter
+com/example/androidquicktrackmeet/meets/themeet/ScoresActivity.java
+ com.example.androidquicktrackmeet.meets.themeet.ScoresActivity
 com/example/androidquicktrackmeet/meets/themeet/events/theevent/EditEventListAdapter.java
  com.example.androidquicktrackmeet.meets.themeet.events.theevent.EditEventListAdapter
  com.example.androidquicktrackmeet.meets.themeet.events.theevent.EditEventListAdapter$1
@@ -73,11 +76,6 @@ com/example/androidquicktrackmeet/meets/themeet/events/theevent/EditEventListAda
  com.example.androidquicktrackmeet.meets.themeet.events.theevent.EditEventListAdapter$ViewHolderEditEvent
  com.example.androidquicktrackmeet.meets.themeet.events.theevent.EditEventListAdapter$ViewHolderEditEvent$1
  com.example.androidquicktrackmeet.meets.themeet.events.theevent.EditEventListAdapter$ViewHolderEditEvent$2
-com/example/androidquicktrackmeet/meets/themeet/ScoresActivity.java
- com.example.androidquicktrackmeet.meets.themeet.ScoresActivity
-com/example/androidquicktrackmeet/meets/themeet/events/theevent/EventEditActivity.java
- com.example.androidquicktrackmeet.meets.themeet.events.theevent.EventEditActivity
- com.example.androidquicktrackmeet.meets.themeet.events.theevent.EventEditActivity$1
 com/example/androidquicktrackmeet/schools/SchoolCoachesActivity.java
  com.example.androidquicktrackmeet.schools.SchoolCoachesActivity
  com.example.androidquicktrackmeet.schools.SchoolCoachesActivity$1
@@ -100,16 +98,18 @@ com/example/androidquicktrackmeet/meets/themeet/events/theevent/addathletestoeve
  com.example.androidquicktrackmeet.meets.themeet.events.theevent.addathletestoevent.AthleteListAdapter
  com.example.androidquicktrackmeet.meets.themeet.events.theevent.addathletestoevent.AthleteListAdapter$ItemClickListener
  com.example.androidquicktrackmeet.meets.themeet.events.theevent.addathletestoevent.AthleteListAdapter$ViewHolder
-com/example/androidquicktrackmeet/meets/themeet/events/EventsActivity.java
- com.example.androidquicktrackmeet.meets.themeet.events.EventsActivity
- com.example.androidquicktrackmeet.meets.themeet.events.EventsActivity$1
+com/example/androidquicktrackmeet/meets/themeet/events/theevent/SwipeToDeleteCallback.java
+ com.example.androidquicktrackmeet.meets.themeet.events.theevent.SwipeToDeleteCallback
 com/example/androidquicktrackmeet/Athlete.java
  com.example.androidquicktrackmeet.Athlete
 com/example/androidquicktrackmeet/schools/ActivityAddSchool.java
  com.example.androidquicktrackmeet.schools.ActivityAddSchool
-com/example/androidquicktrackmeet/meets/themeet/events/theevent/SwipeToDeleteCallback.java
- com.example.androidquicktrackmeet.meets.themeet.events.theevent.SwipeToDeleteCallback
-com/example/androidquicktrackmeet/meets/themeet/events/EventsListAdapter.java
- com.example.androidquicktrackmeet.meets.themeet.events.EventsListAdapter
-com/example/androidquicktrackmeet/BuildConfig.java
- com.example.androidquicktrackmeet.BuildConfig
+com/example/androidquicktrackmeet/meets/themeet/events/theevent/SectionAdapter.java
+ com.example.androidquicktrackmeet.meets.themeet.events.theevent.SectionAdapter
+ com.example.androidquicktrackmeet.meets.themeet.events.theevent.SectionAdapter$ViewHolder
+com/example/androidquicktrackmeet/meets/themeet/events/EventsActivity.java
+ com.example.androidquicktrackmeet.meets.themeet.events.EventsActivity
+ com.example.androidquicktrackmeet.meets.themeet.events.EventsActivity$1
+com/example/androidquicktrackmeet/meets/themeet/events/theevent/EventEditActivity.java
+ com.example.androidquicktrackmeet.meets.themeet.events.theevent.EventEditActivity
+ com.example.androidquicktrackmeet.meets.themeet.events.theevent.EventEditActivity$1

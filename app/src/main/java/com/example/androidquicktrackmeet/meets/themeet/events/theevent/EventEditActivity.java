@@ -184,8 +184,9 @@ public class EventEditActivity extends AppCompatActivity  {
 
 
         sortByName();
-        sortByPlace();
         sortByMark();
+        sortByPlace();
+
         beenScoredCheck();
 
 

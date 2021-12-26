@@ -71,6 +71,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
         }
 
         public ArrayList<Athlete> getAthletes(){return athletes;}
+        public void  setAthletes(ArrayList<Athlete> athletes){this.athletes = athletes;}
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
@@ -159,6 +160,8 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                 holder.mark.setFocusable(true);
                 holder.place.setFocusable(true);
 
+
+
             }
             else if (holder != null){
                 holder.mark.setFocusable(false);
@@ -201,6 +204,8 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
 
     public TextView getSectionName(){return sectionName;}
 
+
+    //Never used?
     public void moveItem(int from, int to){
         Athlete temp = athletes.get(to);
         athletes.set(to, athletes.get(from));
@@ -405,7 +410,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
             try {
                 if (adapter.getAthletes().get(position).getLast().equalsIgnoreCase(a.getLast())) {
                     a = adapter.getAthletes().get(position);
-                    System.out.println("after place text changed fired on athlete ? ");
+                    System.out.println("after place text changed fired on athlete " + a.getLast());
                     if (a != null) {
                         System.out.println(a.getLast());
                         for (Event e : a.showEvents()) {
@@ -495,7 +500,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                     break;
 
                     case DragEvent.ACTION_DRAG_LOCATION:
-
+                    System.out.println("ActionDragLocation");
                         RecyclerView mainScrollView = (RecyclerView)v.getParent().getParent().getParent();
                         //System.out.println("Recycler view on top of ID " + mainScrollView.getId());
                         RecyclerView itemRecyclerView = mainScrollView.findViewById(R.id.item_recycler_view);
@@ -533,13 +538,14 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
 
 
                 case DragEvent.ACTION_DROP:
-                    System.out.println("Action Drop Happening");
+                   System.out.println("Action Drop Happening");
                     isDropped = true;
                     View viewSource = (View) event.getLocalState();
                     Activity focussed = (Activity)viewSource.getContext();
                     if(focussed.getCurrentFocus() != null) {
                         focussed.getCurrentFocus().clearFocus();
                     }
+
 
                     int positionSource = -1;
                     int positionTarget = -1;
@@ -553,13 +559,20 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                         RecyclerView target = (RecyclerView) v.getParent();
                         RecyclerView source = (RecyclerView) viewSource.getParent();
 
+
                         EditEventListAdapter adapterSource = (EditEventListAdapter) source.getAdapter();
                         positionSource = (int) viewSource.getTag();
 
                         // Remove Athlete and update view
                         Athlete athleteMove = adapterSource.getAthletes().get(positionSource);
 
-                        adapterSource.getAthletes().remove(positionSource);
+                        ArrayList<Athlete> theAthletes = adapterSource.getAthletes();
+                        theAthletes.remove(positionSource);
+                        source.setAdapter(adapterSource);
+                      // source.getAdapter().notifyDataSetChanged();
+
+                        //adapterSource.notifyDataSetChanged();
+
 
                         //List<CustomList> customListSource = adapterSource.getCustomList();
 //                        customListSource.remove(positionSource);
@@ -591,8 +604,15 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                              adapterTarget.getAthletes().add(athleteMove);
                          }
                         athleteMove.updateFirebase();
-                        adapterSource.notifyDataSetChanged();
-                         adapterTarget.notifyDataSetChanged();
+
+
+                        recyclerView.setAdapter(adapter);
+                        recyclerView.getAdapter().notifyDataSetChanged();
+                    source.getAdapter().notifyDataSetChanged();
+
+                         //recyclerView.getAdapter().notifyDataSetChanged();
+                        //adapterSource.notifyDataSetChanged();
+                         //adapterTarget.notifyDataSetChanged();
                          v.setVisibility(View.VISIBLE);
 
                          // unprocess event
@@ -624,14 +644,15 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
 //                        }
 //                    }
 //
-//                    break;
+ //                   break;
 
                 case DragEvent.ACTION_DRAG_ENDED:
                     //v.setBackgroundColor(0);
                     System.out.println("Action Drag Ended");
+
                     break;
 
-                default:
+                default :
                     break;
             }
 
