@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.example.androidquicktrackmeet.AppData;
+import com.example.androidquicktrackmeet.Meet;
 import com.example.androidquicktrackmeet.meets.AddMeetActivity;
 import com.example.androidquicktrackmeet.meets.themeet.events.EventsActivity;
 import com.example.androidquicktrackmeet.meets.themeet.meetathletes.MeetAthletesActivity;
@@ -61,12 +62,14 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.edit_info) {
-            Intent intent = new Intent(this, AddMeetActivity.class);
-            //intent.putExtra("selectedMeet", AppData.selectedMeet);
-            //intent.putExtra("selectedAthlete", selectedAthlete);
-            // intent.putExtra("events", displayedEvents);
+            if(Meet.canManage || AppData.fullAccess) {
+                Intent intent = new Intent(this, AddMeetActivity.class);
+                //intent.putExtra("selectedMeet", AppData.selectedMeet);
+                //intent.putExtra("selectedAthlete", selectedAthlete);
+                // intent.putExtra("events", displayedEvents);
 
-            startActivity(intent);
+                startActivity(intent);
+            }
             return true;
         }
 

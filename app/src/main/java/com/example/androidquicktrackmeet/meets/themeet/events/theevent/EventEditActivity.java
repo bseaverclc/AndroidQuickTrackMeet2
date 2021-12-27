@@ -209,6 +209,7 @@ public class EventEditActivity extends AppCompatActivity  {
                 processButton.setText("Processed");
 
 
+
             } else {
                 processButton.setBackgroundColor(Color.LTGRAY);
                 processButton.setText("Process Event");
@@ -221,6 +222,7 @@ public class EventEditActivity extends AppCompatActivity  {
         eventAthletes.clear();
         heat2Athletes.clear();
         heat1Athletes.clear();
+
 
         updateAthletesAndUI();
 
@@ -291,7 +293,8 @@ public class EventEditActivity extends AppCompatActivity  {
                                 System.out.println("Added points for " + a.getLast());
                             }
                         }
-                        event.setPoints(points/ties);
+                        double rounded = (int)(points/ties*100)/100.0;
+                        event.setPoints(rounded);
                     }
                     else{event.setPoints(0.0);}  // if ties somehow =0
                 }
@@ -303,9 +306,13 @@ public class EventEditActivity extends AppCompatActivity  {
     }
     public void calcPoints(){
         System.out.println("calling calcPoints");
-        calcPoints(eventAthletes);
-        calcPoints(heat1Athletes);
-        calcPoints(heat2Athletes);
+        ArrayList<Athlete> pointAthletes = new ArrayList<Athlete>();
+        pointAthletes.addAll(eventAthletes);
+        pointAthletes.addAll(heat1Athletes);
+        pointAthletes.addAll(heat2Athletes);
+        calcPoints(pointAthletes);
+       // calcPoints(heat1Athletes);
+        //calcPoints(heat2Athletes);
 
         adapter.notifyDataSetChanged();
     }
