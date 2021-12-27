@@ -119,6 +119,8 @@ public Meet(String name, Date date, HashMap<String,String> schools, String gende
 
         SimpleDateFormat outputFormat = new SimpleDateFormat("MM/dd/yy");
         String datey = outputFormat.format(m.getDate2());
+        System.out.println("updating firebase with date " + datey);
+        addDate(m.date);
 
 
         HashMap<String,Object> hash = new HashMap<String,Object>();
@@ -169,6 +171,7 @@ public Meet(String name, Date date, HashMap<String,String> schools, String gende
         hash.put("userId", userId);
 
         mDatabase.setValue(hash);
+
     }
 
 

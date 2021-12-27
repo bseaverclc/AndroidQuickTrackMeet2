@@ -41,7 +41,7 @@ public class AddSchoolsToMeet extends AppCompatActivity {
 
         adapter=new AddSchoolsToMeetAdapter();
         recyclerView.setAdapter(adapter);
-        setTitle("Select Schools");
+        setTitle("Schools");
     }
 
     @Override

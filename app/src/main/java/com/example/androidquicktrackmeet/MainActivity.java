@@ -88,8 +88,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        AppData.selectedMeet = null;
+    }
 
-// called when it comes back from google sign in attempt
+    // called when it comes back from google sign in attempt
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -237,20 +242,34 @@ public class MainActivity extends AppCompatActivity {
         logOutButton.setVisibility(View.GONE);
     }
 
-    public void readMeetsFromFirebase() {
+    public
+    void readMeetsFromFirebase() {
         //        Read from the database
         DatabaseReference meetDatabase = FirebaseDatabase.getInstance().getReference();
         meetDatabase.child("meets").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String previous) {
+                System.out.println("Meet Child Changing");
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 String key = dataSnapshot.getKey();
                 Meet m = dataSnapshot.getValue((Meet.class));
                 m.setUid(key);
+
+                String sDate1 = (String)dataSnapshot.child("date").getValue();
+                try {
+                    assert sDate1 != null;
+                    m.addDate(new SimpleDateFormat("MM/dd/yy", Locale.US).parse(sDate1));
+                } catch (Exception e) {
+                    System.out.println("not a valid date!");
+                    m.addDate(new Date());
+                }
                 for(int i =0; i < AppData.meets.size(); i++){
                     if (AppData.meets.get(i).getName().equalsIgnoreCase(m.getName())){
                         AppData.meets.set(i, m);
+                        if(AppData.selectedMeet!=null && AppData.selectedMeet.getName().equalsIgnoreCase(AppData.meets.get(i).getName())){
+                            AppData.selectedMeet = AppData.meets.get(i);
+                        }
                         Log.i("MainActivity", "meet has been changed");
                         break;
                     }
@@ -261,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previous) {
                 //  System.out.println(dataSnapshot);
-
+               System.out.println("Meet child added");
                 String key = dataSnapshot.getKey();
                 //  System.out.println("key is "+ key);
 

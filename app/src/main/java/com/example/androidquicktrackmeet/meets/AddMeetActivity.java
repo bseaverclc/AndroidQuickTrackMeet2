@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -37,7 +38,7 @@ import java.util.HashMap;
 
 public class AddMeetActivity extends AppCompatActivity {
     private Meet meet;
-    private Meet selectedMeet;
+    //private Meet selectedMeet;
     private boolean changeMeet = false;
 
     ArrayList<String> events = new ArrayList<String>(
@@ -65,22 +66,24 @@ public class AddMeetActivity extends AppCompatActivity {
 
     public void initialzeValues()
     {
-        meetName.setText(selectedMeet.getName());
+        meetName.setText(AppData.selectedMeet.getName());
         meetName.setEnabled(false);
         meetName.setBackgroundColor(Color.GRAY);
 
         SimpleDateFormat sdf = new SimpleDateFormat("EE MM/dd/yy");
-        String dateString = sdf.format(selectedMeet.getDate2());
+        System.out.println("Date after changing the meet and coming back " + AppData.selectedMeet.getDate2());
+        date = AppData.selectedMeet.getDate2();
+        String dateString = sdf.format(AppData.selectedMeet.getDate2());
         dateView.setText(dateString);
 
-        if(selectedMeet.getGender().equalsIgnoreCase("M")){
+        if(AppData.selectedMeet.getGender().equalsIgnoreCase("M")){
             menRadio.setChecked(true);
         }
         else{
             womenRadio.setChecked(true);
         }
 
-        for(String level: selectedMeet.getLevels())
+        for(String level: AppData.selectedMeet.getLevels())
         {
             if(level.equalsIgnoreCase("VAR"))
             {
@@ -99,7 +102,7 @@ public class AddMeetActivity extends AppCompatActivity {
         // Add Schools
        for(School school: AppData.schools)
        {
-           if(selectedMeet.getSchools().get(school.getFull()) != null)
+           if(AppData.selectedMeet.getSchools().get(school.getFull()) != null)
            {
                selectedSchools.add(school);
            }
@@ -112,19 +115,19 @@ public class AddMeetActivity extends AppCompatActivity {
         theSchools.setText(schools);
 
         int i = 0;
-        for(int point: selectedMeet.getIndPoints())
+        for(int point: AppData.selectedMeet.getIndPoints())
         {
             individualScores.get(i).setText("" + point);
             i++;
         }
         i = 0;
-        for(int point: selectedMeet.getRelPoints())
+        for(int point: AppData.selectedMeet.getRelPoints())
         {
             relayScores.get(i).setText("" + point);
         }
 
-        coachCode.setText(selectedMeet.getCoachCode());
-        mangerCode.setText(selectedMeet.getManagerCode());
+        coachCode.setText(AppData.selectedMeet.getCoachCode());
+        mangerCode.setText(AppData.selectedMeet.getManagerCode());
 
 
     }
@@ -136,7 +139,7 @@ public class AddMeetActivity extends AppCompatActivity {
         //System.out.println(events);
         setContentView(R.layout.activity_add_meet);
         Intent intent = getIntent();
-        selectedMeet = (Meet)intent.getSerializableExtra("selectedMeet");
+        //selectedMeet = (Meet)intent.getSerializableExtra("selectedMeet");
 
 
 
@@ -188,7 +191,7 @@ public class AddMeetActivity extends AppCompatActivity {
         mangerCode = findViewById(R.id.managerCode);
         submit = findViewById(R.id.submit);
 
-        if(selectedMeet != null)
+        if(AppData.selectedMeet != null)
         {
             changeMeet = true;
             System.out.println("We are changing a meet!");
@@ -421,20 +424,41 @@ public class AddMeetActivity extends AppCompatActivity {
 
         meet = new Meet(meetName.getText().toString(), date, schoolsHash,gen,lev, eventLeveled,indPoints,relPoints,beenScored,coachCode.getText().toString(),mangerCode.getText().toString());
 
+        AlertDialog.Builder successAlert = new AlertDialog.Builder(AddMeetActivity.this);
         if (changeMeet)
         {
-            if (selectedMeet != null)
+            if (AppData.selectedMeet != null)
             {
-                selectedMeet.updateFirebase(meet);
+                AppData.selectedMeet.updateFirebase(meet);
                 System.out.println("Trying to update meet in firebase");
+
+                successAlert.setTitle("Success!");
+                successAlert.setMessage("Successfully changed meet info");
+                successAlert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+
+                successAlert.show();
             }
         }
         else{
             AppData.meets.add(meet);
             meet.saveToFirebase();
+            successAlert.setTitle("Success!");
+            successAlert.setMessage("Successfully added meet");
+            successAlert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            successAlert.show();
         }
 
-        finish();
+
 
     }
 

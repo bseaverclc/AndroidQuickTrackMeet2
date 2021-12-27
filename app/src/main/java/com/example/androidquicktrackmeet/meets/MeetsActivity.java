@@ -116,6 +116,16 @@ private MeetsListAdapter adapter;
         super.onResume();
         Meet.canCoach = false;
         Meet.canManage = false;
+        AppData.selectedMeet = null;
+//        for(int i = 0; i < AppData.meets.size(); i++)
+//        {
+//            if(AppData.meets.get(i) == null){
+//                AppData.meets.remove(i);
+//                i--;
+//            }
+//        }
+
+
         System.out.println("onResume happening");
         Comparator<Meet> sortByDate = (Meet o1, Meet o2) -> {
             return o1.getDate2().compareTo(o2.getDate2());

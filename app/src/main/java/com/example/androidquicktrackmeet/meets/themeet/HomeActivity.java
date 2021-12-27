@@ -62,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.edit_info) {
             Intent intent = new Intent(this, AddMeetActivity.class);
-            intent.putExtra("selectedMeet", AppData.selectedMeet);
+            //intent.putExtra("selectedMeet", AppData.selectedMeet);
             //intent.putExtra("selectedAthlete", selectedAthlete);
             // intent.putExtra("events", displayedEvents);
 

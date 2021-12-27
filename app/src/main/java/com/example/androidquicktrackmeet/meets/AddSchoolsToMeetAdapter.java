@@ -59,6 +59,7 @@ public class AddSchoolsToMeetAdapter extends RecyclerView.Adapter<AddSchoolsToMe
         String eString = AppData.schools.get(position).getFull();
         //System.out.println("onBind at " + position);
         holder.schoolName.setText(eString);
+        holder.initials.setText(AppData.schools.get(position).getInits());
 
         holder.row.setBackgroundColor(Color.WHITE);
         for (School school: AddMeetActivity.selectedSchools)
