@@ -10,7 +10,9 @@
         android:minHeight="30dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:id="@+id/rowMeetAthletes"
+        >
 
         <TextView
             android:layout_width="0dp"
@@ -19,7 +21,8 @@
             android:maxLines="1"
             android:autoSizeTextType="uniform"
             android:text="last, first (year)"
-            android:id="@+id/athleteNameYear"/>
+            android:id="@+id/athleteNameYear"
+            android:layout_marginVertical="10dp"/>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"

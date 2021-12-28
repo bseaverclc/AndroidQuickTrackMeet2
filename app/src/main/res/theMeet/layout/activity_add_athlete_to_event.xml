@@ -9,26 +9,7 @@
     tools:context=".meets.themeet.events.theevent.addathletestoevent.AddAthleteToEventActivity"
     >
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="end"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:gravity="right">
-
-
-        </LinearLayout>
-
-    </androidx.appcompat.widget.Toolbar>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/buttonView"
@@ -45,7 +26,8 @@
             android:id="@+id/school1"
 
             android:text=""
-            android:onClick="selectSchool"/>
+            android:onClick="selectSchool"
+            android:layout_marginHorizontal="2dp"/>
 
         <Button
             android:layout_width="0dp"
@@ -53,7 +35,8 @@
             android:layout_weight=".25"
             android:text=""
             android:id="@+id/school2"
-            android:onClick="selectSchool"/>
+            android:onClick="selectSchool"
+            android:layout_marginHorizontal="2dp"/>
 
         <Button
             android:layout_width="0dp"
@@ -61,7 +44,8 @@
             android:layout_weight=".25"
             android:text=""
             android:id="@+id/school3"
-            android:onClick="selectSchool"/>
+            android:onClick="selectSchool"
+            android:layout_marginHorizontal="2dp"/>
 
         <Button
             android:layout_width="0dp"
@@ -69,7 +53,8 @@
             android:layout_weight=".25"
             android:text=""
             android:id="@+id/school4"
-            android:onClick="selectSchool"/>
+            android:onClick="selectSchool"
+            android:layout_marginHorizontal="2dp"/>
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -97,11 +82,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/topRow"
         app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_horizontal"
         >
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+
 
 
     <Button
@@ -115,17 +98,8 @@
 
         />
 
-    <Button
-        android:text="Add to Roster
-"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:id="@+id/addButton"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:onClick="addToRoster"/>
-        </RelativeLayout>
+
+
     </LinearLayout>
 
 

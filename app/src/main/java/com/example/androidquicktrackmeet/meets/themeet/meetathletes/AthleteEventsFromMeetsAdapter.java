@@ -13,9 +13,11 @@ import android.widget.TextView;
 import com.example.androidquicktrackmeet.AppData;
 import com.example.androidquicktrackmeet.Athlete;
 import com.example.androidquicktrackmeet.Event;
+import com.example.androidquicktrackmeet.Meet;
 import com.example.androidquicktrackmeet.R;
 import com.example.androidquicktrackmeet.meets.themeet.events.EventsListAdapter;
 import com.example.androidquicktrackmeet.meets.themeet.events.theevent.EditEventListAdapter;
+import com.example.androidquicktrackmeet.meets.themeet.events.theevent.SwipeToDeleteCallback;
 
 import org.w3c.dom.Text;
 
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.core.widget.TextViewCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AthleteEventsFromMeetsAdapter extends RecyclerView.Adapter<AthleteEventsFromMeetsAdapter.ViewHolder>  {
@@ -51,6 +54,7 @@ public class AthleteEventsFromMeetsAdapter extends RecyclerView.Adapter<AthleteE
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
         this.recyclerView = recyclerView;
+
     }
 
     // inflates the row layout from xml when needed
@@ -64,6 +68,7 @@ public class AthleteEventsFromMeetsAdapter extends RecyclerView.Adapter<AthleteE
 
     @Override
     public void onBindViewHolder(AthleteEventsFromMeetsAdapter.ViewHolder holder, int position) {
+
         System.out.println("Onbind being called for " + events.get(position).getName());
         Event e = events.get(position);
         holder.eventName.setText(e.getName());
@@ -79,6 +84,37 @@ public class AthleteEventsFromMeetsAdapter extends RecyclerView.Adapter<AthleteE
         else {
             holder.place.setText("");
         }
+
+//        if(Meet.canCoach){
+//
+//            ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT){
+//
+//                @Override
+//                public boolean isItemViewSwipeEnabled() {
+//                    return true;
+//                }
+//
+//                @Override
+//                public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+//                    return false;
+//                }
+//
+//                @Override
+//                public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+//                    System.out.println("Trying to delete event from athlete");
+//                    events.remove(position);
+//                    adapter.notifyDataSetChanged();
+//
+//                }
+//            };
+//
+//            ItemTouchHelper touchHelper = new ItemTouchHelper(itemTouchHelperCallback);
+//            touchHelper.attachToRecyclerView(recyclerView);
+  //      }
+//        if(Meet.canCoach){
+//            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback(adapter));
+//            itemTouchHelper.attachToRecyclerView(itemRecyclerView);
+//        }
     }
 
     @Override
@@ -86,6 +122,15 @@ public class AthleteEventsFromMeetsAdapter extends RecyclerView.Adapter<AthleteE
         System.out.println(events.size());
         return events.size();
 
+    }
+
+    public boolean deleteItem(int position) {
+
+     athlete.deleteEventFirebase(events.get(position).getUid());
+        events.remove(position);
+        adapter.notifyDataSetChanged();
+
+    return true;
     }
 
 
@@ -109,6 +154,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         place = (TextView) itemView.findViewById(R.id.place);
         row = itemView.findViewById(R.id.row);
     }
+
 
 
 

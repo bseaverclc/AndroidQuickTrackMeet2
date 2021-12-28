@@ -20,6 +20,7 @@ import com.example.androidquicktrackmeet.Event;
 import java.util.ArrayList;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.core.widget.TextViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -74,7 +75,7 @@ public class MeetAthletesAdapter extends RecyclerView.Adapter<MeetAthletesAdapte
                 TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
                 holder.gridLayout.addView(tv);
             }
-                holder.athleteNameYr.setOnClickListener(new View.OnClickListener() {
+                holder.row.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         System.out.println("clicked on " + a.getLast() + " at position " + position);
@@ -101,7 +102,7 @@ public class MeetAthletesAdapter extends RecyclerView.Adapter<MeetAthletesAdapte
         public TextView athleteNameYr;
         public GridLayout gridLayout;
 
-        public LinearLayout row;
+        public LinearLayoutCompat row;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -113,6 +114,7 @@ public class MeetAthletesAdapter extends RecyclerView.Adapter<MeetAthletesAdapte
             athleteNameYr = (TextView) itemView.findViewById(R.id.athleteNameYear);
             System.out.println("GridLayout being created");
             gridLayout = (GridLayout)itemView.findViewById(R.id.gridLayout);
+            row = (LinearLayoutCompat)itemView.findViewById(R.id.rowMeetAthletes);
 
             //row = itemView.findViewById(R.id.row);
             itemView.setOnClickListener(this);

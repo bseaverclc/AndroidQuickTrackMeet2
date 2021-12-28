@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +18,7 @@ import android.widget.ListView;
 import com.example.androidquicktrackmeet.AppData;
 import com.example.androidquicktrackmeet.Athlete;
 import com.example.androidquicktrackmeet.Event;
+import com.example.androidquicktrackmeet.Meet;
 import com.example.androidquicktrackmeet.R;
 import com.example.androidquicktrackmeet.meets.themeet.events.EventsActivity;
 import com.example.androidquicktrackmeet.meets.themeet.events.EventsListAdapter;
@@ -60,19 +62,18 @@ public class AthleteEventsFromMeets extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         Intent intent = getIntent();
-        selectedAthlete = (Athlete)intent.getSerializableExtra("selectedAthlete");
+        selectedAthlete = (Athlete) intent.getSerializableExtra("selectedAthlete");
         //System.out.println(selectedAthlete.getLast() + "was accepted");
 
 
-        for(Event e : selectedAthlete.showEvents()) {
+        for (Event e : selectedAthlete.showEvents()) {
             if (e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName())) {
-                    displayedEvents.add(e);
+                displayedEvents.add(e);
             }
         }
 
 
-
-        adapter=new AthleteEventsFromMeetsAdapter(displayedEvents, selectedAthlete);
+        adapter = new AthleteEventsFromMeetsAdapter(displayedEvents, selectedAthlete);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
         Drawable mDivider = ContextCompat.getDrawable(recyclerView.getContext(), R.drawable.divider);
@@ -82,11 +83,41 @@ public class AthleteEventsFromMeets extends AppCompatActivity {
 
 
         recyclerView.setAdapter(adapter);
-       // listView=(ListView)findViewById(R.id.athleteEventsFromMeets);
-       // listView.setAdapter(adapter);
+        // listView=(ListView)findViewById(R.id.athleteEventsFromMeets);
+        // listView.setAdapter(adapter);
         setTitle(selectedAthlete.getFirst() + " " + selectedAthlete.getLast());
         //attachListener();
         //eventPosition = 0;
+
+        if (Meet.canCoach) {
+
+            ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+
+                @Override
+                public boolean isItemViewSwipeEnabled() {
+                    return true;
+                }
+
+                @Override
+                public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                    return false;
+                }
+
+                @Override
+                public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                    System.out.println("Trying to delete event from athlete");
+                    int spot =  viewHolder.getAdapterPosition();
+                    adapter.deleteItem(spot);
+                    //adapter.notifyDataSetChanged();
+                    //events.remove(position);
+                    //adapter.notifyDataSetChanged();
+
+                }
+            };
+
+            ItemTouchHelper touchHelper = new ItemTouchHelper(itemTouchHelperCallback);
+            touchHelper.attachToRecyclerView(recyclerView);
+        }
     }
 
     @Override
@@ -98,7 +129,7 @@ public class AthleteEventsFromMeets extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_add) {
+        if (id == R.id.action_add && Meet.canCoach) {
             Intent intent = new Intent(this, AddEventsToAthlete.class);
 
             intent.putExtra("selectedAthlete", selectedAthlete);

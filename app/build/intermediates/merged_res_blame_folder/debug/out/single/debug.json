@@ -12,6 +12,10 @@
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/layout/activity_school_athletes.xml"
     },
     {
+        "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/menu_eventeditmenu.xml.flat",
+        "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/menu/eventeditmenu.xml"
+    },
+    {
         "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/layout_custom_schoolslist.xml.flat",
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/layout/custom_schoolslist.xml"
     },
@@ -40,12 +44,12 @@
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/menu/schoolathletesmenu.xml"
     },
     {
-        "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/layout_adapter_add_events_to_athlete.xml.flat",
-        "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/meetAthletes/layout/adapter_add_events_to_athlete.xml"
-    },
-    {
         "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/layout_list_section.xml.flat",
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/theMeet/layout/list_section.xml"
+    },
+    {
+        "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/layout_adapter_add_events_to_athlete.xml.flat",
+        "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/meetAthletes/layout/adapter_add_events_to_athlete.xml"
     },
     {
         "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/layout_meetathletes.xml.flat",

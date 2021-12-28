@@ -6,58 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".meets.themeet.events.theevent.EventEditActivity"
+
     >
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="end"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-
-
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-
-    android:gravity="right">
-
-
-
-            <Button
-                android:text="Add"
-                android:onClick="addAction"
-                android:layout_width="wrap_content"
-                android:id="@+id/addButton"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <Button
-        android:text="switch"
-        android:layout_width="wrap_content"
-        android:onClick="switcher"
-
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-
-
-
-</LinearLayout>
-
-
-    </androidx.appcompat.widget.Toolbar>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/topButtonsRow"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        >
        <Button
            android:layout_width="0dp"
            android:layout_height="match_parent"
@@ -67,6 +25,7 @@
            android:onClick="processEvent"
 
 
+
            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
         <Button
@@ -74,9 +33,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="refresh"
+
             android:layout_marginLeft="10dp"
 
-            android:background="#CCCCCC"
+
             android:id="@+id/refreshButton"
 
             android:text="Refresh"
@@ -87,7 +47,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Clear Places"
-            android:background="#CCCCCC"
+
             android:layout_marginLeft="10dp"
             android:id="@+id/clearButton"
             android:onClick="clearPlaces"
@@ -129,28 +89,36 @@
             android:layout_height="wrap_content"
             android:onClick="nameAction"
             android:text="Name"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:layout_marginHorizontal="2dp"
+            android:padding="0dp"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:onClick="schoolAction"
             android:text="School"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:layout_marginHorizontal="2dp"
+            android:padding="0dp"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:onClick="placeAction"
             android:text="Place"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:layout_marginHorizontal="2dp"
+            android:padding="0dp"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:onClick="markAction"
             android:text="Mark"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:layout_marginHorizontal="2dp"
+            android:padding="0dp"/>
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

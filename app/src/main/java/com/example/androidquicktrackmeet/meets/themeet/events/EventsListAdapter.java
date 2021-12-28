@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 //import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.androidquicktrackmeet.AppData;
@@ -42,7 +43,10 @@ public class EventsListAdapter extends ArrayAdapter<String> {
 
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.custom_meetslist, null,true);
+        View rowView=inflater.inflate(R.layout.custom_eventslist, null,true);
+
+
+
 
 
         TextView titleText = (TextView) rowView.findViewById(R.id.title);
@@ -57,7 +61,8 @@ public class EventsListAdapter extends ArrayAdapter<String> {
         if(AppData.selectedMeet.getBeenScored().get(position)== true){
             titleText.setBackgroundColor(Color.GREEN);
         }
-        else{titleText.setBackgroundColor(Color.LTGRAY);}
+        else if (position%2 == 1){titleText.setBackgroundColor(Color.LTGRAY);}
+        else{titleText.setBackgroundColor(Color.WHITE);}
         //subTitleText.setText(meets.get(position).getName());
 
         //imageView.setImageResource(imgid[position]);

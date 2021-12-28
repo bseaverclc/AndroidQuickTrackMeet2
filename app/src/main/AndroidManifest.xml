@@ -55,7 +55,7 @@
             android:name=".meets.themeet.events.theevent.EventEditActivity"
             android:launchMode="singleTask"
             android:parentActivityName=".meets.themeet.events.EventsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+
             android:windowSoftInputMode="stateHidden|adjustResize"
 
            />

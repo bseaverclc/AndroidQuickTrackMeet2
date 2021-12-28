@@ -1805,8 +1805,8 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
-id addButton
 id addSelectedButton
+id addToEvent
 id addToRoster
 id add_athlete
 id add_selected
@@ -1923,6 +1923,7 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
+id eventLinearLayout
 id eventMark
 id eventName
 id eventName3
@@ -2123,6 +2124,7 @@ id right_side
 id rounded
 id row
 id row3
+id rowMeetAthletes
 id row_index_key
 id salistView
 id save_non_transition_alpha
@@ -2197,6 +2199,7 @@ id submit
 id submitSchool
 id submit_area
 id subtitle
+id switchButton
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -2238,8 +2241,6 @@ id title
 id titleDividerNoCustom
 id title_template
 id toggle
-id toolbar
-id toolbar2
 id top
 id topButtonsRow
 id topPanel
@@ -2460,6 +2461,7 @@ layout text_view_without_line_height
 menu addmenu
 menu addselected
 menu editmenu
+menu eventeditmenu
 menu schoolathletesmenu
 mipmap ic_launcher
 mipmap ic_launcher_round

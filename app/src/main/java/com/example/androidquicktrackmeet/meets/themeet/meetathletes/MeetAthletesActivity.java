@@ -23,6 +23,8 @@ public class MeetAthletesActivity extends AppCompatActivity {
     ArrayList<Athlete> displayedAthletes = new ArrayList<Athlete>();
     RecyclerView recyclerView;
     MeetAthletesAdapter adapter;
+    String selectedSchool = "";
+
 
 
     @Override
@@ -30,10 +32,17 @@ public class MeetAthletesActivity extends AppCompatActivity {
 
         displayedAthletes.clear();
         for(Athlete a: AppData.allAthletes){
-            if(AppData.selectedMeet.getSchools().keySet().contains(a.getSchoolFull())){
-                displayedAthletes.add(a);
+            if(AppData.selectedMeet.getSchools().keySet().contains(a.getSchoolFull())) {
+                if (selectedSchool.length() > 0 && a.getSchoolFull().equalsIgnoreCase(selectedSchool)) {
+                    displayedAthletes.add(a);
+                }
             }
         }
+        Comparator<Athlete> sortByName = (Athlete o1, Athlete o2) -> {
+
+            return o1.getLast().compareTo(o2.getLast());
+        };
+        Collections.sort(displayedAthletes, sortByName);
         adapter.notifyDataSetChanged();
         super.onResume();
     }
@@ -41,6 +50,7 @@ public class MeetAthletesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        selectedSchool = AppData.mySchool;
         setContentView(R.layout.activity_meet_athletes);
 
         for(Athlete a: AppData.allAthletes){
@@ -48,6 +58,12 @@ public class MeetAthletesActivity extends AppCompatActivity {
                 displayedAthletes.add(a);
             }
         }
+
+        Comparator<Athlete> sortByName = (Athlete o1, Athlete o2) -> {
+
+            return o1.getLast().compareTo(o2.getLast());
+        };
+        Collections.sort(displayedAthletes, sortByName);
 
 
 
@@ -74,6 +90,7 @@ public class MeetAthletesActivity extends AppCompatActivity {
                     for(Athlete a : AppData.allAthletes){
                         if(a.getSchool().equalsIgnoreCase(buttonText) && AppData.selectedMeet.getSchools().containsKey(a.getSchoolFull())){
                             displayedAthletes.add(a);
+                            selectedSchool = a.getSchoolFull();
                             //System.out.println("added an athlete");
                         }
                     }

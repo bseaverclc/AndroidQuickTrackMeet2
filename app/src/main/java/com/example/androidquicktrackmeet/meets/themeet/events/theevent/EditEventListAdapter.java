@@ -230,7 +230,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
 
                                 notifyItemRemoved(position);
                                 //notifyDataSetChanged();
-                                processButton.setBackgroundColor(Color.LTGRAY);
+                                processButton.setBackgroundColor(Color.GRAY);
                                 processButton.setText("Process Event");
 
                                 AppData.selectedMeet.setBeenScored(EventsActivity.eventPosition, false);
@@ -292,7 +292,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                     @Override
                     public boolean onKey(View v, int keyCode, KeyEvent event) {
                         //key listening stuff
-                        processButton.setBackgroundColor(Color.LTGRAY);
+                        processButton.setBackgroundColor(Color.GRAY);
                         processButton.setText("Process Event");
 
                         AppData.selectedMeet.setBeenScored(EventsActivity.eventPosition, false);
@@ -327,7 +327,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                     @Override
                     public boolean onKey(View v, int keyCode, KeyEvent event) {
                         //key listening stuff
-                        processButton.setBackgroundColor(Color.LTGRAY);
+                        processButton.setBackgroundColor(Color.GRAY);
                         processButton.setText("Process Event");
 
                         AppData.selectedMeet.setBeenScored(EventsActivity.eventPosition, false);
@@ -473,7 +473,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                     break;
 
                 case DragEvent.ACTION_DRAG_ENTERED:
-                    v.setBackgroundColor(Color.LTGRAY);
+                    v.setBackgroundColor(Color.GRAY);
                     System.out.println("Action Drag Entered");
                     break;
 
@@ -616,7 +616,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
                          v.setVisibility(View.VISIBLE);
 
                          // unprocess event
-                    processButton.setBackgroundColor(Color.LTGRAY);
+                    processButton.setBackgroundColor(Color.GRAY);
                     processButton.setText("Process Event");
 
                     AppData.selectedMeet.setBeenScored(EventsActivity.eventPosition, false);

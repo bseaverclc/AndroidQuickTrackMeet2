@@ -15,12 +15,16 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
+import com.example.androidquicktrackmeet.meets.AddMeetActivity;
+import com.example.androidquicktrackmeet.meets.MeetsActivity;
 import com.example.androidquicktrackmeet.meets.themeet.events.theevent.addathletestoevent.AddAthleteToEventActivity;
 import com.example.androidquicktrackmeet.AppData;
 import com.example.androidquicktrackmeet.Athlete;
@@ -47,9 +51,37 @@ public class EventEditActivity extends AppCompatActivity  {
     private boolean fieldEvent = false;
     ArrayList<Section> sections;
     //private int start = 0;
-    private Button processButton, clearButton, addButton;
+    private Button processButton, clearButton, refreshButton;
     ActionBar actionBar;
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.eventeditmenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.addToEvent) {
+            if(Meet.canCoach) {
+                Intent intent = new Intent(this, AddAthleteToEventActivity.class);
+                //intent.putExtra("meet", meet);
+                intent.putExtra("event", selectedEvent);
+                intent.putExtra("athletes", eventAthletes);
+                startActivity(intent);
+                return true;
+            }
+
+        }
+        else
+        {
+            switcher();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onResume(){
@@ -69,7 +101,10 @@ public class EventEditActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_event_edit);
         processButton = (Button) this.findViewById(R.id.processEventButton);
         clearButton = (Button) this.findViewById(R.id.clearButton);
-        addButton = (Button)this.findViewById(R.id.addButton);
+        refreshButton = (Button)this.findViewById(R.id.refreshButton);
+        clearButton.setBackgroundColor(Color.GRAY);
+        refreshButton.setBackgroundColor(Color.GRAY);
+        //addButton = (Button)this.findViewById(R.id.addButton);
 
         if(Meet.canManage){
             processButton.setActivated(true);
@@ -79,12 +114,12 @@ public class EventEditActivity extends AppCompatActivity  {
             processButton.setActivated(false);
             clearButton.setVisibility(View.GONE);
         }
-        if(Meet.canCoach){
-            addButton.setVisibility(View.VISIBLE);
-        }
-        else{
-            addButton.setVisibility(View.GONE);
-        }
+//        if(Meet.canCoach){
+//            addButton.setVisibility(View.VISIBLE);
+//        }
+//        else{
+//            addButton.setVisibility(View.GONE);
+//        }
 
         System.out.println("onCreate for eventEditActivity");
         Intent intent = getIntent();
@@ -151,11 +186,11 @@ public class EventEditActivity extends AppCompatActivity  {
 //            }
 //        });
 
-        Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(topToolBar);
-        actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        setSupportActionBar(topToolBar);
+//        Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(topToolBar);
+//        actionBar = getSupportActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+//        setSupportActionBar(topToolBar);
 
 
 
@@ -192,7 +227,7 @@ public class EventEditActivity extends AppCompatActivity  {
 
     }
 
-    public void addAction(View view){
+    public void addAction(){
         System.out.println("addAction being called");
         Intent intent = new Intent(this, AddAthleteToEventActivity.class);
         //intent.putExtra("meet", meet);
@@ -211,7 +246,7 @@ public class EventEditActivity extends AppCompatActivity  {
 
 
             } else {
-                processButton.setBackgroundColor(Color.LTGRAY);
+                processButton.setBackgroundColor(Color.GRAY);
                 processButton.setText("Process Event");
 
             }
@@ -244,7 +279,7 @@ public class EventEditActivity extends AppCompatActivity  {
         }
     }
 
-    public void switcher(View view){
+    public void switcher(){
             String check = selectedEvent.substring(0,selectedEvent.length()-3);
             System.out.println("selected Row before switch " + selectedRow);
             for (int i = 0; i < AppData.selectedMeet.getEvents().size(); i++){
@@ -257,7 +292,7 @@ public class EventEditActivity extends AppCompatActivity  {
                     }
                     selectedRow = i;
 
-                    actionBar.setTitle(selectedEvent);
+                    setTitle(selectedEvent);
                     //setTitle(checker);
 
                     onResume();
@@ -351,6 +386,23 @@ public class EventEditActivity extends AppCompatActivity  {
                            }
                        }
                    }
+                    for(Athlete a : heat1Athletes){
+                        for(Event e : a.showEvents()){
+                            if(e.getName().equalsIgnoreCase(selectedEvent) && e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName()) ){
+                                e.setPlace(null);
+                                a.updateFirebase();
+                            }
+                        }
+                    }
+
+                    for(Athlete a : heat2Athletes){
+                        for(Event e : a.showEvents()){
+                            if(e.getName().equalsIgnoreCase(selectedEvent) && e.getMeetName().equalsIgnoreCase(AppData.selectedMeet.getName()) ){
+                                e.setPlace(null);
+                                a.updateFirebase();
+                            }
+                        }
+                    }
                    AppData.selectedMeet.getBeenScored().set(selectedRow, false);
                    AppData.selectedMeet.updatebeenScoredFirebase();
                    beenScoredCheck();
@@ -476,6 +528,8 @@ public class EventEditActivity extends AppCompatActivity  {
             return o1.getLast().compareTo(o2.getLast());
         };
         Collections.sort(eventAthletes, sortByName);
+        Collections.sort(heat1Athletes, sortByName);
+        Collections.sort(heat2Athletes, sortByName);
        // System.out.println(eventAthletes);
 
     }
@@ -498,6 +552,8 @@ public class EventEditActivity extends AppCompatActivity  {
             return o1.getSchool().compareTo(o2.getSchool());
         };
         Collections.sort(eventAthletes, sortBySchool);
+        Collections.sort(heat1Athletes, sortBySchool);
+        Collections.sort(heat2Athletes, sortBySchool);
        // System.out.println(eventAthletes);
     }
 

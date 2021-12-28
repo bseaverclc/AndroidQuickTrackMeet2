@@ -11,6 +11,8 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -18,6 +20,7 @@ import com.example.androidquicktrackmeet.AppData;
 import com.example.androidquicktrackmeet.Athlete;
 import com.example.androidquicktrackmeet.Meet;
 import com.example.androidquicktrackmeet.R;
+import com.example.androidquicktrackmeet.meets.AddMeetActivity;
 import com.example.androidquicktrackmeet.meets.MeetsActivity;
 
 import java.util.ArrayList;
@@ -38,6 +41,22 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
     RecyclerView recyclerView;
     ActionBar actionBar;
    // ArrayList<Athlete> selectedAthletes = new ArrayList<Athlete>();
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.addmenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_add) {
+            addToRoster();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,7 +155,7 @@ public class AddAthleteToEventActivity extends AppCompatActivity implements Athl
 
     }
 
-    public void addToRoster(View view){
+    public void addToRoster(){
         System.out.println("addToRoster being called");
         Intent intent = new Intent(this, AddAthlete.class);
         //intent.putExtra("meet", meet);
