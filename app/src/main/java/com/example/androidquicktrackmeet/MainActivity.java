@@ -368,6 +368,7 @@ public class MainActivity extends AppCompatActivity {
 
                 for(DataSnapshot snapShot : dataSnapshot.getChildren()) {
                     Event user = snapShot.getValue(Event.class);
+                    user.setUid(snapShot.getKey());
                     a.addEvent(user);
                 }
 
@@ -432,11 +433,13 @@ public class MainActivity extends AppCompatActivity {
 //                            System.out.println(e);
 //                        }
                         if(dataSnapshot.getKey().equalsIgnoreCase("relayMembers")){
-
+                            System.out.println("Heard relayMember Change");
                         }
                         else {
+                            System.out.println("Heard event child changed (not relay member");
                             //System.out.println("event snapshot" + dataSnapshot);
                             Event ev = dataSnapshot.getValue(Event.class);
+                            System.out.println(ev.getName());
                             // Trying to fix the 800M problem!
 //                            if(ev.getName().equalsIgnoreCase("800 VAR"))
 //                            {
@@ -455,14 +458,23 @@ public class MainActivity extends AppCompatActivity {
 
                                 if(ae.getName().equalsIgnoreCase(ev.getName()) && ae.getMeetName().equalsIgnoreCase(ev.getMeetName())){
                                     add = false;
+
                                     break;
                                 }
                             }
                             if(add) {
                                 ev.setUid(dataSnapshot.getKey());
-                                //  System.out.println("Added event to firebase Event Uid " + ev.getUid());
+                                System.out.println("Added event to firebase Event Uid " + ev.getUid());
 
+                                //a.addEvent(ev);
                                 a.addEvent(ev);
+//                                for(int i = 0; i<AppData.allAthletes.size(); i++){
+//                                    if(AppData.allAthletes.get(i).equals(a)){
+//                                        AppData.allAthletes.set(i,a);
+//                                    }
+//                                }
+
+                                //a.updateFirebase();
                             }
 
                             //System.out.println("getting an event from firebase ");

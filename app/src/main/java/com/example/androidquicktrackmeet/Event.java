@@ -85,6 +85,10 @@ public class Event implements Serializable {
     public void setHeat(int heat){this.heat = heat;}
     public void setName(String name){this.name = name;}
 
+    public void resetRelayMembers(){
+        relayMembers = new ArrayList<String>();
+    }
+
 
 
 

@@ -145,6 +145,7 @@ public class EventEditActivity extends AppCompatActivity  {
         recyclerView = findViewById(R.id.recyclerView);
        LinearLayoutManager manager = new LinearLayoutManager(this);
 
+
          recyclerView.setLayoutManager(manager);
         sections = new ArrayList<Section>();
 

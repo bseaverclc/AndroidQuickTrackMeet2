@@ -6,10 +6,14 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Quick Track Meet"
+        android:orientation="vertical"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AndroidQuickTrackMeet"
-        android:orientation="vertical">
+        android:theme="@style/Theme.AndroidQuickTrackMeet">
+        <activity android:name=".meets.themeet.events.theevent.RelayActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName=".meets.themeet.events.theevent.EventEditActivity"
+            />
         <activity
             android:name=".schools.SchoolCoachesActivity"
             android:launchMode="singleTask"
@@ -55,10 +59,7 @@
             android:name=".meets.themeet.events.theevent.EventEditActivity"
             android:launchMode="singleTask"
             android:parentActivityName=".meets.themeet.events.EventsActivity"
-
-            android:windowSoftInputMode="stateHidden|adjustResize"
-
-           />
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".meets.themeet.events.EventsActivity"
             android:launchMode="singleTask"

@@ -4,6 +4,7 @@ package com.example.androidquicktrackmeet.meets.themeet.events.theevent;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -26,6 +27,7 @@ import com.example.androidquicktrackmeet.Athlete;
 import com.example.androidquicktrackmeet.R;
 import com.example.androidquicktrackmeet.Meet;
 import com.example.androidquicktrackmeet.Event;
+import com.example.androidquicktrackmeet.meets.AddMeetActivity;
 import com.example.androidquicktrackmeet.meets.themeet.events.EventsActivity;
 
 import java.util.ArrayList;
@@ -252,7 +254,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
         event = newEvent;
     }
 
-    public class ViewHolderEditEvent extends RecyclerView.ViewHolder {
+    public class ViewHolderEditEvent extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView titleText, points, subTitleText;
         public EditText mark, place;
@@ -265,6 +267,7 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
+            itemView.setOnClickListener(this);
 
 
             titleText = (TextView) itemView.findViewById(R.id.title);
@@ -340,6 +343,21 @@ public class EditEventListAdapter extends RecyclerView.Adapter<EditEventListAdap
 
         }
 
+
+        @Override
+        public void onClick(View v) {
+            if(event.contains("4x")) {
+                System.out.println("Clicked on a relay team");
+                Activity activity = (Activity) v.getContext();
+                Intent intent = new Intent(activity, RelayActivity.class);
+                intent.putExtra("eventName", event);
+                intent.putExtra("relayAthlete", athletes.get(getAdapterPosition()));
+
+                activity.startActivity(intent);
+            }
+
+
+        }
     }
 
     private class MyMarkTextListener implements TextWatcher {

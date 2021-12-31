@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".meets.themeet.events.theevent.RelayActivity"
+     >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+       android:gravity = "center_horizontal"
+        android:weightSum="100"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="Relay Members"
+            android:layout_weight="5"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+           />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:id="@+id/relayRecycler"
+            android:layout_weight="30"
+            android:layout_marginHorizontal="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="Select Relay Members"
+            android:layout_marginTop="20dp"
+            android:layout_weight="5"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:id="@+id/athletesRecycler"
+            android:layout_weight="60"
+            android:layout_marginHorizontal="16dp"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

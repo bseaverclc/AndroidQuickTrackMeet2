@@ -1,6 +1,7 @@
 package com.example.androidquicktrackmeet.meets.themeet.meetathletes;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.example.androidquicktrackmeet.Athlete;
 import com.example.androidquicktrackmeet.Event;
 import com.example.androidquicktrackmeet.Meet;
 import com.example.androidquicktrackmeet.R;
+import com.example.androidquicktrackmeet.meets.AddMeetActivity;
 import com.example.androidquicktrackmeet.meets.themeet.events.EventsListAdapter;
 import com.example.androidquicktrackmeet.meets.themeet.events.theevent.EditEventListAdapter;
 import com.example.androidquicktrackmeet.meets.themeet.events.theevent.SwipeToDeleteCallback;
@@ -125,12 +127,33 @@ public class AthleteEventsFromMeetsAdapter extends RecyclerView.Adapter<AthleteE
     }
 
     public boolean deleteItem(int position) {
+        if(events.get(position).getMarkString().length()==0){
+            if(!events.get(position).getName().contains("split") && !events.get(position).getName().contains("4x")){
+                athlete.deleteEventFirebase(events.get(position).getUid());
+                events.remove(position);
+                adapter.notifyDataSetChanged();
+                return true;
+            }
 
-     athlete.deleteEventFirebase(events.get(position).getUid());
-        events.remove(position);
+
+            AlertDialog.Builder failureAlert = new AlertDialog.Builder(recyclerView.getContext());
+            failureAlert.setTitle("Error!");
+            failureAlert.setMessage("You can only delete splits and relays from Events");
+            failureAlert.setNegativeButton("Ok", null);
+            failureAlert.show();
+        }
+        else {
+            AlertDialog.Builder failureAlert = new AlertDialog.Builder(recyclerView.getContext());
+            failureAlert.setTitle("Error!");
+            failureAlert.setMessage("Can't delete events that have a mark");
+            failureAlert.setNegativeButton("Ok", null);
+            failureAlert.show();
+        }
+
+
         adapter.notifyDataSetChanged();
+    return false;
 
-    return true;
     }
 
 

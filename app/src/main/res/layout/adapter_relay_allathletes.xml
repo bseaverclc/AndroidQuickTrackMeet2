@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/row"
+
+
+    >
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".5"
+        android:orientation="vertical"
+
+
+        >
+
+        <TextView
+            android:id="@+id/theAthleteName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Athlete Name"
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginTop="5dp"
+            android:textColor="#4d4d4d"
+            />
+
+        <TextView
+            android:id="@+id/theGrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Grade"
+            android:layout_marginLeft="16dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+
+            android:textColor="#4d4d4d"
+            />
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/theSchool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="right"
+        android:text = "School"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+
+
+        />
+
+
+
+</LinearLayout>

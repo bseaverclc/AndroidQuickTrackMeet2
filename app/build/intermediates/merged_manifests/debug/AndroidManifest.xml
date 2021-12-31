@@ -25,6 +25,10 @@
         android:testOnly="true"
         android:theme="@style/Theme.AndroidQuickTrackMeet" >
         <activity
+            android:name="com.example.androidquicktrackmeet.meets.themeet.events.theevent.RelayActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.example.androidquicktrackmeet.meets.themeet.events.theevent.EventEditActivity" />
+        <activity
             android:name="com.example.androidquicktrackmeet.schools.SchoolCoachesActivity"
             android:launchMode="singleTask"
             android:parentActivityName="com.example.androidquicktrackmeet.schools.schoolAthletes" />

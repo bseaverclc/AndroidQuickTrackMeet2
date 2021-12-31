@@ -1824,6 +1824,7 @@ id athleteName
 id athleteNameYear
 id athleteYear
 id athletesButton
+id athletesRecycler
 id athleticButton
 id auto
 id autoComplete
@@ -2116,6 +2117,9 @@ id rel6
 id rel7
 id rel8
 id relativeScreen
+id relayAthleteName
+id relayAthleteSplit
+id relayRecycler
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2235,6 +2239,9 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id theAthleteName
+id theGrade
+id theSchool
 id theSchools
 id time
 id title
@@ -2354,6 +2361,7 @@ layout activity_home
 layout activity_main
 layout activity_meet_athletes
 layout activity_meets
+layout activity_relay
 layout activity_school_athletes
 layout activity_school_coaches
 layout activity_schools2
@@ -2361,6 +2369,8 @@ layout activity_scores
 layout adapter_add_events_to_athlete
 layout adapter_add_schools_to_meet
 layout adapter_athlete_events_from_meets
+layout adapter_relay
+layout adapter_relay_allathletes
 layout adapter_school_athletes
 layout adapter_school_coaches
 layout browser_actions_context_menu_page

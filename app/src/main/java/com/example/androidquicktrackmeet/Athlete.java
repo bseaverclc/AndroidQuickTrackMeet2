@@ -160,6 +160,9 @@ public class Athlete implements Serializable {
             dict.put("points", e.getPoints());
             dict.put("uid", e.getUid());
             dict.put("heat", e.getHeat());
+            if (e.getRelayMembers()!=null){
+                dict.put("relayMembers", e.getRelayMembers());
+            }
 
             try {
                 ref.child("events").child(e.getUid()).updateChildren(dict);
