@@ -5,9 +5,11 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.example.androidquicktrackmeet.AppData;
 import com.example.androidquicktrackmeet.Athlete;
@@ -29,6 +31,7 @@ public class RelayActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("RelayActivity created");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relay);
         Intent intent = getIntent();
@@ -118,5 +121,7 @@ public class RelayActivity extends AppCompatActivity {
 
 
     }
+
+
 
 }
