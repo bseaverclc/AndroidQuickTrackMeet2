@@ -12,12 +12,12 @@
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/meetAthletes/layout/activity_athlete_events_from_meets.xml"
     },
     {
-        "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/menu_eventeditmenu.xml.flat",
-        "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/menu/eventeditmenu.xml"
-    },
-    {
         "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/layout_activity_school_athletes.xml.flat",
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/layout/activity_school_athletes.xml"
+    },
+    {
+        "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/menu_eventeditmenu.xml.flat",
+        "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/menu/eventeditmenu.xml"
     },
     {
         "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/layout_custom_schoolslist.xml.flat",
@@ -60,12 +60,12 @@
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/meetAthletes/layout/meetathletes.xml"
     },
     {
-        "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/menu_addmenu.xml.flat",
-        "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/menu/addmenu.xml"
-    },
-    {
         "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/menu_addmenu.xml.flat",
+        "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/menu/addmenu.xml"
     },
     {
         "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
@@ -216,12 +216,12 @@
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/generated/res/pngs/debug/drawable-mdpi/ic_launcher_background.png"
     },
     {
-        "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher_background.png.flat",
-        "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_launcher_background.png"
-    },
-    {
         "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/layout_activity_relay.xml.flat",
         "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/src/main/res/layout/activity_relay.xml"
+    },
+    {
+        "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher_background.png.flat",
+        "source": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_launcher_background.png"
     },
     {
         "merged": "/Users/brian/Documents/AndroidQuickTrackMeet/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",

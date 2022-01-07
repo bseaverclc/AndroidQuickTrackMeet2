@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:hint="Mark"
         android:inputType="time"
-        android:digits="0123456789:."
+
         android:imeOptions="actionDone"
 
 

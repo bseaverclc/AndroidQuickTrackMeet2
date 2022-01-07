@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:277683121299:android:24b9878ba5a962dd0bf166",
         "android_client_info": {
-          "package_name": "com.example.androidquicktrackmeet"
+          "package_name": "com.quickmeet.androidquicktrackmeet"
         }
       },
       "oauth_client": [

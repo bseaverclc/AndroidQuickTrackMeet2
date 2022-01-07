@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.androidquicktrackmeet">
+    package="com.quickmeet.androidquicktrackmeet">
 
     <application
         android:allowBackup="true"
@@ -10,80 +10,80 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidQuickTrackMeet">
-        <activity android:name=".meets.themeet.events.theevent.RelayActivity"
+        <activity android:name="com.quickmeet.androidquicktrackmeet.meets.themeet.events.theevent.RelayActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".meets.themeet.events.theevent.EventEditActivity"
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.meets.themeet.events.theevent.EventEditActivity"
             />
         <activity
-            android:name=".schools.SchoolCoachesActivity"
+            android:name="com.quickmeet.androidquicktrackmeet.schools.SchoolCoachesActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".schools.schoolAthletes" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.schools.schoolAthletes" />
         <activity
-            android:name=".schools.ActivityAddSchool"
+            android:name="com.quickmeet.androidquicktrackmeet.schools.ActivityAddSchool"
             android:launchMode="singleTask"
-            android:parentActivityName=".schools.SchoolsActivity" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.schools.SchoolsActivity" />
         <activity
-            android:name=".schools.schoolAthletes"
+            android:name="com.quickmeet.androidquicktrackmeet.schools.schoolAthletes"
             android:launchMode="singleTask"
-            android:parentActivityName=".schools.SchoolsActivity" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.schools.SchoolsActivity" />
         <activity
-            android:name=".meets.AddSchoolsToMeet"
+            android:name="com.quickmeet.androidquicktrackmeet.meets.AddSchoolsToMeet"
             android:launchMode="singleTask"
-            android:parentActivityName=".meets.themeet.meetathletes.MeetAthletesActivity" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.meets.themeet.meetathletes.MeetAthletesActivity" />
         <activity
-            android:name=".meets.themeet.meetathletes.AthleteEventsFromMeets"
+            android:name="com.quickmeet.androidquicktrackmeet.meets.themeet.meetathletes.AthleteEventsFromMeets"
             android:launchMode="singleTask"
-            android:parentActivityName=".meets.AddMeetActivity" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.meets.AddMeetActivity" />
         <activity
-            android:name=".meets.themeet.meetathletes.AddEventsToAthlete"
+            android:name="com.quickmeet.androidquicktrackmeet.meets.themeet.meetathletes.AddEventsToAthlete"
             android:launchMode="singleTask"
-            android:parentActivityName=".meets.themeet.meetathletes.AthleteEventsFromMeets" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.meets.themeet.meetathletes.AthleteEventsFromMeets" />
         <activity
-            android:name=".meets.themeet.meetathletes.MeetAthletesActivity"
+            android:name="com.quickmeet.androidquicktrackmeet.meets.themeet.meetathletes.MeetAthletesActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".meets.themeet.HomeActivity" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.meets.themeet.HomeActivity" />
         <activity
-            android:name=".meets.themeet.events.theevent.addathletestoevent.AddAthlete"
+            android:name="com.quickmeet.androidquicktrackmeet.meets.themeet.events.theevent.addathletestoevent.AddAthlete"
             android:launchMode="singleTask"
-            android:parentActivityName=".meets.themeet.events.theevent.addathletestoevent.AddAthleteToEventActivity" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.meets.themeet.events.theevent.addathletestoevent.AddAthleteToEventActivity" />
         <activity
-            android:name=".meets.themeet.ScoresActivity"
+            android:name="com.quickmeet.androidquicktrackmeet.meets.themeet.ScoresActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".meets.themeet.HomeActivity" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.meets.themeet.HomeActivity" />
         <activity
-            android:name=".meets.themeet.events.theevent.addathletestoevent.AddAthleteToEventActivity"
+            android:name="com.quickmeet.androidquicktrackmeet.meets.themeet.events.theevent.addathletestoevent.AddAthleteToEventActivity"
             android:launchMode="singleTask"
             android:noHistory="true"
-            android:parentActivityName=".meets.themeet.events.theevent.EventEditActivity" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.meets.themeet.events.theevent.EventEditActivity" />
         <activity
-            android:name=".meets.themeet.events.theevent.EventEditActivity"
+            android:name="com.quickmeet.androidquicktrackmeet.meets.themeet.events.theevent.EventEditActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".meets.themeet.events.EventsActivity"
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.meets.themeet.events.EventsActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".meets.themeet.events.EventsActivity"
+            android:name="com.quickmeet.androidquicktrackmeet.meets.themeet.events.EventsActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".meets.themeet.HomeActivity" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.meets.themeet.HomeActivity" />
         <activity
-            android:name=".meets.themeet.HomeActivity"
+            android:name="com.quickmeet.androidquicktrackmeet.meets.themeet.HomeActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".meets.MeetsActivity" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.meets.MeetsActivity" />
         <activity
-            android:name=".meets.AddMeetActivity"
+            android:name="com.quickmeet.androidquicktrackmeet.meets.AddMeetActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".meets.MeetsActivity" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.meets.MeetsActivity" />
         <activity
-            android:name=".schools.SchoolsActivity"
+            android:name="com.quickmeet.androidquicktrackmeet.schools.SchoolsActivity"
             android:label="Schools"
             android:launchMode="singleTask"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.MainActivity" />
         <activity
-            android:name=".meets.MeetsActivity"
+            android:name="com.quickmeet.androidquicktrackmeet.meets.MeetsActivity"
             android:label="Meets"
             android:launchMode="singleTask"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="com.quickmeet.androidquicktrackmeet.MainActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.quickmeet.androidquicktrackmeet.MainActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
