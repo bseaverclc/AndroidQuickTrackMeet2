@@ -160,7 +160,7 @@ public class ScoresActivity extends AppCompatActivity {
                                 for (String id : e.getRelayMembers()) {
                                     for (Athlete ath : AppData.allAthletes) {
                                         if (ath.getUid().equalsIgnoreCase(id)) {
-                                            relayString = relayString + ", " + ath.getLast() + ", " + ath.getFirst() + ", " + ath.getGrade();
+                                            relayString = relayString + "," + ath.getLast() + "," + ath.getFirst() + "," + ath.getGrade();
                                             break;
                                         }
                                     }
