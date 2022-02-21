@@ -64,6 +64,8 @@ public class ScoresActivity extends AppCompatActivity {
         System.out.println(teamPoints);
 
         textViewOutlet = new TextView(this);
+        textViewOutlet.setPadding(0,500,0,20);
+        //textViewOutlet.setHeight(500);
         textViewOutlet.setMovementMethod(new ScrollingMovementMethod());
 
         computeScores();
@@ -90,7 +92,7 @@ public class ScoresActivity extends AppCompatActivity {
         for (String l: AppData.selectedMeet.getLevels()){
             TextView levelTitle = new TextView(this);
             levelTitle.setText(l + " Scores");
-            TextViewCompat.setTextAppearance(levelTitle, android.R.style.TextAppearance_Medium);
+            TextViewCompat.setTextAppearance(levelTitle, android.R.style.TextAppearance_Large);
             levelTitle.setPadding(0,20,0,10);
             levelTitle.setGravity(Gravity.CENTER_HORIZONTAL);
             linearLayout.addView(levelTitle);
@@ -102,13 +104,15 @@ public class ScoresActivity extends AppCompatActivity {
             //scoresLayout.setWeightSum(3);
 
             scoresLayout.setLayoutParams(lp);
+            scoresLayout.setPadding(0,20,0,100);
             linearLayout.addView(scoresLayout);
             HashMap<String, Double> levelScores = teamPoints.get(l);
             for (Map.Entry<String, Double> ts : levelScores.entrySet()) {
                 TextView score = new TextView(this);
-                LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+                LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 3f);
                 //p.weight = 1;
                 score.setLayoutParams(p);
+                TextViewCompat.setTextAppearance(score, android.R.style.TextAppearance_Medium);
                 score.setText(ts.getKey() + ": " + ts.getValue() );
                 score.setGravity(Gravity.CENTER_HORIZONTAL);
                 scoresLayout.addView(score);

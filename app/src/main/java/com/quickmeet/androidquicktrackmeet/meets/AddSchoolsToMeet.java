@@ -9,7 +9,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.quickmeet.androidquicktrackmeet.AppData;
 import com.quickmeet.androidquicktrackmeet.R;
+import com.quickmeet.androidquicktrackmeet.School;
+
+import java.util.Collections;
+import java.util.Comparator;
 
 public class AddSchoolsToMeet extends AppCompatActivity {
     //private ArrayList<School> selectedSchools;
@@ -26,6 +31,11 @@ public class AddSchoolsToMeet extends AppCompatActivity {
         Intent intent = getIntent();
 
         // maybe pass over current selected schools?
+        Comparator<School> sortByName = (School o1, School o2) -> {
+
+            return o1.getFull().compareTo(o2.getFull());
+        };
+        Collections.sort(AppData.schools, sortByName);
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

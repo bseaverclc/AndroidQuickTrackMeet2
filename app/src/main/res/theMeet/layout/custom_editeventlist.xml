@@ -80,9 +80,10 @@
 
     <TextView
         android:id="@+id/points"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
       android:layout_marginRight="1dp"
+        android:layout_marginLeft="1dp"
 
         android:text="points"
 
@@ -93,7 +94,9 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:hint="Mark"
-        android:inputType="time"
+        android:inputType="time|datetime"
+
+
 
         android:imeOptions="actionDone"
 
